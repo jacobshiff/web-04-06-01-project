@@ -1,3 +1,3 @@
-# web-0416-01-project
+# GroupMeme
 
 Flatiron project by Rachel Bronstein, Chris Morrison, and Jacob Shiff
