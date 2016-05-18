@@ -5,10 +5,10 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-doge = Meme.create(filename: 'doge.jpg')
-pepe = Meme.create(filename: 'pepe.jpg')
-y_u_no = Meme.create(filename: 'myfile.jpg')
-beef = Meme.create(filename: 'beef.jpg')
+doge = Meme.create(file_name: 'doge.jpg')
+pepe = Meme.create(file_name: 'pepe.jpg')
+y_u_no = Meme.create(file_name: 'myfile.jpg')
+beef = Meme.create(file_name: 'beef.jpg')
 
 jacob = User.create(username: 'jacobshiff', email: 'jacob@flatiron.com')
 chris = User.create(username: 'xristo', email: 'chris@meme.com')
@@ -19,12 +19,21 @@ pepe.creator = rachel
 y_u_no.creator = chris
 beef.creator = chris
 
+doge.save
+pepe.save
+y_u_no.save
+beef.save
+
 flatiron = Group.create(title: "Flatiron School")
 google = Group.create(title: "Google")
 delta_nu = Group.create(title: "Delta Nu Sorority")
 my_friends = Group.create(title: "Friends")
 
 flatiron.group_creator = chris
+flatiron.save
 google.group_creator = jacob
+google.save
 delta_nu.group_creator = rachel
+delta_nu.save
 my_friends.group_creator = rachel
+my_friends.save
