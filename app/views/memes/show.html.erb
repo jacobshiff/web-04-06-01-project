@@ -1,17 +1,33 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <h1>Memey McMemerson over heaahhhh</h1>
+      <h1></h1>
     </div>
   </div>
 
 <center>
-
-<div class="index-meme"><%= image_tag @meme.file_name %> </div>
-
+  <div class="index-meme"><%= image_tag @meme.file_name %> </div>
   <font face="verdana" size="1"><i>Posted by: <%= @meme.creator.username %> @ <%=@meme.created_at%> </i></font>
 </center>
 
 <br><br>
 
+<div>
+
+<% @meme.tags.each do |tag| %>
+  <span class="label label-info"><%= tag.name %></span>
+<% end %>
+</div>
+
+<div>
+<h3>Comments:</h3>
+
+<% @meme.comments.each do |comment| %>
+  <div><%= comment.user.username %>: <%= comment.content %></div>
+<% end %>
+</div>
+
+<br><br>
+
 <a href="<%=memes_path(@meme.group.group_slug)%>"><button type="button" class="btn btn-primary">Back to Index</button></a>
+<button type="button" class="btn btn-danger">Delete</button>
