@@ -3536,3 +3536,379 @@ Migrating to ChangeReactionTypeToReactionType (20160518015314)
   [1m[35m (0.1ms)[0m  BEGIN
   [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "memberships" ("group_id", "user_id", "user_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["group_id", 1], ["user_id", 3], ["user_type", "member"], ["created_at", "2016-05-18 14:03:57.694322"], ["updated_at", "2016-05-18 14:03:57.694322"]]
   [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (5.6ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
+  [1m[35m (1.3ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateUsers (20160517220005)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (6.8ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "username" character varying, "email" character varying, "password_digest" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20160517220005"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+Migrating to CreateGroups (20160517220134)
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36m (5.6ms)[0m  [1mCREATE TABLE "groups" ("id" serial primary key, "title" character varying, "group_creator_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20160517220134"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Migrating to CreateMemberships (20160517220216)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (7.1ms)[0m  [1mCREATE TABLE "memberships" ("id" serial primary key, "user_id" integer, "group_id" integer, "user_type" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20160517220216"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+Migrating to CreateMemes (20160517220236)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (6.0ms)[0m  [1mCREATE TABLE "memes" ("id" serial primary key, "file_name" character varying, "creator_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20160517220236"]]
+  [1m[36m (0.9ms)[0m  [1mCOMMIT[0m
+Migrating to CreateTags (20160517220314)
+  [1m[35m (0.6ms)[0m  BEGIN
+  [1m[36m (5.2ms)[0m  [1mCREATE TABLE "tags" ("id" serial primary key, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20160517220314"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Migrating to CreateMemeTags (20160517220336)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (4.5ms)[0m  [1mCREATE TABLE "meme_tags" ("id" serial primary key, "tag_id" integer, "meme_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20160517220336"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Migrating to CreateReactions (20160517220425)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (5.6ms)[0m  [1mCREATE TABLE "reactions" ("id" serial primary key, "meme_id" integer, "user_id" integer, "reaction_type" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20160517220425"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Migrating to CreateInvites (20160517220500)
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36m (4.0ms)[0m  [1mCREATE TABLE "invites" ("id" serial primary key, "inviter_id" integer, "invitee_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20160517220500"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Migrating to CreateComments (20160517220524)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (6.0ms)[0m  [1mCREATE TABLE "comments" ("id" serial primary key, "user_id" integer, "meme_id" integer, "content" text, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20160517220524"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Migrating to AddGroupIdColumn (20160518005942)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (1.0ms)[0m  [1mALTER TABLE "comments" ADD "group_id" integer[0m
+  [1m[35m (0.5ms)[0m  ALTER TABLE "invites" ADD "group_id" integer
+  [1m[36m (0.5ms)[0m  [1mALTER TABLE "meme_tags" ADD "group_id" integer[0m
+  [1m[35m (0.6ms)[0m  ALTER TABLE "memes" ADD "group_id" integer
+  [1m[36m (0.5ms)[0m  [1mALTER TABLE "reactions" ADD "group_id" integer[0m
+  [1m[35m (0.5ms)[0m  ALTER TABLE "tags" ADD "group_id" integer
+  [1m[36m (0.5ms)[0m  [1mALTER TABLE "users" ADD "group_id" integer[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20160518005942"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+Migrating to DeleteGroupIdFromUsers (20160518010530)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (1.5ms)[0m  [1mALTER TABLE "users" DROP "group_id"[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20160518010530"]]
+  [1m[36m (0.9ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.4ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (6.0ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'comments'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (7.3ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'groups'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36m (6.3ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'invites'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (5.1ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'memberships'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36m (5.6ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'meme_tags'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (5.7ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'memes'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36m (4.8ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'reactions'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (4.7ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'tags'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36m (4.8ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "memes" ("file_name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["file_name", "doge.jpg"], ["created_at", "2016-05-18 16:28:39.297536"], ["updated_at", "2016-05-18 16:28:39.297536"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "memes" ("file_name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["file_name", "pepe.jpg"], ["created_at", "2016-05-18 16:28:39.302397"], ["updated_at", "2016-05-18 16:28:39.302397"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "memes" ("file_name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["file_name", "myfile.jpg"], ["created_at", "2016-05-18 16:28:39.304277"], ["updated_at", "2016-05-18 16:28:39.304277"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "memes" ("file_name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["file_name", "beef.jpg"], ["created_at", "2016-05-18 16:28:39.305899"], ["updated_at", "2016-05-18 16:28:39.305899"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("username", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "jacobshiff"], ["email", "jacob@flatironschool.com"], ["created_at", "2016-05-18 16:28:39.318101"], ["updated_at", "2016-05-18 16:28:39.318101"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("username", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["username", "xristo"], ["email", "chris@flatironschool.com"], ["created_at", "2016-05-18 16:28:39.320545"], ["updated_at", "2016-05-18 16:28:39.320545"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("username", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "rachelb"], ["email", "rachel@flatironschool.com"], ["created_at", "2016-05-18 16:28:39.322258"], ["updated_at", "2016-05-18 16:28:39.322258"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "memes" SET "creator_id" = $1, "updated_at" = $2 WHERE "memes"."id" = $3  [["creator_id", 3], ["updated_at", "2016-05-18 16:28:39.328856"], ["id", 1]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "memes" SET "creator_id" = $1, "updated_at" = $2 WHERE "memes"."id" = $3[0m  [["creator_id", 3], ["updated_at", "2016-05-18 16:28:39.334682"], ["id", 2]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  UPDATE "memes" SET "creator_id" = $1, "updated_at" = $2 WHERE "memes"."id" = $3  [["creator_id", 2], ["updated_at", "2016-05-18 16:28:39.336447"], ["id", 3]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "memes" SET "creator_id" = $1, "updated_at" = $2 WHERE "memes"."id" = $3[0m  [["creator_id", 2], ["updated_at", "2016-05-18 16:28:39.338394"], ["id", 4]]
+  [1m[35m (0.2ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "groups" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["title", "Flatiron School"], ["created_at", "2016-05-18 16:28:39.346741"], ["updated_at", "2016-05-18 16:28:39.346741"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "groups" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["title", "Google"], ["created_at", "2016-05-18 16:28:39.349260"], ["updated_at", "2016-05-18 16:28:39.349260"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "groups" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["title", "Delta Nu Sorority"], ["created_at", "2016-05-18 16:28:39.351060"], ["updated_at", "2016-05-18 16:28:39.351060"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "groups" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["title", "Friends"], ["created_at", "2016-05-18 16:28:39.352733"], ["updated_at", "2016-05-18 16:28:39.352733"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "groups" SET "group_creator_id" = $1, "updated_at" = $2 WHERE "groups"."id" = $3  [["group_creator_id", 2], ["updated_at", "2016-05-18 16:28:39.355329"], ["id", 1]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "groups" SET "group_creator_id" = $1, "updated_at" = $2 WHERE "groups"."id" = $3[0m  [["group_creator_id", 1], ["updated_at", "2016-05-18 16:28:39.357481"], ["id", 2]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  UPDATE "groups" SET "group_creator_id" = $1, "updated_at" = $2 WHERE "groups"."id" = $3  [["group_creator_id", 3], ["updated_at", "2016-05-18 16:28:39.359332"], ["id", 3]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "groups" SET "group_creator_id" = $1, "updated_at" = $2 WHERE "groups"."id" = $3[0m  [["group_creator_id", 3], ["updated_at", "2016-05-18 16:28:39.361234"], ["id", 4]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "comments" ("content", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["content", "Lollllzzzzz"], ["created_at", "2016-05-18 16:28:39.374672"], ["updated_at", "2016-05-18 16:28:39.374672"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "comments" ("content", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["content", "This is amazing"], ["created_at", "2016-05-18 16:28:39.377318"], ["updated_at", "2016-05-18 16:28:39.377318"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "comments" ("content", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["content", "Ron Paul 2012"], ["created_at", "2016-05-18 16:28:39.379857"], ["updated_at", "2016-05-18 16:28:39.379857"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "comments" ("content", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["content", "What is this meme?"], ["created_at", "2016-05-18 16:28:39.381566"], ["updated_at", "2016-05-18 16:28:39.381566"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "comments" ("content", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["content", "Haahhahaah. Amazing"], ["created_at", "2016-05-18 16:28:39.383136"], ["updated_at", "2016-05-18 16:28:39.383136"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "comments" SET "user_id" = $1, "meme_id" = $2, "updated_at" = $3 WHERE "comments"."id" = $4[0m  [["user_id", 1], ["meme_id", 1], ["updated_at", "2016-05-18 16:28:39.386686"], ["id", 1]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  UPDATE "comments" SET "user_id" = $1, "meme_id" = $2, "updated_at" = $3 WHERE "comments"."id" = $4  [["user_id", 1], ["meme_id", 2], ["updated_at", "2016-05-18 16:28:39.388715"], ["id", 2]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "comments" SET "user_id" = $1, "meme_id" = $2, "updated_at" = $3 WHERE "comments"."id" = $4[0m  [["user_id", 2], ["meme_id", 1], ["updated_at", "2016-05-18 16:28:39.390677"], ["id", 3]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  UPDATE "comments" SET "user_id" = $1, "meme_id" = $2, "updated_at" = $3 WHERE "comments"."id" = $4  [["user_id", 1], ["meme_id", 4], ["updated_at", "2016-05-18 16:28:39.392512"], ["id", 4]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "comments" SET "user_id" = $1, "meme_id" = $2, "updated_at" = $3 WHERE "comments"."id" = $4[0m  [["user_id", 1], ["meme_id", 1], ["updated_at", "2016-05-18 16:28:39.394238"], ["id", 5]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "reactions" ("reaction_type", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["reaction_type", "like"], ["created_at", "2016-05-18 16:28:39.402312"], ["updated_at", "2016-05-18 16:28:39.402312"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "reactions" ("reaction_type", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["reaction_type", "like"], ["created_at", "2016-05-18 16:28:39.404962"], ["updated_at", "2016-05-18 16:28:39.404962"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "reactions" ("reaction_type", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["reaction_type", "like"], ["created_at", "2016-05-18 16:28:39.406703"], ["updated_at", "2016-05-18 16:28:39.406703"]]
+  [1m[36m (0.2ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "reactions" ("reaction_type", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["reaction_type", "dislike"], ["created_at", "2016-05-18 16:28:39.408551"], ["updated_at", "2016-05-18 16:28:39.408551"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "reactions" ("reaction_type", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["reaction_type", "dislike"], ["created_at", "2016-05-18 16:28:39.410176"], ["updated_at", "2016-05-18 16:28:39.410176"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "reactions" SET "user_id" = $1, "meme_id" = $2, "updated_at" = $3 WHERE "reactions"."id" = $4[0m  [["user_id", 3], ["meme_id", 1], ["updated_at", "2016-05-18 16:28:39.413621"], ["id", 1]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "reactions" SET "user_id" = $1, "meme_id" = $2, "updated_at" = $3 WHERE "reactions"."id" = $4  [["user_id", 2], ["meme_id", 1], ["updated_at", "2016-05-18 16:28:39.415798"], ["id", 2]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "reactions" SET "user_id" = $1, "meme_id" = $2, "updated_at" = $3 WHERE "reactions"."id" = $4[0m  [["user_id", 3], ["meme_id", 2], ["updated_at", "2016-05-18 16:28:39.417648"], ["id", 3]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  UPDATE "reactions" SET "user_id" = $1, "meme_id" = $2, "updated_at" = $3 WHERE "reactions"."id" = $4  [["user_id", 1], ["meme_id", 2], ["updated_at", "2016-05-18 16:28:39.419604"], ["id", 4]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "reactions" SET "user_id" = $1, "meme_id" = $2, "updated_at" = $3 WHERE "reactions"."id" = $4[0m  [["user_id", 2], ["meme_id", 4], ["updated_at", "2016-05-18 16:28:39.421418"], ["id", 5]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Ping Pong"], ["created_at", "2016-05-18 16:28:39.429697"], ["updated_at", "2016-05-18 16:28:39.429697"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "meme_tags" ("meme_id", "tag_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["meme_id", 1], ["tag_id", 1], ["created_at", "2016-05-18 16:28:39.454622"], ["updated_at", "2016-05-18 16:28:39.454622"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "meme_tags" ("meme_id", "tag_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["meme_id", 2], ["tag_id", 1], ["created_at", "2016-05-18 16:28:39.458104"], ["updated_at", "2016-05-18 16:28:39.458104"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "meme_tags" ("meme_id", "tag_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["meme_id", 4], ["tag_id", 1], ["created_at", "2016-05-18 16:28:39.461104"], ["updated_at", "2016-05-18 16:28:39.461104"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "JavaScript"], ["created_at", "2016-05-18 16:28:39.463018"], ["updated_at", "2016-05-18 16:28:39.463018"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "meme_tags" ("meme_id", "tag_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["meme_id", 3], ["tag_id", 2], ["created_at", "2016-05-18 16:28:39.466076"], ["updated_at", "2016-05-18 16:28:39.466076"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Ruby"], ["created_at", "2016-05-18 16:28:39.468359"], ["updated_at", "2016-05-18 16:28:39.468359"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "meme_tags" ("meme_id", "tag_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["meme_id", 4], ["tag_id", 3], ["created_at", "2016-05-18 16:28:39.471214"], ["updated_at", "2016-05-18 16:28:39.471214"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "meme_tags" ("meme_id", "tag_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["meme_id", 1], ["tag_id", 3], ["created_at", "2016-05-18 16:28:39.473721"], ["updated_at", "2016-05-18 16:28:39.473721"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "tags" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Lunch"], ["created_at", "2016-05-18 16:28:39.475612"], ["updated_at", "2016-05-18 16:28:39.475612"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "meme_tags" ("meme_id", "tag_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["meme_id", 2], ["tag_id", 4], ["created_at", "2016-05-18 16:28:39.478216"], ["updated_at", "2016-05-18 16:28:39.478216"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "memes" SET "group_id" = $1, "updated_at" = $2 WHERE "memes"."id" = $3[0m  [["group_id", 1], ["updated_at", "2016-05-18 16:28:39.481158"], ["id", 1]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  UPDATE "memes" SET "group_id" = $1, "updated_at" = $2 WHERE "memes"."id" = $3  [["group_id", 1], ["updated_at", "2016-05-18 16:28:39.483731"], ["id", 2]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "memes" SET "group_id" = $1, "updated_at" = $2 WHERE "memes"."id" = $3[0m  [["group_id", 1], ["updated_at", "2016-05-18 16:28:39.485696"], ["id", 3]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "memes" SET "group_id" = $1, "updated_at" = $2 WHERE "memes"."id" = $3  [["group_id", 1], ["updated_at", "2016-05-18 16:28:39.487571"], ["id", 4]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "comments" SET "group_id" = $1, "updated_at" = $2 WHERE "comments"."id" = $3[0m  [["group_id", 1], ["updated_at", "2016-05-18 16:28:39.490704"], ["id", 1]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  UPDATE "comments" SET "group_id" = $1, "updated_at" = $2 WHERE "comments"."id" = $3  [["group_id", 1], ["updated_at", "2016-05-18 16:28:39.492754"], ["id", 2]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "comments" SET "group_id" = $1, "updated_at" = $2 WHERE "comments"."id" = $3[0m  [["group_id", 1], ["updated_at", "2016-05-18 16:28:39.494706"], ["id", 3]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  UPDATE "comments" SET "group_id" = $1, "updated_at" = $2 WHERE "comments"."id" = $3  [["group_id", 1], ["updated_at", "2016-05-18 16:28:39.496600"], ["id", 4]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "comments" SET "group_id" = $1, "updated_at" = $2 WHERE "comments"."id" = $3[0m  [["group_id", 1], ["updated_at", "2016-05-18 16:28:39.498476"], ["id", 5]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  UPDATE "reactions" SET "group_id" = $1, "updated_at" = $2 WHERE "reactions"."id" = $3  [["group_id", 1], ["updated_at", "2016-05-18 16:28:39.501411"], ["id", 1]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "reactions" SET "group_id" = $1, "updated_at" = $2 WHERE "reactions"."id" = $3[0m  [["group_id", 1], ["updated_at", "2016-05-18 16:28:39.503430"], ["id", 2]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "reactions" SET "group_id" = $1, "updated_at" = $2 WHERE "reactions"."id" = $3  [["group_id", 1], ["updated_at", "2016-05-18 16:28:39.505290"], ["id", 3]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "reactions" SET "group_id" = $1, "updated_at" = $2 WHERE "reactions"."id" = $3[0m  [["group_id", 1], ["updated_at", "2016-05-18 16:28:39.507324"], ["id", 4]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "reactions" SET "group_id" = $1, "updated_at" = $2 WHERE "reactions"."id" = $3  [["group_id", 1], ["updated_at", "2016-05-18 16:28:39.509143"], ["id", 5]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "memberships" ("group_id", "user_id", "user_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["group_id", 1], ["user_id", 1], ["user_type", "admin"], ["created_at", "2016-05-18 16:28:39.516923"], ["updated_at", "2016-05-18 16:28:39.516923"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "memberships" ("group_id", "user_id", "user_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["group_id", 1], ["user_id", 2], ["user_type", "member"], ["created_at", "2016-05-18 16:28:39.519810"], ["updated_at", "2016-05-18 16:28:39.519810"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "memberships" ("group_id", "user_id", "user_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["group_id", 1], ["user_id", 3], ["user_type", "member"], ["created_at", "2016-05-18 16:28:39.521618"], ["updated_at", "2016-05-18 16:28:39.521618"]]
+  [1m[35m (0.3ms)[0m  COMMIT
