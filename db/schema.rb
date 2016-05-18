@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160518202955) do
+ActiveRecord::Schema.define(version: 20160518215637) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,10 @@ ActiveRecord::Schema.define(version: 20160518202955) do
     t.integer  "group_id"
   end
 
+  add_index "comments", ["group_id"], name: "index_comments_on_group_id", using: :btree
+  add_index "comments", ["meme_id"], name: "index_comments_on_meme_id", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
+
   create_table "groups", force: :cascade do |t|
     t.string   "title"
     t.integer  "group_creator_id"
@@ -32,6 +36,9 @@ ActiveRecord::Schema.define(version: 20160518202955) do
     t.datetime "updated_at",       null: false
     t.string   "group_slug"
   end
+
+  add_index "groups", ["group_creator_id"], name: "index_groups_on_group_creator_id", using: :btree
+  add_index "groups", ["group_slug"], name: "index_groups_on_group_slug", using: :btree
 
   create_table "invites", force: :cascade do |t|
     t.integer  "inviter_id"
@@ -41,6 +48,10 @@ ActiveRecord::Schema.define(version: 20160518202955) do
     t.integer  "group_id"
   end
 
+  add_index "invites", ["group_id"], name: "index_invites_on_group_id", using: :btree
+  add_index "invites", ["invitee_id"], name: "index_invites_on_invitee_id", using: :btree
+  add_index "invites", ["inviter_id"], name: "index_invites_on_inviter_id", using: :btree
+
   create_table "memberships", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "group_id"
@@ -49,6 +60,9 @@ ActiveRecord::Schema.define(version: 20160518202955) do
     t.datetime "updated_at", null: false
   end
 
+  add_index "memberships", ["group_id"], name: "index_memberships_on_group_id", using: :btree
+  add_index "memberships", ["user_id"], name: "index_memberships_on_user_id", using: :btree
+
   create_table "meme_tags", force: :cascade do |t|
     t.integer  "tag_id"
     t.integer  "meme_id"
@@ -56,6 +70,10 @@ ActiveRecord::Schema.define(version: 20160518202955) do
     t.datetime "updated_at", null: false
     t.integer  "group_id"
   end
+
+  add_index "meme_tags", ["group_id"], name: "index_meme_tags_on_group_id", using: :btree
+  add_index "meme_tags", ["meme_id"], name: "index_meme_tags_on_meme_id", using: :btree
+  add_index "meme_tags", ["tag_id"], name: "index_meme_tags_on_tag_id", using: :btree
 
   create_table "memes", force: :cascade do |t|
     t.string   "file_name"
@@ -74,12 +92,18 @@ ActiveRecord::Schema.define(version: 20160518202955) do
     t.integer  "group_id"
   end
 
+  add_index "reactions", ["group_id"], name: "index_reactions_on_group_id", using: :btree
+  add_index "reactions", ["meme_id"], name: "index_reactions_on_meme_id", using: :btree
+  add_index "reactions", ["user_id"], name: "index_reactions_on_user_id", using: :btree
+
   create_table "tags", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "group_id"
   end
+
+  add_index "tags", ["group_id"], name: "index_tags_on_group_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "username"

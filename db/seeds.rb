@@ -8,7 +8,7 @@
 
 doge = Meme.create(file_name: 'doge.jpg')
 pepe = Meme.create(file_name: 'pepe.jpg')
-y_u_no = Meme.create(file_name: 'myfile.jpg')
+y_u_no = Meme.create(file_name: 'YUNO.png')
 beef = Meme.create(file_name: 'beef.jpg')
 
 jacob = User.create(username: 'jacobshiff', email: 'jacob@flatironschool.com')
