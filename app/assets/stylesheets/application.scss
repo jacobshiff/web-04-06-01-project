@@ -16,7 +16,12 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-.index-meme {
-  height: 350px;
-  width: 250px;
+.index-meme-img {
+}
+
+.row-eq-height {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
 }
