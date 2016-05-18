@@ -15,6 +15,8 @@ jacob = User.create(username: 'jacobshiff', email: 'jacob@flatironschool.com')
 chris = User.create(username: 'xristo', email: 'chris@flatironschool.com')
 rachel = User.create(username: 'rachelb', email: 'rachel@flatironschool.com')
 
+
+
 doge.creator = rachel
 pepe.creator = rachel
 y_u_no.creator = chris
@@ -29,6 +31,8 @@ flatiron = Group.create(title: "Flatiron School")
 google = Group.create(title: "Google")
 delta_nu = Group.create(title: "Delta Nu Sorority")
 my_friends = Group.create(title: "Friends")
+
+flatiron.group_slug = "flatiron-school"
 
 flatiron.group_creator = chris
 flatiron.save
