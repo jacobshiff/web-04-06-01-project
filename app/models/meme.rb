@@ -1,5 +1,5 @@
 class Meme < ActiveRecord::Base
-  belongs_to :creator, class_name: ‘User’
+  belongs_to :creator, class_name: 'User'
   has_many :likes
   has_many :comments
   has_many :meme_tags
