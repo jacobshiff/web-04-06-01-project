@@ -5,11 +5,11 @@
     </div>
   </div>
 
-    <% @memes.in_groups_of(3).each do |group| %>
+    <% @memes.in_groups_of(3).each do |meme_row| %>
       <div class="row">
-        <% group.compact.each do |meme|  %>
+        <% meme_row.compact.each do |meme|  %>
           <div class="col-md-4">
-            <div class="index-meme"><%= link_to (image_tag meme.file_name), meme %> </div>
+            <div class="index-meme"><%= link_to (image_tag meme.file_name), meme_path(meme.group.group_slug, meme) %> </div>
           </div>
         <% end %>
     </div>

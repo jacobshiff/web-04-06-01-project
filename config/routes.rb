@@ -7,9 +7,9 @@ Rails.application.routes.draw do
   # end
 
   get '/:group_slug/memes' => 'memes#index'
-  get '/:group_slug/meme/:id' => 'memes#show'
+  get '/:group_slug/memes/:id' => 'memes#show', as: 'meme'
 
   # This needs to go last
-  get '/:group_slug/' => 'memes#index'
-  get '/:group_slug/memes/:id' => 'memes#show'
+  # get '/:group_slug/' => 'memes#index'
+  # get '/:group_slug/memes/:id' => 'memes#show'
 end
