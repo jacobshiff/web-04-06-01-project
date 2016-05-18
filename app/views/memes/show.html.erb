@@ -1,2 +1,17 @@
-<h1>My cool meme!</h1>
-<div class="col-md-4"><%= image_tag @meme.file_name %></div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Memey McMemerson over heaahhhh</h1>
+    </div>
+  </div>
+
+<center>
+
+<div class="index-meme"><%= image_tag @meme.file_name %> </div>
+
+  <font face="verdana" size="1"><i>Posted by: <%= @meme.creator.username %> @ <%=@meme.created_at%> </i></font>
+</center>
+
+<br><br>
+
+<a href="<%=memes_path(@meme.group.group_slug)%>"><button type="button" class="btn btn-primary">Back to Index</button></a>
