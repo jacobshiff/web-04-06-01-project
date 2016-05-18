@@ -3,14 +3,15 @@
     <div class="col-md-12">
       <h1>This is the index page!</h1>
     </div>
-    <div class="col-md-4">
-      <img src="http://placehold.it/350x250">
-    </div>
-    <div class="col-md-4">
-      <img src="http://placehold.it/350x250">
-    </div>
-    <div class="col-md-4">
-      <img src="http://placehold.it/350x250">
-    </div>
   </div>
+
+    <% @memes.in_groups_of(3).each do |meme_row| %>
+      <div class="row">
+        <% meme_row.compact.each do |meme|  %>
+          <div class="col-md-4">
+            <div class="index-meme"><%= link_to (image_tag meme.file_name), meme_path(meme.group.group_slug, meme) %> </div>
+          </div>
+        <% end %>
+    </div>
+    <% end %>
 </div>
