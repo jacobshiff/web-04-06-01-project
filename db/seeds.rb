@@ -11,9 +11,9 @@ pepe = Meme.create(file_name: 'pepe.jpg')
 y_u_no = Meme.create(file_name: 'myfile.jpg')
 beef = Meme.create(file_name: 'beef.jpg')
 
-jacob = User.create(username: 'jacobshiff', email: 'jacob@flatiron.com')
-chris = User.create(username: 'xristo', email: 'chris@meme.com')
-rachel = User.create(username: 'rachelb', email: 'rachel@butts.com')
+jacob = User.create(username: 'jacobshiff', email: 'jacob@flatironschool.com')
+chris = User.create(username: 'xristo', email: 'chris@flatironschool.com')
+rachel = User.create(username: 'rachelb', email: 'rachel@flatironschool.com')
 
 doge.creator = rachel
 pepe.creator = rachel
@@ -133,7 +133,9 @@ dislike_1.save
 dislike_2.save
 
 ##ADD MEMBERSHIPS
-
+membership_1 = Membership.create(group_id: 1, user_id: 1, user_type: 'admin')
+membership_2 = Membership.create(group_id: 1, user_id: 2, user_type: 'member')
+membership_3 = Membership.create(group_id: 1, user_id: 3, user_type: 'member')
 
 
 
