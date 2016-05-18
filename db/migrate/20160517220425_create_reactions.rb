@@ -3,7 +3,7 @@ class CreateReactions < ActiveRecord::Migration
     create_table :reactions do |t|
       t.string :meme_id,
       t.string :user_id,
-      t.string :type, #(like or dislike)
+      t.string :type,
       t.timestamps null: false
     end
   end
