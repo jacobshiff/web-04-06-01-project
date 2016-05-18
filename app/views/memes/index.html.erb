@@ -4,11 +4,15 @@
       <h1>This is the index page!</h1>
     </div>
   </div>
-  <div class="row">
-    <% @memes.each do |meme| %>
-      <div class="col-md-4">
-        <div class="index-meme"><%= image_tag meme.file_name %></div>
-      </div>
+
+    <% @memes.in_groups_of(3).each do |group| %>
+      <div class="row">
+        <% group.each do |meme|  %>
+          <div class="col-md-4">
+            <div class="index-meme"><%= meme %> </div>
+
+          </div>
+        <% end %>
+    </div>
     <% end %>
-  </div>
 </div>

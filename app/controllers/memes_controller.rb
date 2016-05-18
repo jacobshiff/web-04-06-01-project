@@ -1,8 +1,9 @@
 class MemesController < ApplicationController
   def index
-    @group_slug = params[:group_slug]
     #binding.pry
-    @memes = Meme.where(group_slug: @group_slug)
+    group_slug = params[:group_slug]
+    @group = Group.where(group_slug: group_slug)
+    @memes = Meme.where(group: @group)
   end
 
 end
