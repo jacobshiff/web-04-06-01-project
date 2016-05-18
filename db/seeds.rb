@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 doge = Meme.create(file_name: 'doge.jpg')
-pepe = Meme.create(file_name:x 'pepe.jpg')
+pepe = Meme.create(file_name: 'pepe.jpg')
 y_u_no = Meme.create(file_name: 'myfile.jpg')
 beef = Meme.create(file_name: 'beef.jpg')
 
@@ -32,7 +32,10 @@ google = Group.create(title: "Google")
 delta_nu = Group.create(title: "Delta Nu Sorority")
 my_friends = Group.create(title: "Friends")
 
-flatiron[:group_slug] = "flatiron-school"
+flatiron.group_slug = "flatiron-school"
+google.group_slug = "google"
+delta_nu.group_slug = "delta-nu"
+my_friends.group_slug = "my-friends"
 
 flatiron.group_creator = chris
 flatiron.save
