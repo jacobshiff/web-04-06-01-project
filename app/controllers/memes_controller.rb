@@ -6,4 +6,9 @@ class MemesController < ApplicationController
     @memes = Meme.where(group: @group)
   end
 
+  def show
+    @meme = Group.find_by(group_slug: params[:group_slug]).memes.find(params[:id])
+    #binding.pry
+  end
+
 end

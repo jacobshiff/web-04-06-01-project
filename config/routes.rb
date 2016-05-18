@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   # This needs to go last
   # get '/:group_slug/' => 'memes#index'
   # get '/:group_slug/memes/:id' => 'memes#show'
+  
 end
