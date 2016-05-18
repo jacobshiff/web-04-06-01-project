@@ -7,13 +7,8 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 doge = Meme.create(file_name: 'doge.jpg')
-<<<<<<< HEAD
 pepe = Meme.create(file_name: 'pepe.jpg')
-y_u_no = Meme.create(file_name: 'YUNO.png')
-=======
-pepe = Meme.create(file_name:x 'pepe.jpg')
 y_u_no = Meme.create(file_name: 'myfile.jpg')
->>>>>>> 1a4b014fe649d5534da580e79cc7df9590959ab3
 beef = Meme.create(file_name: 'beef.jpg')
 
 jacob = User.create(username: 'jacobshiff', email: 'jacob@flatironschool.com')
@@ -37,14 +32,10 @@ google = Group.create(title: "Google")
 delta_nu = Group.create(title: "Delta Nu Sorority")
 my_friends = Group.create(title: "Friends")
 
-<<<<<<< HEAD
 flatiron.group_slug = "flatiron-school"
 google.group_slug = "google"
 delta_nu.group_slug = "delta-nu"
 my_friends.group_slug = "my-friends"
-=======
-flatiron[:group_slug] = "flatiron-school"
->>>>>>> 1a4b014fe649d5534da580e79cc7df9590959ab3
 
 flatiron.group_creator = chris
 flatiron.save
