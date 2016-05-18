@@ -7,10 +7,9 @@
 
     <% @memes.in_groups_of(3).each do |group| %>
       <div class="row">
-        <% group.each do |meme|  %>
+        <% group.compact.each do |meme|  %>
           <div class="col-md-4">
-            <div class="index-meme"><%= meme %> </div>
-
+            <div class="index-meme"><%= image_tag meme.file_name %> </div>
           </div>
         <% end %>
     </div>
