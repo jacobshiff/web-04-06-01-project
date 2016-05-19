@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160519153457) do
+ActiveRecord::Schema.define(version: 20160519174042) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,7 +76,6 @@ ActiveRecord::Schema.define(version: 20160519153457) do
   add_index "meme_tags", ["tag_id"], name: "index_meme_tags_on_tag_id", using: :btree
 
   create_table "memes", force: :cascade do |t|
-    t.string   "file_name"
     t.integer  "creator_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
