@@ -1,5 +1,6 @@
 class MemesController < ApplicationController
-    before_action :find_group, only: [:index, :new]
+    before_action :set_group, only: [:index, :new]
+    before_action :set_meme, only: [:show, :destroy]
 
   def index
     #binding.pry
@@ -9,19 +10,22 @@ class MemesController < ApplicationController
   end
 
   def show
-    @meme = Group.find_by(group_slug: params[:group_slug]).memes.find(params[:id])
   end
+
 
   def new
     @meme = Meme.new
   end
 
+  def destroy
+    @meme.destroy
+    redirect_to memes_path(@meme.group.group_slug)
+  end
+
   def create
     @meme = Meme.new(meme_params)
     @meme.group = Group.find_by(group_slug: params[:group_slug])
-
-    # CHANGE THIS AFTER USERS EXIST
-    @meme.creator = User.find_by(username: 'rachelb')
+    @meme.creator = User.find_by(username: 'rachelb') # CHANGE THIS AFTER USERS EXIST
     if @meme.save
       redirect_to meme_path(group_slug: @meme.group.group_slug, id: @meme.id)
     else
@@ -29,11 +33,12 @@ class MemesController < ApplicationController
     end
   end
 
-
-
-
   private
-  def find_group
+  def set_meme
+    @meme = Group.find_by(group_slug: params[:group_slug]).memes.find(params[:id])
+  end
+
+  def set_group
     @group = Group.find_by(group_slug: params[:group_slug])
   end
 
