@@ -1,0 +1,1 @@
+, method: :post, url: meme_path(@meme), html: {id: 'new_file'}
