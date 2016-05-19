@@ -19,7 +19,16 @@ class Meme < ActiveRecord::Base
     if !user_reacted?(user)
       "<strong>#{self.reactions.count} people</strong> like this image".html_safe
     else
-      "<strong>You</strong> and <strong>#{self.reactions.count - 1} other people</strong> like this image".html_safe
+      "<strong>You</strong> and <strong>#{self.reactions.count - 1} other #{plural('person')}</strong> like this image".html_safe
+    end
+  end
+
+  def plural(word)
+    num = self.reactions.count - 1
+    if num > 0
+      str = ActionController::Base.helpers.pluralize(num, word)
+      parts = str.split
+      parts[1]
     end
   end
 
