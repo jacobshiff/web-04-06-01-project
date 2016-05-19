@@ -1,0 +1,23 @@
+<!-- This is the new user registration form -->
+<h1>Sign up for <%= Group.find_by(group_slug: params[:group_slug]).title %>'s GroupMeme</h1>
+<%= form_for @user, url: registration_create_path(params[:group_slug]) do |f| %>
+<div>
+  <%= f.label :username %>
+  <%= f.text_field :username %>
+</div>
+<div>
+  <%= f.label :email %>
+  <%= f.email_field :email %>
+</div>
+<div>
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+</div>
+<div>
+  <%= f.label :password_confirmation %>
+  <%= f.password_field :password_confirmation %>
+</div>
+<div>
+  <%= f.submit 'Sign Me Up'%>
+</div>
+<% end %>

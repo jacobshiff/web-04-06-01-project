@@ -1,4 +1,5 @@
 class MemesController < ApplicationController
+  before_action :require_login_and_access
   before_action :set_meme, only: [:show, :destroy]
 
   def index
