@@ -10,8 +10,15 @@
     <div class="row">
       <!-- To center, add .col-centered class -->
        <div class="col-mid-6 show-page-img">
-        <%= image_tag @meme.file_name, class: "img-responsive show-page-image" %>
+          <div class="insta-img">
+            <%= image_tag @meme.file_name, class: "img-responsive show-page-image" %>
+          </div>
+          <!-- To center, add .col-centered class -->
+          <div class="react" meme_parent_id="<%=@meme.id%>">
+            <%= render partial: "memes/memes_reactions", locals: {meme: @meme} %>
+          </div>
       </div>
+
     </div>
 
     <!-- Creator -->

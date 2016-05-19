@@ -1,6 +1,6 @@
 class MemesController < ApplicationController
   before_action :require_login_and_access
-  before_action :set_meme, only: [:show, :destroy]
+  before_action :set_meme, only: [:show, :destroy, :react]
 
   def index
     #binding.pry
@@ -15,6 +15,15 @@ class MemesController < ApplicationController
   def destroy
     @meme.destroy
     redirect_to memes_path(@meme.group.group_slug)
+  end
+
+  def react
+    @meme.update_reactions(current_user)
+    @current_user = current_user
+
+    respond_to do |format|
+      format.js
+    end
   end
 
   private
