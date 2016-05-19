@@ -44,7 +44,7 @@ class MemesController < ApplicationController
   end
 
   def meme_params
-    params.require(:meme).permit(:image, :file_name)
+    params.require(:meme).permit(:image)
   end
 
 end
