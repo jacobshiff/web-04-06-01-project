@@ -30,11 +30,9 @@ beef = Meme.create({
 # beef = Meme.new
 # beef.image = File.open('/Users/pulsifer/Development/projects/groupmeme/web-0416-01-project/public/system/memes/images/seeds/beef.jpg')
 
-jacob = User.create(username: 'jacobshiff', email: 'jacob@flatironschool.com')
-chris = User.create(username: 'xristo', email: 'chris@flatironschool.com')
-rachel = User.create(username: 'rachelb', email: 'rachel@flatironschool.com')
-
-
+jacob = User.create(username: 'jacobshiff', email: 'jacob@flatironschool.com', password: 'password')
+chris = User.create(username: 'xristo', email: 'chris@flatironschool.com', password: 'password')
+rachel = User.create(username: 'rachelb', email: 'rachel@flatironschool.com', password: 'password')
 
 doge.creator = rachel
 pepe.creator = rachel
