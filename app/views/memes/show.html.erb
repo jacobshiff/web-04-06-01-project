@@ -7,11 +7,11 @@
   <!-- Image -->
   <!-- To center, add .row-centered class -->
   <div class="col-mid-10">
-    <div class="row-centered">
+    <div class="row">
       <!-- Main image div -->
        <div class="col-mid-6 show-page-img">
           <div class="meme-img">
-            <%= image_tag @meme.image.url class: "img-responsive show-page-image" %>
+            <%= image_tag(@meme.image.url, class: "img-responsive show-page-image") %>
           </div>
           <!-- Reactions div -->
           <div class="react" meme_parent_id="<%=@meme.id%>">
