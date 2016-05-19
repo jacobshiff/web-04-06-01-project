@@ -58,12 +58,14 @@
         </div>
       </div>
     </div>
-    
+
 
     <!-- Back button -->
     <div class="row show-page-buttons">
       <a href="<%=memes_path(@meme.group.group_slug)%>"><button type="button" class="btn btn-primary">Back to Index</button></a>
-      <button type="button" class="btn btn-danger">Delete</button>
+
+      <%= link_to "Delete", meme_path(@meme.group.group_slug, @meme), method: :delete, data: {confirm: "Are you sure you want to delete this meme?" }, class: 'btn btn-danger'   %>
+      <!-- <button type="button" class="btn btn-danger">Delete</button> -->
     </div>
   </div>
 </div>
