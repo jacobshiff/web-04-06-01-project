@@ -1,4 +1,5 @@
 class MemesController < ApplicationController
+  before_action :require_login_and_access
   def index
     #binding.pry
     group_slug = params[:group_slug]
