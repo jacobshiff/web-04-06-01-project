@@ -34,6 +34,4 @@ Rails.application.routes.draw do
   patch '/:group_slug/users/:username' => 'users#update'
   delete '/:group_slug/users/:username' => 'users#destroy'
 
-  get '/profile' => 'users#show', as: 'user'
-  
 end
