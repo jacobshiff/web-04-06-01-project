@@ -1,6 +1,8 @@
 class MemesController < ApplicationController
+
     before_action :set_group, only: [:index, :new]
     before_action :set_meme, only: [:show, :destroy]
+    before_action :require_login_and_access
 
   def index
     #binding.pry
@@ -11,7 +13,6 @@ class MemesController < ApplicationController
 
   def show
   end
-
 
   def new
     @meme = Meme.new

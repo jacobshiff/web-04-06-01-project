@@ -7,16 +7,29 @@ class ApplicationController < ActionController::Base
     session[:user_id] != nil
   end
 
-  def require_login
-    unless session[:user_id]
-      redirect_to signin_path
+  def access_to_group?
+    set_user if logged_in?
+    @user.groups.include?(Group.find_by(group_slug: params[:group_slug]))
+  end
+
+  def require_login_and_access
+    if !logged_in?
+      flash[:danger] = "Please log in."
+      redirect_to login_path(params[:group_slug])
+    else
+      require_access
+    end
+  end
+
+  def require_access
+    if !access_to_group?
+      flash[:danger] = "You do not have access to this page."
+      redirect_to login_path(params[:group_slug])
     end
   end
 
   def set_user
-    if logged_in?
-      @user = User.find(session[:user_id])
-    end
+    @user = User.find(session[:user_id])
   end
 
 end
