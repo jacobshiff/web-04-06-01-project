@@ -7,7 +7,11 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+  <% if !session[:user_id].nil? %>
+    <%= render partial: 'layouts/user_nav', locals: { group: Group.find_by(group_slug: params[:group_slug]) } %>
+  <% else %>
+    <%= render partial: 'layouts/public_nav', locals: { group: Group.find_by(group_slug: params[:group_slug]) } %>
+  <% end %>
 <%= yield %>
 
 </body>
