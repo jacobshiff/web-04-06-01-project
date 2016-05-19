@@ -3,14 +3,7 @@
   <h1>Sign up for <%= Group.find_by(group_slug: params[:group_slug]).title %>'s GroupMeme</h1>
   
   <div class="row">
-    <div class="col-mid-6">
-        <%= image_tag 'avatars/avatar-bono.jpg', style: "height:400px"%>
-<!--         <form action="demo_form.asp">
-        <input type="file" name="pic" accept="image/*">
-        <input type="submit">
-</form> -->
-    </div>
-    <div class="col-mid-6">
+    <div class="col-md-6">
       <%= form_for @user, url: registration_create_path(params[:group_slug]) do |f| %>
       <div>
         <%= f.label :username %>
@@ -33,6 +26,14 @@
       </div>
     </div>
     <% end %>
+
+        <div class="col-md-6">
+        <%= image_tag 'avatars/avatar-bono.jpg', class: "img-responsive"%>
+<!--         <form action="demo_form.asp">
+        <input type="file" name="pic" accept="image/*">
+        <input type="submit">
+</form> -->
+    </div>
   </div>
   
 </div>
