@@ -1,5 +1,7 @@
 class MemesController < ApplicationController
   before_action :require_login_and_access
+  before_action :set_meme, only: [:show, :destroy]
+
   def index
     #binding.pry
     group_slug = params[:group_slug]
@@ -8,6 +10,15 @@ class MemesController < ApplicationController
   end
 
   def show
+  end
+
+  def destroy
+    @meme.destroy
+    redirect_to memes_path(@meme.group.group_slug)
+  end
+
+  private
+  def set_meme
     @meme = Group.find_by(group_slug: params[:group_slug]).memes.find(params[:id])
   end
 
