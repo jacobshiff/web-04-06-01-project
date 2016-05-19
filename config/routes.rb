@@ -21,7 +21,7 @@ Rails.application.routes.draw do
 ######## Users
   # Login
   get '/:group_slug/login' => 'sessions#new', as: 'login'
-  # post '/:group_slug/login' => 'sessions#create', as: 'login'
+  post '/:group_slug' => 'sessions#create', as: 'create_login'
 
   # Registration
   get '/:group_slug/users/new' => 'registrations#new', as: 'registration_new'
@@ -32,7 +32,5 @@ Rails.application.routes.draw do
   get '/:group_slug/users/:username/edit' => 'users#edit', as: 'edit_user'
   patch '/:group_slug/users/:username' => 'users#update'
   delete '/:group_slug/users/:username' => 'users#destroy'
-
-  get '/profile' => 'users#show', as: 'user'
 
 end
