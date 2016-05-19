@@ -8,9 +8,9 @@
 </head>
 <body>
   <% if !session[:user_id].nil? %>
-    <%= render 'layouts/user_nav'%>
+    <%= render partial: 'layouts/user_nav', locals: { group: Group.find_by(group_slug: params[:group_slug]) } %>
   <% else %>
-    <%= render 'layouts/public_nav' %>
+    <%= render partial: 'layouts/public_nav', locals: { group: Group.find_by(group_slug: params[:group_slug]) } %>
   <% end %>
 <%= yield %>
 
