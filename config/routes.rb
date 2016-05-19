@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   #Show
   get '/:group_slug/memes' => 'memes#index', as: 'memes'
   get '/:group_slug/memes/:id' => 'memes#show', as: 'meme'
+  post '/:group_slug/memes/:id/react' => 'memes#react', as: :react
 
   #Destroy
   delete '/:group_slug/memes/:id' => 'memes#destroy'
@@ -34,5 +35,5 @@ Rails.application.routes.draw do
   delete '/:group_slug/users/:username' => 'users#destroy'
 
   get '/profile' => 'users#show', as: 'user'
-
+  
 end
