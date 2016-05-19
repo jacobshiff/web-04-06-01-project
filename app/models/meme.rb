@@ -25,11 +25,9 @@ class Meme < ActiveRecord::Base
 
   def plural(word)
     num = self.reactions.count - 1
-    if num > 0
-      str = ActionController::Base.helpers.pluralize(num, word)
-      parts = str.split
-      parts[1]
-    end
+    str = ActionController::Base.helpers.pluralize(num, word)
+    parts = str.split
+    parts[1]
   end
 
   def heart_class(user)
