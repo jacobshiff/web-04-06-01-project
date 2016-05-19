@@ -1,3 +1,4 @@
+# Controller for logging in users
 class SessionsController < ApplicationController
 
   def new
