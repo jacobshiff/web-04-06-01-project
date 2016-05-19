@@ -1,6 +1,8 @@
 <h1>Add A Meme</h1>
 
 <%= form_for @meme do |f| %>
-  <%= f.file_field(:file_name, accept: 'image/png,image/gif,image/jpeg') %>
+  <%= f.file_field(:image, accept: 'image/png,image/gif,image/jpeg') %>
+  <%= f.label :file_name %>
+  <%= f.text_field :file_name %>
   <%= f.submit %>
 <% end %>
