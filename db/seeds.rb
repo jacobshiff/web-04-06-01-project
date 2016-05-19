@@ -6,10 +6,29 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-doge = Meme.create(file_name: 'doge.jpg')
-pepe = Meme.create(file_name: 'pepe.jpg')
-y_u_no = Meme.create(file_name: 'YUNO.png')
-beef = Meme.create(file_name: 'beef.jpg')
+doge = Meme.create({
+  :image => File.new("#{Rails.root}/public/system/memes/images/seeds/doge.jpg")
+})
+
+pepe = Meme.create({
+  :image => File.new("#{Rails.root}/public/system/memes/images/seeds/trump-pepe.png")
+})
+
+y_u_no = Meme.create({
+  :image => File.new("#{Rails.root}/public/system/memes/images/seeds/yuno.png")
+})
+
+beef = Meme.create({
+  :image => File.new("#{Rails.root}/public/system/memes/images/seeds/beef.jpg")
+})
+
+# doge = Meme.new
+# doge.image = File.open('/Users/pulsifer/Development/projects/groupmeme/web-0416-01-project/public/system/memes/images/seeds/doge.jpg')
+# doge.save
+# trump = Meme.new
+# trump.image = File.open('/Users/pulsifer/Development/projects/groupmeme/web-0416-01-project/public/system/memes/images/seeds/trump-pepe.jpg')
+# beef = Meme.new
+# beef.image = File.open('/Users/pulsifer/Development/projects/groupmeme/web-0416-01-project/public/system/memes/images/seeds/beef.jpg')
 
 jacob = User.create(username: 'jacobshiff', email: 'jacob@flatironschool.com')
 chris = User.create(username: 'xristo', email: 'chris@flatironschool.com')
