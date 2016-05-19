@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   #Show
   get '/:group_slug/memes' => 'memes#index', as: 'memes'
   get '/:group_slug/memes/:id' => 'memes#show', as: 'meme'
+  post '/:group_slug/memes/:id/react' => 'memes#react', as: :react
 
   #Destroy
   delete '/:group_slug/memes/:id' => 'memes#destroy'
@@ -27,4 +28,10 @@ Rails.application.routes.draw do
   get '/:group_slug/users/new' => 'registrations#new', as: 'registration_new'
   post '/:group_slug/users/new' => 'registrations#create', as: 'registration_create'
 
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> fd0615cadbdc0a26a76ca36dae181398a497b39b
 end
