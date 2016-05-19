@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   #   resources :memes, only: [:index, :show]
   # end
 
-# Memes routes
+######### Memes routes
   #Create
   get '/:group_slug/memes/new' => 'memes#new'
   post '/:group_slug/memes' => 'memes#create'
@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   #Destroy
   delete '/:group_slug/memes/:id' => 'memes#destroy'
 
-# Users
+######## Users
   # Login
   get '/:group_slug/login' => 'sessions#new', as: 'login'
   # post '/:group_slug/login' => 'sessions#create', as: 'login'
@@ -28,10 +28,12 @@ Rails.application.routes.draw do
   get '/:group_slug/users/new' => 'registrations#new', as: 'registration_new'
   post '/:group_slug/users/new' => 'registrations#create', as: 'registration_create'
 
-<<<<<<< HEAD
-=======
+  # User path
+  get '/:group_slug/users/:username' => 'users#show', as: 'user'
+  get '/:group_slug/users/:username/edit' => 'users#edit', as: 'edit_user'
+  patch '/:group_slug/users/:username' => 'users#update'
+  delete '/:group_slug/users/:username' => 'users#destroy'
 
-
-
->>>>>>> fd0615cadbdc0a26a76ca36dae181398a497b39b
+  get '/profile' => 'users#show', as: 'user'
+  
 end

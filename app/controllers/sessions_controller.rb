@@ -9,7 +9,8 @@ class SessionsController < ApplicationController
     # This is the action associated with logging in (post request)
     # This finds the user id and adds it to his/her cookie
 
-    @user = User.find(params[:user][:id])
+#    @user = User.find(params[:user][:id])
+    @user = User.find_by(params[:username])
     if @user
       session[:user_id] = @user.id
       redirect_to user_path(@user)
