@@ -39,7 +39,7 @@
         <% @meme.comments.each do |comment| %>
         <li>
           <div class="commenterImage">
-            <img src="http://lorempixel.com/50/50/people/6" />
+            <%= image_tag comment.user.avatar %>
           </div>
           <div class="commentText">
             <p class=""><%= comment.content %></p> <span class="date sub-text"> <%= comment.created_at.strftime("%H:%M on %b %d, %Y") %> </span>
