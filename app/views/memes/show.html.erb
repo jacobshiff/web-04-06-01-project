@@ -1,33 +1,47 @@
 <div class="container">
-  <div class="row">
+  <!-- <div class="row">
     <div class="col-md-12">
       <h1></h1>
     </div>
+  </div> -->
+
+  <!-- Image -->
+  <div class="row">
+    <div class="col-mid-3">
+     hello
+    </div>
+     <div class="col-mid-6">
+      <%= image_tag @meme.file_name, class: "img-responsive" %>
+    </div>
+    <div class="col-mid-3">
+      hello2
+    </div>
   </div>
 
-<center>
-  <div class="index-meme"><%= image_tag @meme.file_name %> </div>
-  <font face="verdana" size="1"><i>Posted by: <%= @meme.creator.username %> @ <%=@meme.created_at%> </i></font>
-</center>
+  <!-- Creator -->
+  <div class="row">
+    <h3>Posted by: <%= @meme.creator.username %> @ <%=@meme.created_at.strftime("%H:%M on %b %d, %Y")%></h2>
+      <!-- <font face="verdana" size="1"><i>Posted by: <%= @meme.creator.username %> @ <%=@meme.created_at%> </i></font> -->
+  </div>
 
-<br><br>
+  <!-- Tags -->
+  <div class="row">
+    <% @meme.tags.each do |tag| %>
+      <span class="label label-info"><%= tag.name %></span>
+    <% end %>
+  </div>
 
-<div>
+  <!-- Comments -->
+  <div class="row">
+    <h3>Comments:</h3>
+    <% @meme.comments.each do |comment| %>
+    <div><h4><%= comment.user.username %>: <%= comment.content %></h4></div>
+    <% end %>
+  </div>
 
-<% @meme.tags.each do |tag| %>
-  <span class="label label-info"><%= tag.name %></span>
-<% end %>
+  <!-- Back button -->
+  <div class="row">
+    <a href="<%=memes_path(@meme.group.group_slug)%>"><button type="button" class="btn btn-primary">Back to Index</button></a>
+    <button type="button" class="btn btn-danger">Delete</button>
+  </div>
 </div>
-
-<div>
-<h3>Comments:</h3>
-
-<% @meme.comments.each do |comment| %>
-  <div><%= comment.user.username %>: <%= comment.content %></div>
-<% end %>
-</div>
-
-<br><br>
-
-<a href="<%=memes_path(@meme.group.group_slug)%>"><button type="button" class="btn btn-primary">Back to Index</button></a>
-<button type="button" class="btn btn-danger">Delete</button>
