@@ -8,4 +8,5 @@ Rails.application.routes.draw do
 
   get '/:group_slug/memes' => 'memes#index', as: 'memes'
   get '/:group_slug/memes/:id' => 'memes#show', as: 'meme'
+  delete '/:group_slug/memes/:id' => 'memes#destroy'
 end
