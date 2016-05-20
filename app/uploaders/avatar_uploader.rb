@@ -11,10 +11,10 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
 
   # NEED TO UNCOMMENT THIS
-  storage :file
+  # storage :file
   # storage :fog
 
-  # storage :s3
+  storage :s3
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
