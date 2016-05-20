@@ -1,0 +1,17 @@
+<% if !!session[:user_id] && !!params[:group_slug] %>
+  <%= render partial: 'layouts/nav/user_nav', locals: { group: Group.find_by(group_slug: params[:group_slug]), user: User.find(session[:user_id])} %>
+<% elsif !!session[:user_id] %>
+  <%= render partial: 'layouts/nav/user_home_nav', locals: {user: User.find(session[:user_id])} %>
+<% else  %>
+  <%= render partial: 'layouts/nav/public_nav', locals: { group: Group.find_by(group_slug: params[:group_slug]) } %>
+<% end %>
+
+
+
+
+=====from merge @ 1:38PM 5/20
+<% if !session[:user_id].nil? %>
+  <%= render partial: 'layouts/user_nav', locals: { group: Group.find_by(group_slug: params[:group_slug]), user: User.find(session[:user_id])} %>
+<% else %>
+  <%= render partial: 'layouts/public_nav', locals: { group: Group.find_by(group_slug: params[:group_slug]) } %>
+<% end %>

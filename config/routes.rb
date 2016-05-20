@@ -41,9 +41,17 @@ Rails.application.routes.draw do
   patch '/:group_slug/users/:username' => 'users#update'
   delete '/:group_slug/users/:username' => 'users#destroy'
 
+  #get '/users/:user_id' => 'users#show' ###Rachel says: we might want to use this as well?
   #user profile page
   #can rewrite with user_slug
-  get '/users/:user_id' => 'users#show'
-  get '/users/:user_id/edit' => 'users#edit'
+
+  #get '/users/:user_id/edit' => 'users#edit'
+  
+#####Groups
+  #index
+  get '/groups' => 'groups#index'
+  get '/:group_slug' => 'memes#index', as: 'group'
+  get '/groups/new' => 'groups#new'
+  post '/:groups' => 'groups#create'
 
 end
