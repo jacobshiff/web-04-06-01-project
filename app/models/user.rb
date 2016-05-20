@@ -8,6 +8,13 @@ class User < ActiveRecord::Base
   has_many :received_invites, class_name: 'Invite', foreign_key: 'invitee_id'
   has_many :created_groups, class_name: 'Group', foreign_key: 'group_creator_id'
 
+  #paperclip validations; must include for upload
+  # has_attached_file :avatar, default_url: "/system/users/avatars/default-avatars/avatar-bono.jpg"
+  # validates_attachment :avatar, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
+
+  #CarrierWave
+  mount_uploader :avatar, AvatarUploader
+  
   has_secure_password
 
   # Validations
@@ -15,4 +22,5 @@ class User < ActiveRecord::Base
   validates :username, :password, presence: true
   validates :password, length: { in: 6..100 }
 
+  
 end

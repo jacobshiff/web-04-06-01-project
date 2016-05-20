@@ -6,6 +6,10 @@ Rails.application.routes.draw do
   #   resources :memes, only: [:index, :show]
   # end
 
+
+  ######## Home routes
+  get '/' => 'home#index', as: 'home'
+
 ######### Memes routes
   #Create
   get '/:group_slug/memes/new' => 'memes#new'
@@ -25,8 +29,8 @@ Rails.application.routes.draw do
   # post '/:group_slug/login' => 'sessions#create', as: 'login'
 
   # Registration
-  get '/:group_slug/users/new' => 'registrations#new', as: 'registration_new'
-  post '/:group_slug/users/new' => 'registrations#create', as: 'registration_create'
+  get '/users/new' => 'registrations#new', as: 'registration_new'
+  post '/users/new' => 'registrations#create', as: 'registration_create'
 
   # User path
   get '/:group_slug/users/:username' => 'users#show', as: 'user'
@@ -34,10 +38,17 @@ Rails.application.routes.draw do
   patch '/:group_slug/users/:username' => 'users#update'
   delete '/:group_slug/users/:username' => 'users#destroy'
 
+  #get '/users/:user_id' => 'users#show' ###Rachel says: we might want to use this as well?
+  #user profile page
+  #can rewrite with user_slug
+
+  #get '/users/:user_id/edit' => 'users#edit'
+  
 #####Groups
   #index
   get '/groups' => 'groups#index'
   get '/:group_slug' => 'memes#index', as: 'group'
   get '/groups/new' => 'groups#new'
   post '/:groups' => 'groups#create'
+
 end
