@@ -6216,3 +6216,1451 @@ Started GET "/assets/bootstrap-sprockets.self-fbfa5ad7d9aa0afe439ec4ff3883acc4cb
 
 
 Started GET "/assets/application.self-f8806224e027f3e3f0138ea9ce99319e298dfdb323304d1f1be6eae8e8c74724.js?body=1" for ::1 at 2016-05-20 11:47:25 -0400
+
+
+Started GET "/groups/new" for ::1 at 2016-05-20 11:49:49 -0400
+Processing by GroupsController#new as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  Rendered groups/new.html.erb within layouts/application (17.9ms)
+Completed 200 OK in 382ms (Views: 275.8ms | ActiveRecord: 22.9ms)
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 11:49:50 -0400
+
+
+Started GET "/assets/groups.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 11:49:50 -0400
+
+
+Started GET "/assets/meme_tags.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 11:49:50 -0400
+
+
+Started GET "/assets/invites.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 11:49:50 -0400
+
+
+Started GET "/assets/memberships.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 11:49:50 -0400
+
+
+Started GET "/assets/memes.self-69697c92d5bfab32b888b5eeea8c0bb53f27043137ac1dba8437b8f5ef61cb29.css?body=1" for ::1 at 2016-05-20 11:49:50 -0400
+
+
+Started GET "/assets/reactions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 11:49:50 -0400
+
+
+Started GET "/assets/registration.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 11:49:50 -0400
+
+
+Started GET "/assets/tags.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 11:49:50 -0400
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 11:49:50 -0400
+
+
+Started GET "/assets/application.self-fa61b361dee4caa4eab58a26e7c12b095753e3c177921488f6c102c79c4aac20.css?body=1" for ::1 at 2016-05-20 11:49:50 -0400
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for ::1 at 2016-05-20 11:49:50 -0400
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for ::1 at 2016-05-20 11:49:51 -0400
+
+
+Started GET "/assets/comments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 11:49:51 -0400
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2016-05-20 11:49:51 -0400
+
+
+Started GET "/assets/groups.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 11:49:51 -0400
+
+
+Started GET "/assets/invites.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 11:49:51 -0400
+
+
+Started GET "/assets/meme_tags.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 11:49:51 -0400
+
+
+Started GET "/assets/memberships.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 11:49:51 -0400
+
+
+Started GET "/assets/memes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 11:49:51 -0400
+
+
+Started GET "/assets/reactions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 11:49:51 -0400
+
+
+Started GET "/assets/registration.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 11:49:51 -0400
+
+
+Started GET "/assets/tags.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 11:49:51 -0400
+
+
+Started GET "/assets/users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 11:49:51 -0400
+
+
+Started GET "/assets/bootstrap/affix.self-3555752f8a930795ee9e56751a52e6871104ae85d01b3ab8363da3802a5ecc78.js?body=1" for ::1 at 2016-05-20 11:49:51 -0400
+
+
+Started GET "/assets/bootstrap/alert.self-d8b7bd612b3dcfdefb7b5539b9d5848d66ccbd3e7af8bb8d48bfb3288aaa7be8.js?body=1" for ::1 at 2016-05-20 11:49:51 -0400
+
+
+Started GET "/assets/bootstrap/button.self-e74d33ba39500940a78d6fa4d2d64f6ca7fd86d60a2149641f7fde7ba711d8a1.js?body=1" for ::1 at 2016-05-20 11:49:51 -0400
+
+
+Started GET "/assets/bootstrap/carousel.self-35d204878d906298e55bc24553e11fd89b980fc4ffe5792fe36af8c0da289c54.js?body=1" for ::1 at 2016-05-20 11:49:51 -0400
+
+
+Started GET "/assets/bootstrap/collapse.self-056c40532d9f0f126ec17e839f60c942f573fbd61a086e7f156306e3fc5e8c1f.js?body=1" for ::1 at 2016-05-20 11:49:51 -0400
+
+
+Started GET "/assets/bootstrap/dropdown.self-e56c2ffee4618411d43ecf15c89273f6223847ad756e1cd17545d04afa732ed4.js?body=1" for ::1 at 2016-05-20 11:49:51 -0400
+
+
+Started GET "/assets/bootstrap/modal.self-62463080dba6b9d024ff0a3192da0e76eacbc683194f3395047c6f5cfa0acb59.js?body=1" for ::1 at 2016-05-20 11:49:51 -0400
+
+
+Started GET "/assets/bootstrap/scrollspy.self-52afd90e8ba97d9f08617a13986e8869d6c4a45751c0bff59a6f91241e722aca.js?body=1" for ::1 at 2016-05-20 11:49:51 -0400
+
+
+Started GET "/assets/bootstrap/tab.self-dad0d5c377f9fae26394484535ebb23ccf68afae084f896af6ea4cdf8c9f6ae0.js?body=1" for ::1 at 2016-05-20 11:49:51 -0400
+
+
+Started GET "/assets/bootstrap/transition.self-3b268d4cd8c79e46ded7392885f72f64ffb5b0d49948a12b8cf9779f6163e13a.js?body=1" for ::1 at 2016-05-20 11:49:51 -0400
+
+
+Started GET "/assets/bootstrap/tooltip.self-facdc69246a072acb927ded77ff655f7c27a518b9357fddd45d119fbc8a0ab9f.js?body=1" for ::1 at 2016-05-20 11:49:51 -0400
+
+
+Started GET "/assets/bootstrap/popover.self-210cff1fb4b72b71a29b5122180cb5937c8145cd13a934dc838280f1d9607a3e.js?body=1" for ::1 at 2016-05-20 11:49:51 -0400
+
+
+Started GET "/assets/bootstrap-sprockets.self-fbfa5ad7d9aa0afe439ec4ff3883acc4cb92b62cb67c40d674320c9aa1d4642d.js?body=1" for ::1 at 2016-05-20 11:49:51 -0400
+
+
+Started GET "/assets/application.self-f8806224e027f3e3f0138ea9ce99319e298dfdb323304d1f1be6eae8e8c74724.js?body=1" for ::1 at 2016-05-20 11:49:51 -0400
+
+
+Started GET "/groups/new" for ::1 at 2016-05-20 11:50:07 -0400
+Processing by GroupsController#new as HTML
+  [1m[35mUser Load (3.8ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  Rendered groups/new.html.erb within layouts/application (8.2ms)
+Completed 200 OK in 202ms (Views: 195.8ms | ActiveRecord: 3.8ms)
+
+
+Started GET "/assets/invites.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 11:50:07 -0400
+
+
+Started GET "/assets/groups.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 11:50:07 -0400
+
+
+Started GET "/assets/memes.self-69697c92d5bfab32b888b5eeea8c0bb53f27043137ac1dba8437b8f5ef61cb29.css?body=1" for ::1 at 2016-05-20 11:50:07 -0400
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 11:50:07 -0400
+
+
+Started GET "/assets/memberships.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 11:50:07 -0400
+
+
+Started GET "/assets/meme_tags.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 11:50:07 -0400
+
+
+Started GET "/assets/reactions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 11:50:07 -0400
+
+
+Started GET "/assets/registration.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 11:50:07 -0400
+
+
+Started GET "/assets/tags.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 11:50:07 -0400
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 11:50:07 -0400
+
+
+Started GET "/assets/application.self-fa61b361dee4caa4eab58a26e7c12b095753e3c177921488f6c102c79c4aac20.css?body=1" for ::1 at 2016-05-20 11:50:07 -0400
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for ::1 at 2016-05-20 11:50:07 -0400
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for ::1 at 2016-05-20 11:50:07 -0400
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2016-05-20 11:50:07 -0400
+
+
+Started GET "/assets/comments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 11:50:07 -0400
+
+
+Started GET "/assets/groups.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 11:50:07 -0400
+
+
+Started GET "/assets/invites.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 11:50:07 -0400
+
+
+Started GET "/assets/memberships.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 11:50:07 -0400
+
+
+Started GET "/assets/meme_tags.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 11:50:07 -0400
+
+
+Started GET "/assets/memes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 11:50:07 -0400
+
+
+Started GET "/assets/registration.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 11:50:07 -0400
+
+
+Started GET "/assets/reactions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 11:50:07 -0400
+
+
+Started GET "/assets/tags.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 11:50:08 -0400
+
+
+Started GET "/assets/users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 11:50:08 -0400
+
+
+Started GET "/assets/bootstrap/affix.self-3555752f8a930795ee9e56751a52e6871104ae85d01b3ab8363da3802a5ecc78.js?body=1" for ::1 at 2016-05-20 11:50:08 -0400
+
+
+Started GET "/assets/bootstrap/alert.self-d8b7bd612b3dcfdefb7b5539b9d5848d66ccbd3e7af8bb8d48bfb3288aaa7be8.js?body=1" for ::1 at 2016-05-20 11:50:08 -0400
+
+
+Started GET "/assets/bootstrap/button.self-e74d33ba39500940a78d6fa4d2d64f6ca7fd86d60a2149641f7fde7ba711d8a1.js?body=1" for ::1 at 2016-05-20 11:50:08 -0400
+
+
+Started GET "/assets/bootstrap/carousel.self-35d204878d906298e55bc24553e11fd89b980fc4ffe5792fe36af8c0da289c54.js?body=1" for ::1 at 2016-05-20 11:50:08 -0400
+
+
+Started GET "/assets/bootstrap/collapse.self-056c40532d9f0f126ec17e839f60c942f573fbd61a086e7f156306e3fc5e8c1f.js?body=1" for ::1 at 2016-05-20 11:50:08 -0400
+
+
+Started GET "/assets/bootstrap/dropdown.self-e56c2ffee4618411d43ecf15c89273f6223847ad756e1cd17545d04afa732ed4.js?body=1" for ::1 at 2016-05-20 11:50:08 -0400
+
+
+Started GET "/assets/bootstrap/modal.self-62463080dba6b9d024ff0a3192da0e76eacbc683194f3395047c6f5cfa0acb59.js?body=1" for ::1 at 2016-05-20 11:50:08 -0400
+
+
+Started GET "/assets/bootstrap/scrollspy.self-52afd90e8ba97d9f08617a13986e8869d6c4a45751c0bff59a6f91241e722aca.js?body=1" for ::1 at 2016-05-20 11:50:08 -0400
+
+
+Started GET "/assets/bootstrap/tab.self-dad0d5c377f9fae26394484535ebb23ccf68afae084f896af6ea4cdf8c9f6ae0.js?body=1" for ::1 at 2016-05-20 11:50:08 -0400
+
+
+Started GET "/assets/bootstrap/transition.self-3b268d4cd8c79e46ded7392885f72f64ffb5b0d49948a12b8cf9779f6163e13a.js?body=1" for ::1 at 2016-05-20 11:50:08 -0400
+
+
+Started GET "/assets/bootstrap/tooltip.self-facdc69246a072acb927ded77ff655f7c27a518b9357fddd45d119fbc8a0ab9f.js?body=1" for ::1 at 2016-05-20 11:50:08 -0400
+
+
+Started GET "/assets/bootstrap/popover.self-210cff1fb4b72b71a29b5122180cb5937c8145cd13a934dc838280f1d9607a3e.js?body=1" for ::1 at 2016-05-20 11:50:08 -0400
+
+
+Started GET "/assets/bootstrap-sprockets.self-fbfa5ad7d9aa0afe439ec4ff3883acc4cb92b62cb67c40d674320c9aa1d4642d.js?body=1" for ::1 at 2016-05-20 11:50:08 -0400
+
+
+Started GET "/assets/application.self-f8806224e027f3e3f0138ea9ce99319e298dfdb323304d1f1be6eae8e8c74724.js?body=1" for ::1 at 2016-05-20 11:50:08 -0400
+
+
+Started POST "/groups" for ::1 at 2016-05-20 11:50:14 -0400
+Processing by GroupsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"bkhDTFF+ExnWDTEOwgJUbzJwwSsjIks2HiJ6OzNkTgzeEmWWcXyRQSk0kX2zAL25db6cZe/A/QAds1TSsgcrWg==", "group"=>{"title"=>"My new group"}, "commit"=>"Create Group"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.4ms)
+
+NoMethodError (undefined method `creator=' for #<Group:0x007fca58b40b98>):
+  app/controllers/groups_controller.rb:19:in `create'
+
+
+  Rendered /Users/pulsifer/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (28.6ms)
+  Rendered /Users/pulsifer/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (5.7ms)
+  Rendered /Users/pulsifer/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.7ms)
+  Rendered /Users/pulsifer/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (132.9ms)
+  Rendered /Users/pulsifer/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.8ms)
+  Rendered /Users/pulsifer/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /Users/pulsifer/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/pulsifer/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.7ms)
+  Rendered /Users/pulsifer/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (87.0ms)
+  Rendered /Users/pulsifer/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/pulsifer/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (2.9ms)
+  Rendered /Users/pulsifer/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (204.7ms)
+
+
+Started POST "/groups" for ::1 at 2016-05-20 11:50:29 -0400
+Processing by GroupsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"bkhDTFF+ExnWDTEOwgJUbzJwwSsjIks2HiJ6OzNkTgzeEmWWcXyRQSk0kX2zAL25db6cZe/A/QAds1TSsgcrWg==", "group"=>{"title"=>"My new group"}, "commit"=>"Create Group"}
+  [1m[36mUser Load (1.6ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+Completed 500 Internal Server Error in 105ms (ActiveRecord: 17.6ms)
+
+NoMethodError (undefined method `creator_id=' for #<Group:0x007fca51aea510>):
+  app/controllers/groups_controller.rb:19:in `create'
+
+
+  Rendered /Users/pulsifer/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (11.6ms)
+  Rendered /Users/pulsifer/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.5ms)
+  Rendered /Users/pulsifer/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.0ms)
+  Rendered /Users/pulsifer/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (119.6ms)
+  Rendered /Users/pulsifer/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.8ms)
+  Rendered /Users/pulsifer/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.8ms)
+  Rendered /Users/pulsifer/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/pulsifer/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (1.0ms)
+  Rendered /Users/pulsifer/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (98.3ms)
+  Rendered /Users/pulsifer/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.9ms)
+  Rendered /Users/pulsifer/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.7ms)
+  Rendered /Users/pulsifer/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (212.7ms)
+
+
+Started POST "/groups" for ::1 at 2016-05-20 11:51:03 -0400
+Processing by GroupsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"bkhDTFF+ExnWDTEOwgJUbzJwwSsjIks2HiJ6OzNkTgzeEmWWcXyRQSk0kX2zAL25db6cZe/A/QAds1TSsgcrWg==", "group"=>{"title"=>"My new group"}, "commit"=>"Create Group"}
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36m (2.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (29.4ms)[0m  INSERT INTO "groups" ("title", "group_creator_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["title", "My new group"], ["group_creator_id", 5], ["created_at", "2016-05-20 15:51:04.123821"], ["updated_at", "2016-05-20 15:51:04.123821"]]
+  [1m[36m (8.3ms)[0m  [1mCOMMIT[0m
+Completed 500 Internal Server Error in 229ms (ActiveRecord: 49.6ms)
+
+ActionView::MissingTemplate (Missing template groups/create, application/create with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:erb, :builder, :raw, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/Users/pulsifer/Development/projects/groupmeme/web-0416-01-project/app/views"
+):
+  actionview (4.2.6) lib/action_view/path_set.rb:46:in `find'
+  actionview (4.2.6) lib/action_view/lookup_context.rb:121:in `find'
+  actionview (4.2.6) lib/action_view/renderer/abstract_renderer.rb:18:in `find_template'
+  actionview (4.2.6) lib/action_view/renderer/template_renderer.rb:40:in `determine_template'
+  actionview (4.2.6) lib/action_view/renderer/template_renderer.rb:8:in `render'
+  actionview (4.2.6) lib/action_view/renderer/renderer.rb:46:in `render_template'
+  actionview (4.2.6) lib/action_view/renderer/renderer.rb:27:in `render'
+  actionview (4.2.6) lib/action_view/rendering.rb:100:in `_render_template'
+  actionpack (4.2.6) lib/action_controller/metal/streaming.rb:217:in `_render_template'
+  actionview (4.2.6) lib/action_view/rendering.rb:83:in `render_to_body'
+  actionpack (4.2.6) lib/action_controller/metal/rendering.rb:32:in `render_to_body'
+  actionpack (4.2.6) lib/action_controller/metal/renderers.rb:37:in `render_to_body'
+  actionpack (4.2.6) lib/abstract_controller/rendering.rb:25:in `render'
+  actionpack (4.2.6) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (4.2.6) lib/action_controller/metal/instrumentation.rb:44:in `block (2 levels) in render'
+  activesupport (4.2.6) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /Users/pulsifer/.rvm/rubies/ruby-2.2.3/lib/ruby/2.2.0/benchmark.rb:303:in `realtime'
+  activesupport (4.2.6) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (4.2.6) lib/action_controller/metal/instrumentation.rb:44:in `block in render'
+  actionpack (4.2.6) lib/action_controller/metal/instrumentation.rb:87:in `cleanup_view_runtime'
+  activerecord (4.2.6) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+  actionpack (4.2.6) lib/action_controller/metal/instrumentation.rb:43:in `render'
+  actionpack (4.2.6) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (4.2.6) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (4.2.6) lib/abstract_controller/base.rb:198:in `process_action'
+  actionpack (4.2.6) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.2.6) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:555:in `block (2 levels) in compile'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:505:in `call'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:505:in `call'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:92:in `__run_callbacks__'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:778:in `_run_process_action_callbacks'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.6) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.6) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.6) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.2.6) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.6) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.6) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.6) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.6) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.6) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.6) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.6) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.6) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.2.6) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.6) lib/action_controller/metal.rb:237:in `block in action'
+  actionpack (4.2.6) lib/action_dispatch/routing/route_set.rb:74:in `call'
+  actionpack (4.2.6) lib/action_dispatch/routing/route_set.rb:74:in `dispatch'
+  actionpack (4.2.6) lib/action_dispatch/routing/route_set.rb:43:in `serve'
+  actionpack (4.2.6) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.6) lib/action_dispatch/journey/router.rb:30:in `each'
+  actionpack (4.2.6) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.6) lib/action_dispatch/routing/route_set.rb:817:in `call'
+  rack (1.6.4) lib/rack/etag.rb:24:in `call'
+  rack (1.6.4) lib/rack/conditionalget.rb:38:in `call'
+  rack (1.6.4) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.6) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.6) lib/active_record/connection_adapters/abstract/connection_pool.rb:653:in `call'
+  activerecord (4.2.6) lib/active_record/migration.rb:377:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:88:in `__run_callbacks__'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:778:in `_run_call_callbacks'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.6) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.6) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.6) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.6) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.6) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.6) lib/rails/engine.rb:518:in `call'
+  railties (4.2.6) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/pulsifer/.rvm/rubies/ruby-2.2.3/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/pulsifer/.rvm/rubies/ruby-2.2.3/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/pulsifer/.rvm/rubies/ruby-2.2.3/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/pulsifer/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (11.5ms)
+  Rendered /Users/pulsifer/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (8.4ms)
+  Rendered /Users/pulsifer/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.1ms)
+  Rendered /Users/pulsifer/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/missing_template.html.erb within rescues/layout (111.5ms)
+  Rendered /Users/pulsifer/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.7ms)
+  Rendered /Users/pulsifer/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.7ms)
+  Rendered /Users/pulsifer/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.8ms)
+  Rendered /Users/pulsifer/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.9ms)
+  Rendered /Users/pulsifer/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (93.0ms)
+  Rendered /Users/pulsifer/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (1.1ms)
+  Rendered /Users/pulsifer/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.1ms)
+  Rendered /Users/pulsifer/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (209.9ms)
+
+
+Started POST "/groups" for ::1 at 2016-05-20 11:51:50 -0400
+Processing by GroupsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"bkhDTFF+ExnWDTEOwgJUbzJwwSsjIks2HiJ6OzNkTgzeEmWWcXyRQSk0kX2zAL25db6cZe/A/QAds1TSsgcrWg==", "group"=>{"title"=>"My new group"}, "commit"=>"Create Group"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "groups" ("title", "group_creator_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "My new group"], ["group_creator_id", 5], ["created_at", "2016-05-20 15:51:51.291013"], ["updated_at", "2016-05-20 15:51:51.291013"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+Redirected to http://localhost:3000/6
+Completed 302 Found in 117ms (ActiveRecord: 11.1ms)
+
+
+Started GET "/6" for ::1 at 2016-05-20 11:51:51 -0400
+Processing by MemesController#index as HTML
+  Parameters: {"group_slug"=>"6"}
+  [1m[36mGroup Load (0.5ms)[0m  [1mSELECT  "groups".* FROM "groups" WHERE "groups"."group_slug" = $1 LIMIT 1[0m  [["group_slug", "6"]]
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "groups".* FROM "groups" WHERE "groups"."group_slug" = $1 LIMIT 1[0m  [["group_slug", "6"]]
+Redirected to http://localhost:3000/6/login
+Filter chain halted as :require_login_and_access rendered or redirected
+Completed 302 Found in 49ms (ActiveRecord: 9.8ms)
+
+
+Started GET "/6/login" for ::1 at 2016-05-20 11:51:51 -0400
+Processing by SessionsController#new as HTML
+  Parameters: {"group_slug"=>"6"}
+  Rendered sessions/new.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 210ms (Views: 209.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 11:51:52 -0400
+
+
+Started GET "/assets/memberships.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 11:51:52 -0400
+
+
+Started GET "/assets/meme_tags.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 11:51:52 -0400
+
+
+Started GET "/assets/groups.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 11:51:52 -0400
+
+
+Started GET "/assets/invites.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 11:51:52 -0400
+
+
+Started GET "/assets/memes.self-69697c92d5bfab32b888b5eeea8c0bb53f27043137ac1dba8437b8f5ef61cb29.css?body=1" for ::1 at 2016-05-20 11:51:52 -0400
+
+
+Started GET "/assets/reactions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 11:51:52 -0400
+
+
+Started GET "/assets/tags.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 11:51:52 -0400
+
+
+Started GET "/assets/registration.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 11:51:52 -0400
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 11:51:52 -0400
+
+
+Started GET "/assets/application.self-fa61b361dee4caa4eab58a26e7c12b095753e3c177921488f6c102c79c4aac20.css?body=1" for ::1 at 2016-05-20 11:51:52 -0400
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for ::1 at 2016-05-20 11:51:52 -0400
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for ::1 at 2016-05-20 11:51:52 -0400
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2016-05-20 11:51:52 -0400
+
+
+Started GET "/assets/comments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 11:51:52 -0400
+
+
+Started GET "/assets/invites.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 11:51:52 -0400
+
+
+Started GET "/assets/memberships.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 11:51:52 -0400
+
+
+Started GET "/assets/meme_tags.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 11:51:52 -0400
+
+
+Started GET "/assets/memes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 11:51:52 -0400
+
+
+Started GET "/assets/groups.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 11:51:52 -0400
+
+
+Started GET "/assets/reactions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 11:51:52 -0400
+
+
+Started GET "/assets/registration.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 11:51:52 -0400
+
+
+Started GET "/assets/tags.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 11:51:52 -0400
+
+
+Started GET "/assets/bootstrap/affix.self-3555752f8a930795ee9e56751a52e6871104ae85d01b3ab8363da3802a5ecc78.js?body=1" for ::1 at 2016-05-20 11:51:52 -0400
+
+
+Started GET "/assets/bootstrap/alert.self-d8b7bd612b3dcfdefb7b5539b9d5848d66ccbd3e7af8bb8d48bfb3288aaa7be8.js?body=1" for ::1 at 2016-05-20 11:51:52 -0400
+
+
+Started GET "/assets/bootstrap/button.self-e74d33ba39500940a78d6fa4d2d64f6ca7fd86d60a2149641f7fde7ba711d8a1.js?body=1" for ::1 at 2016-05-20 11:51:52 -0400
+
+
+Started GET "/assets/users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 11:51:52 -0400
+
+
+Started GET "/assets/bootstrap/carousel.self-35d204878d906298e55bc24553e11fd89b980fc4ffe5792fe36af8c0da289c54.js?body=1" for ::1 at 2016-05-20 11:51:52 -0400
+
+
+Started GET "/assets/bootstrap/collapse.self-056c40532d9f0f126ec17e839f60c942f573fbd61a086e7f156306e3fc5e8c1f.js?body=1" for ::1 at 2016-05-20 11:51:52 -0400
+
+
+Started GET "/assets/bootstrap/modal.self-62463080dba6b9d024ff0a3192da0e76eacbc683194f3395047c6f5cfa0acb59.js?body=1" for ::1 at 2016-05-20 11:51:52 -0400
+
+
+Started GET "/assets/bootstrap/scrollspy.self-52afd90e8ba97d9f08617a13986e8869d6c4a45751c0bff59a6f91241e722aca.js?body=1" for ::1 at 2016-05-20 11:51:52 -0400
+
+
+Started GET "/assets/bootstrap/tab.self-dad0d5c377f9fae26394484535ebb23ccf68afae084f896af6ea4cdf8c9f6ae0.js?body=1" for ::1 at 2016-05-20 11:51:52 -0400
+
+
+Started GET "/assets/bootstrap/transition.self-3b268d4cd8c79e46ded7392885f72f64ffb5b0d49948a12b8cf9779f6163e13a.js?body=1" for ::1 at 2016-05-20 11:51:52 -0400
+
+
+Started GET "/assets/bootstrap/dropdown.self-e56c2ffee4618411d43ecf15c89273f6223847ad756e1cd17545d04afa732ed4.js?body=1" for ::1 at 2016-05-20 11:51:52 -0400
+
+
+Started GET "/assets/bootstrap/tooltip.self-facdc69246a072acb927ded77ff655f7c27a518b9357fddd45d119fbc8a0ab9f.js?body=1" for ::1 at 2016-05-20 11:51:52 -0400
+
+
+Started GET "/assets/bootstrap/popover.self-210cff1fb4b72b71a29b5122180cb5937c8145cd13a934dc838280f1d9607a3e.js?body=1" for ::1 at 2016-05-20 11:51:52 -0400
+
+
+Started GET "/assets/bootstrap-sprockets.self-fbfa5ad7d9aa0afe439ec4ff3883acc4cb92b62cb67c40d674320c9aa1d4642d.js?body=1" for ::1 at 2016-05-20 11:51:52 -0400
+
+
+Started GET "/assets/application.self-f8806224e027f3e3f0138ea9ce99319e298dfdb323304d1f1be6eae8e8c74724.js?body=1" for ::1 at 2016-05-20 11:51:52 -0400
+
+
+Started POST "/groups" for ::1 at 2016-05-20 11:53:03 -0400
+Processing by GroupsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"bkhDTFF+ExnWDTEOwgJUbzJwwSsjIks2HiJ6OzNkTgzeEmWWcXyRQSk0kX2zAL25db6cZe/A/QAds1TSsgcrWg==", "group"=>{"title"=>"My new group"}, "commit"=>"Create Group"}
+  [1m[35mUser Load (2.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "groups" ("title", "group_creator_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "My new group"], ["group_creator_id", 5], ["created_at", "2016-05-20 15:53:03.885405"], ["updated_at", "2016-05-20 15:53:03.885405"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (20.0ms)[0m  UPDATE "groups" SET "group_slug" = $1, "updated_at" = $2 WHERE "groups"."id" = $3  [["group_slug", "t"], ["updated_at", "2016-05-20 15:53:03.894689"], ["id", 7]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Completed 500 Internal Server Error in 313ms (ActiveRecord: 58.3ms)
+
+NameError (undefined local variable or method `group_slug' for #<GroupsController:0x007fca588b2a48>):
+  app/controllers/groups_controller.rb:22:in `create'
+
+
+  Rendered /Users/pulsifer/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (12.4ms)
+  Rendered /Users/pulsifer/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (7.9ms)
+  Rendered /Users/pulsifer/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.8ms)
+  Rendered /Users/pulsifer/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (118.5ms)
+  Rendered /Users/pulsifer/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.7ms)
+  Rendered /Users/pulsifer/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.7ms)
+  Rendered /Users/pulsifer/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /Users/pulsifer/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.7ms)
+  Rendered /Users/pulsifer/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (91.7ms)
+  Rendered /Users/pulsifer/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.9ms)
+  Rendered /Users/pulsifer/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.7ms)
+  Rendered /Users/pulsifer/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (202.5ms)
+
+
+Started POST "/groups" for ::1 at 2016-05-20 11:53:27 -0400
+Processing by GroupsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"bkhDTFF+ExnWDTEOwgJUbzJwwSsjIks2HiJ6OzNkTgzeEmWWcXyRQSk0kX2zAL25db6cZe/A/QAds1TSsgcrWg==", "group"=>{"title"=>"My new group"}, "commit"=>"Create Group"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "groups" ("title", "group_creator_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "My new group"], ["group_creator_id", 5], ["created_at", "2016-05-20 15:53:27.398109"], ["updated_at", "2016-05-20 15:53:27.398109"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "groups" SET "group_slug" = $1, "updated_at" = $2 WHERE "groups"."id" = $3  [["group_slug", "t"], ["updated_at", "2016-05-20 15:53:27.401765"], ["id", 8]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/t
+Completed 302 Found in 62ms (ActiveRecord: 18.9ms)
+
+
+Started GET "/t" for ::1 at 2016-05-20 11:53:27 -0400
+Processing by MemesController#index as HTML
+  Parameters: {"group_slug"=>"t"}
+  [1m[35mGroup Load (4.1ms)[0m  SELECT  "groups".* FROM "groups" WHERE "groups"."group_slug" = $1 LIMIT 1  [["group_slug", "t"]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "groups".* FROM "groups" WHERE "groups"."group_slug" = $1 LIMIT 1  [["group_slug", "t"]]
+  [1m[36mGroup Exists (3.3ms)[0m  [1mSELECT  1 AS one FROM "groups" INNER JOIN "memberships" ON "groups"."id" = "memberships"."group_id" WHERE "memberships"."user_id" = $1 AND "groups"."id" = $2 LIMIT 1[0m  [["user_id", 5], ["id", 8]]
+Redirected to http://localhost:3000/t/login
+Filter chain halted as :require_login_and_access rendered or redirected
+Completed 302 Found in 30ms (ActiveRecord: 8.9ms)
+
+
+Started GET "/t/login" for ::1 at 2016-05-20 11:53:27 -0400
+Processing by SessionsController#new as HTML
+  Parameters: {"group_slug"=>"t"}
+  Rendered sessions/new.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 153ms (Views: 152.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/groups.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 11:53:27 -0400
+
+
+Started GET "/assets/meme_tags.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 11:53:28 -0400
+
+
+Started GET "/assets/memberships.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 11:53:28 -0400
+
+
+Started GET "/assets/invites.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 11:53:28 -0400
+
+
+Started GET "/assets/memes.self-69697c92d5bfab32b888b5eeea8c0bb53f27043137ac1dba8437b8f5ef61cb29.css?body=1" for ::1 at 2016-05-20 11:53:28 -0400
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 11:53:28 -0400
+
+
+Started GET "/assets/reactions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 11:53:28 -0400
+
+
+Started GET "/assets/registration.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 11:53:28 -0400
+
+
+Started GET "/assets/tags.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 11:53:28 -0400
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 11:53:28 -0400
+
+
+Started GET "/assets/application.self-fa61b361dee4caa4eab58a26e7c12b095753e3c177921488f6c102c79c4aac20.css?body=1" for ::1 at 2016-05-20 11:53:28 -0400
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for ::1 at 2016-05-20 11:53:28 -0400
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for ::1 at 2016-05-20 11:53:28 -0400
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2016-05-20 11:53:28 -0400
+
+
+Started GET "/assets/comments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 11:53:28 -0400
+
+
+Started GET "/assets/groups.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 11:53:28 -0400
+
+
+Started GET "/assets/invites.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 11:53:28 -0400
+
+
+Started GET "/assets/memberships.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 11:53:28 -0400
+
+
+Started GET "/assets/meme_tags.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 11:53:28 -0400
+
+
+Started GET "/assets/memes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 11:53:28 -0400
+
+
+Started GET "/assets/reactions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 11:53:28 -0400
+
+
+Started GET "/assets/registration.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 11:53:28 -0400
+
+
+Started GET "/assets/tags.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 11:53:28 -0400
+
+
+Started GET "/assets/users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 11:53:28 -0400
+
+
+Started GET "/assets/bootstrap/affix.self-3555752f8a930795ee9e56751a52e6871104ae85d01b3ab8363da3802a5ecc78.js?body=1" for ::1 at 2016-05-20 11:53:28 -0400
+
+
+Started GET "/assets/bootstrap/alert.self-d8b7bd612b3dcfdefb7b5539b9d5848d66ccbd3e7af8bb8d48bfb3288aaa7be8.js?body=1" for ::1 at 2016-05-20 11:53:28 -0400
+
+
+Started GET "/assets/bootstrap/button.self-e74d33ba39500940a78d6fa4d2d64f6ca7fd86d60a2149641f7fde7ba711d8a1.js?body=1" for ::1 at 2016-05-20 11:53:28 -0400
+
+
+Started GET "/assets/bootstrap/carousel.self-35d204878d906298e55bc24553e11fd89b980fc4ffe5792fe36af8c0da289c54.js?body=1" for ::1 at 2016-05-20 11:53:28 -0400
+
+
+Started GET "/assets/bootstrap/collapse.self-056c40532d9f0f126ec17e839f60c942f573fbd61a086e7f156306e3fc5e8c1f.js?body=1" for ::1 at 2016-05-20 11:53:28 -0400
+
+
+Started GET "/assets/bootstrap/dropdown.self-e56c2ffee4618411d43ecf15c89273f6223847ad756e1cd17545d04afa732ed4.js?body=1" for ::1 at 2016-05-20 11:53:28 -0400
+
+
+Started GET "/assets/bootstrap/modal.self-62463080dba6b9d024ff0a3192da0e76eacbc683194f3395047c6f5cfa0acb59.js?body=1" for ::1 at 2016-05-20 11:53:28 -0400
+
+
+Started GET "/assets/bootstrap/scrollspy.self-52afd90e8ba97d9f08617a13986e8869d6c4a45751c0bff59a6f91241e722aca.js?body=1" for ::1 at 2016-05-20 11:53:28 -0400
+
+
+Started GET "/assets/bootstrap/tab.self-dad0d5c377f9fae26394484535ebb23ccf68afae084f896af6ea4cdf8c9f6ae0.js?body=1" for ::1 at 2016-05-20 11:53:28 -0400
+
+
+Started GET "/assets/bootstrap/transition.self-3b268d4cd8c79e46ded7392885f72f64ffb5b0d49948a12b8cf9779f6163e13a.js?body=1" for ::1 at 2016-05-20 11:53:28 -0400
+
+
+Started GET "/assets/bootstrap/tooltip.self-facdc69246a072acb927ded77ff655f7c27a518b9357fddd45d119fbc8a0ab9f.js?body=1" for ::1 at 2016-05-20 11:53:28 -0400
+
+
+Started GET "/assets/bootstrap/popover.self-210cff1fb4b72b71a29b5122180cb5937c8145cd13a934dc838280f1d9607a3e.js?body=1" for ::1 at 2016-05-20 11:53:28 -0400
+
+
+Started GET "/assets/bootstrap-sprockets.self-fbfa5ad7d9aa0afe439ec4ff3883acc4cb92b62cb67c40d674320c9aa1d4642d.js?body=1" for ::1 at 2016-05-20 11:53:28 -0400
+
+
+Started GET "/assets/application.self-f8806224e027f3e3f0138ea9ce99319e298dfdb323304d1f1be6eae8e8c74724.js?body=1" for ::1 at 2016-05-20 11:53:28 -0400
+
+
+Started POST "/groups" for ::1 at 2016-05-20 11:53:33 -0400
+Processing by GroupsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"bkhDTFF+ExnWDTEOwgJUbzJwwSsjIks2HiJ6OzNkTgzeEmWWcXyRQSk0kX2zAL25db6cZe/A/QAds1TSsgcrWg==", "group"=>{"title"=>"My new group"}, "commit"=>"Create Group"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "groups" ("title", "group_creator_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "My new group"], ["group_creator_id", 5], ["created_at", "2016-05-20 15:53:33.223119"], ["updated_at", "2016-05-20 15:53:33.223119"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "groups" SET "group_slug" = $1, "updated_at" = $2 WHERE "groups"."id" = $3  [["group_slug", "t"], ["updated_at", "2016-05-20 15:53:33.233891"], ["id", 9]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/t
+Completed 302 Found in 40ms (ActiveRecord: 2.8ms)
+
+
+Started GET "/t" for ::1 at 2016-05-20 11:53:33 -0400
+Processing by MemesController#index as HTML
+  Parameters: {"group_slug"=>"t"}
+  [1m[35mGroup Load (0.4ms)[0m  SELECT  "groups".* FROM "groups" WHERE "groups"."group_slug" = $1 LIMIT 1  [["group_slug", "t"]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "groups".* FROM "groups" WHERE "groups"."group_slug" = $1 LIMIT 1  [["group_slug", "t"]]
+  [1m[36mGroup Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "groups" INNER JOIN "memberships" ON "groups"."id" = "memberships"."group_id" WHERE "memberships"."user_id" = $1 AND "groups"."id" = $2 LIMIT 1[0m  [["user_id", 5], ["id", 9]]
+Redirected to http://localhost:3000/t/login
+Filter chain halted as :require_login_and_access rendered or redirected
+Completed 302 Found in 11ms (ActiveRecord: 1.2ms)
+
+
+Started GET "/t/login" for ::1 at 2016-05-20 11:53:33 -0400
+Processing by SessionsController#new as HTML
+  Parameters: {"group_slug"=>"t"}
+  Rendered sessions/new.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 284ms (Views: 283.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/t/login" for ::1 at 2016-05-20 11:54:21 -0400
+Processing by SessionsController#new as HTML
+  Parameters: {"group_slug"=>"t"}
+  Rendered sessions/new.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 193ms (Views: 192.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/groups.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 11:54:22 -0400
+
+
+Started GET "/assets/memberships.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 11:54:22 -0400
+
+
+Started GET "/assets/invites.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 11:54:22 -0400
+
+
+Started GET "/assets/meme_tags.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 11:54:22 -0400
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 11:54:22 -0400
+
+
+Started GET "/assets/memes.self-69697c92d5bfab32b888b5eeea8c0bb53f27043137ac1dba8437b8f5ef61cb29.css?body=1" for ::1 at 2016-05-20 11:54:22 -0400
+
+
+Started GET "/assets/reactions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 11:54:22 -0400
+
+
+Started GET "/assets/registration.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 11:54:22 -0400
+
+
+Started GET "/assets/tags.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 11:54:22 -0400
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 11:54:22 -0400
+
+
+Started GET "/assets/application.self-fa61b361dee4caa4eab58a26e7c12b095753e3c177921488f6c102c79c4aac20.css?body=1" for ::1 at 2016-05-20 11:54:22 -0400
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for ::1 at 2016-05-20 11:54:22 -0400
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for ::1 at 2016-05-20 11:54:22 -0400
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2016-05-20 11:54:22 -0400
+
+
+Started GET "/assets/comments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 11:54:22 -0400
+
+
+Started GET "/assets/groups.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 11:54:22 -0400
+
+
+Started GET "/assets/invites.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 11:54:22 -0400
+
+
+Started GET "/assets/memberships.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 11:54:22 -0400
+
+
+Started GET "/assets/meme_tags.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 11:54:22 -0400
+
+
+Started GET "/assets/memes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 11:54:22 -0400
+
+
+Started GET "/assets/reactions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 11:54:22 -0400
+
+
+Started GET "/assets/registration.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 11:54:22 -0400
+
+
+Started GET "/assets/tags.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 11:54:22 -0400
+
+
+Started GET "/assets/users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 11:54:22 -0400
+
+
+Started GET "/assets/bootstrap/affix.self-3555752f8a930795ee9e56751a52e6871104ae85d01b3ab8363da3802a5ecc78.js?body=1" for ::1 at 2016-05-20 11:54:22 -0400
+
+
+Started GET "/assets/bootstrap/alert.self-d8b7bd612b3dcfdefb7b5539b9d5848d66ccbd3e7af8bb8d48bfb3288aaa7be8.js?body=1" for ::1 at 2016-05-20 11:54:22 -0400
+
+
+Started GET "/assets/bootstrap/button.self-e74d33ba39500940a78d6fa4d2d64f6ca7fd86d60a2149641f7fde7ba711d8a1.js?body=1" for ::1 at 2016-05-20 11:54:22 -0400
+
+
+Started GET "/assets/bootstrap/carousel.self-35d204878d906298e55bc24553e11fd89b980fc4ffe5792fe36af8c0da289c54.js?body=1" for ::1 at 2016-05-20 11:54:22 -0400
+
+
+Started GET "/assets/bootstrap/collapse.self-056c40532d9f0f126ec17e839f60c942f573fbd61a086e7f156306e3fc5e8c1f.js?body=1" for ::1 at 2016-05-20 11:54:22 -0400
+
+
+Started GET "/assets/bootstrap/dropdown.self-e56c2ffee4618411d43ecf15c89273f6223847ad756e1cd17545d04afa732ed4.js?body=1" for ::1 at 2016-05-20 11:54:22 -0400
+
+
+Started GET "/assets/bootstrap/modal.self-62463080dba6b9d024ff0a3192da0e76eacbc683194f3395047c6f5cfa0acb59.js?body=1" for ::1 at 2016-05-20 11:54:22 -0400
+
+
+Started GET "/assets/bootstrap/scrollspy.self-52afd90e8ba97d9f08617a13986e8869d6c4a45751c0bff59a6f91241e722aca.js?body=1" for ::1 at 2016-05-20 11:54:22 -0400
+
+
+Started GET "/assets/bootstrap/tab.self-dad0d5c377f9fae26394484535ebb23ccf68afae084f896af6ea4cdf8c9f6ae0.js?body=1" for ::1 at 2016-05-20 11:54:22 -0400
+
+
+Started GET "/assets/bootstrap/transition.self-3b268d4cd8c79e46ded7392885f72f64ffb5b0d49948a12b8cf9779f6163e13a.js?body=1" for ::1 at 2016-05-20 11:54:22 -0400
+
+
+Started GET "/assets/bootstrap/tooltip.self-facdc69246a072acb927ded77ff655f7c27a518b9357fddd45d119fbc8a0ab9f.js?body=1" for ::1 at 2016-05-20 11:54:22 -0400
+
+
+Started GET "/assets/bootstrap/popover.self-210cff1fb4b72b71a29b5122180cb5937c8145cd13a934dc838280f1d9607a3e.js?body=1" for ::1 at 2016-05-20 11:54:23 -0400
+
+
+Started GET "/assets/bootstrap-sprockets.self-fbfa5ad7d9aa0afe439ec4ff3883acc4cb92b62cb67c40d674320c9aa1d4642d.js?body=1" for ::1 at 2016-05-20 11:54:23 -0400
+
+
+Started GET "/assets/application.self-f8806224e027f3e3f0138ea9ce99319e298dfdb323304d1f1be6eae8e8c74724.js?body=1" for ::1 at 2016-05-20 11:54:23 -0400
+
+
+Started POST "/groups" for ::1 at 2016-05-20 11:54:27 -0400
+Processing by GroupsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"bkhDTFF+ExnWDTEOwgJUbzJwwSsjIks2HiJ6OzNkTgzeEmWWcXyRQSk0kX2zAL25db6cZe/A/QAds1TSsgcrWg==", "group"=>{"title"=>"My new group"}, "commit"=>"Create Group"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "groups" ("title", "group_creator_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "My new group"], ["group_creator_id", 5], ["created_at", "2016-05-20 15:54:27.531803"], ["updated_at", "2016-05-20 15:54:27.531803"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  UPDATE "groups" SET "group_slug" = $1, "updated_at" = $2 WHERE "groups"."id" = $3  [["group_slug", "t"], ["updated_at", "2016-05-20 15:54:27.540688"], ["id", 10]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/t
+Completed 302 Found in 82ms (ActiveRecord: 15.6ms)
+
+
+Started GET "/t" for ::1 at 2016-05-20 11:54:27 -0400
+Processing by MemesController#index as HTML
+  Parameters: {"group_slug"=>"t"}
+  [1m[35mGroup Load (0.4ms)[0m  SELECT  "groups".* FROM "groups" WHERE "groups"."group_slug" = $1 LIMIT 1  [["group_slug", "t"]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "groups".* FROM "groups" WHERE "groups"."group_slug" = $1 LIMIT 1  [["group_slug", "t"]]
+  [1m[36mGroup Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "groups" INNER JOIN "memberships" ON "groups"."id" = "memberships"."group_id" WHERE "memberships"."user_id" = $1 AND "groups"."id" = $2 LIMIT 1[0m  [["user_id", 5], ["id", 10]]
+Redirected to http://localhost:3000/t/login
+Filter chain halted as :require_login_and_access rendered or redirected
+Completed 302 Found in 20ms (ActiveRecord: 2.6ms)
+
+
+Started GET "/t/login" for ::1 at 2016-05-20 11:54:27 -0400
+Processing by SessionsController#new as HTML
+  Parameters: {"group_slug"=>"t"}
+  Rendered sessions/new.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 135ms (Views: 134.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/bootstrap/glyphicons-halflings-regular-fe185d11a49676890d47bb783312a0cda5a44c4039214094e7957b4c040ef11c.woff2" for ::1 at 2016-05-20 11:54:31 -0400
+
+
+Started GET "/groups/new" for ::1 at 2016-05-20 11:54:37 -0400
+Processing by GroupsController#new as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  Rendered groups/new.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 194ms (Views: 191.5ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/groups" for ::1 at 2016-05-20 11:54:43 -0400
+Processing by GroupsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"kRQ18iKUwe7blLZM52klh2BcxJuxjUSQR1ZvfMh6KnMhThMoApZDtiStFj+Wa8xRJ5KZ1X1v8qZEx0GVSRlPJQ==", "group"=>{"title"=>"What's happening"}, "commit"=>"Create Group"}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "groups" ("title", "group_creator_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["title", "What's happening"], ["group_creator_id", 5], ["created_at", "2016-05-20 15:54:43.987470"], ["updated_at", "2016-05-20 15:54:43.987470"]]
+  [1m[36m (3.9ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.7ms)[0m  [1mUPDATE "groups" SET "group_slug" = $1, "updated_at" = $2 WHERE "groups"."id" = $3[0m  [["group_slug", "t"], ["updated_at", "2016-05-20 15:54:43.995264"], ["id", 11]]
+  [1m[35m (3.3ms)[0m  COMMIT
+Redirected to http://localhost:3000/t
+Completed 302 Found in 18ms (ActiveRecord: 9.2ms)
+
+
+Started GET "/t" for ::1 at 2016-05-20 11:54:44 -0400
+Processing by MemesController#index as HTML
+  Parameters: {"group_slug"=>"t"}
+  [1m[36mGroup Load (0.4ms)[0m  [1mSELECT  "groups".* FROM "groups" WHERE "groups"."group_slug" = $1 LIMIT 1[0m  [["group_slug", "t"]]
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "groups".* FROM "groups" WHERE "groups"."group_slug" = $1 LIMIT 1[0m  [["group_slug", "t"]]
+  [1m[35mGroup Exists (0.3ms)[0m  SELECT  1 AS one FROM "groups" INNER JOIN "memberships" ON "groups"."id" = "memberships"."group_id" WHERE "memberships"."user_id" = $1 AND "groups"."id" = $2 LIMIT 1  [["user_id", 5], ["id", 11]]
+Redirected to http://localhost:3000/t/login
+Filter chain halted as :require_login_and_access rendered or redirected
+Completed 302 Found in 6ms (ActiveRecord: 1.0ms)
+
+
+Started GET "/t/login" for ::1 at 2016-05-20 11:54:44 -0400
+Processing by SessionsController#new as HTML
+  Parameters: {"group_slug"=>"t"}
+  Rendered sessions/new.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 127ms (Views: 126.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/groups" for ::1 at 2016-05-20 11:55:08 -0400
+Processing by GroupsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"kRQ18iKUwe7blLZM52klh2BcxJuxjUSQR1ZvfMh6KnMhThMoApZDtiStFj+Wa8xRJ5KZ1X1v8qZEx0GVSRlPJQ==", "group"=>{"title"=>"What's happening"}, "commit"=>"Create Group"}
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (2.0ms)[0m  INSERT INTO "groups" ("title", "group_creator_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["title", "What's happening"], ["group_creator_id", 5], ["created_at", "2016-05-20 15:55:08.833226"], ["updated_at", "2016-05-20 15:55:08.833226"]]
+  [1m[36m (2.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.6ms)[0m  [1mUPDATE "groups" SET "group_slug" = $1, "updated_at" = $2 WHERE "groups"."id" = $3[0m  [["group_slug", "t"], ["updated_at", "2016-05-20 15:55:08.845511"], ["id", 12]]
+  [1m[35m (0.5ms)[0m  COMMIT
+Redirected to http://localhost:3000/t/memes
+Completed 302 Found in 94ms (ActiveRecord: 14.3ms)
+
+
+Started GET "/t/memes" for ::1 at 2016-05-20 11:55:08 -0400
+Processing by MemesController#index as HTML
+  Parameters: {"group_slug"=>"t"}
+  [1m[36mGroup Load (0.4ms)[0m  [1mSELECT  "groups".* FROM "groups" WHERE "groups"."group_slug" = $1 LIMIT 1[0m  [["group_slug", "t"]]
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "groups".* FROM "groups" WHERE "groups"."group_slug" = $1 LIMIT 1[0m  [["group_slug", "t"]]
+  [1m[35mGroup Exists (0.5ms)[0m  SELECT  1 AS one FROM "groups" INNER JOIN "memberships" ON "groups"."id" = "memberships"."group_id" WHERE "memberships"."user_id" = $1 AND "groups"."id" = $2 LIMIT 1  [["user_id", 5], ["id", 12]]
+Redirected to http://localhost:3000/t/login
+Filter chain halted as :require_login_and_access rendered or redirected
+Completed 302 Found in 36ms (ActiveRecord: 11.4ms)
+
+
+Started GET "/t/login" for ::1 at 2016-05-20 11:55:08 -0400
+Processing by SessionsController#new as HTML
+  Parameters: {"group_slug"=>"t"}
+  Rendered sessions/new.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 231ms (Views: 230.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/groups" for ::1 at 2016-05-20 11:55:25 -0400
+Processing by GroupsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"kRQ18iKUwe7blLZM52klh2BcxJuxjUSQR1ZvfMh6KnMhThMoApZDtiStFj+Wa8xRJ5KZ1X1v8qZEx0GVSRlPJQ==", "group"=>{"title"=>"What's happening"}, "commit"=>"Create Group"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "groups" ("title", "group_creator_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "What's happening"], ["group_creator_id", 5], ["created_at", "2016-05-20 15:56:08.642616"], ["updated_at", "2016-05-20 15:56:08.642616"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  UPDATE "groups" SET "group_slug" = $1, "updated_at" = $2 WHERE "groups"."id" = $3  [["group_slug", "t"], ["updated_at", "2016-05-20 15:56:08.655984"], ["id", 13]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/t/memes
+Completed 302 Found in 43351ms (ActiveRecord: 22.3ms)
+
+
+Started GET "/t/memes" for ::1 at 2016-05-20 11:56:08 -0400
+Processing by MemesController#index as HTML
+  Parameters: {"group_slug"=>"t"}
+  [1m[35mGroup Load (0.6ms)[0m  SELECT  "groups".* FROM "groups" WHERE "groups"."group_slug" = $1 LIMIT 1  [["group_slug", "t"]]
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.1ms)[0m  SELECT  "groups".* FROM "groups" WHERE "groups"."group_slug" = $1 LIMIT 1  [["group_slug", "t"]]
+  [1m[36mGroup Exists (0.9ms)[0m  [1mSELECT  1 AS one FROM "groups" INNER JOIN "memberships" ON "groups"."id" = "memberships"."group_id" WHERE "memberships"."user_id" = $1 AND "groups"."id" = $2 LIMIT 1[0m  [["user_id", 5], ["id", 13]]
+Redirected to http://localhost:3000/t/login
+Filter chain halted as :require_login_and_access rendered or redirected
+Completed 302 Found in 162ms (ActiveRecord: 22.4ms)
+
+
+Started GET "/t/login" for ::1 at 2016-05-20 11:56:09 -0400
+Processing by SessionsController#new as HTML
+  Parameters: {"group_slug"=>"t"}
+  Rendered sessions/new.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 339ms (Views: 337.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/groups/new" for ::1 at 2016-05-20 11:56:16 -0400
+Processing by GroupsController#new as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  Rendered groups/new.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 201ms (Views: 197.5ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/groups" for ::1 at 2016-05-20 11:56:20 -0400
+Processing by GroupsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"0lgmYFahZGdBamsr7x55oIqJpJYZ89tlrUb/atv/M4ZiAgC6dqPmP75Ty1ieHJB2zUf52NURbVOu19GDWpxW0A==", "group"=>{"title"=>"Testing again"}, "commit"=>"Create Group"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "groups" ("title", "group_creator_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["title", "Testing again"], ["group_creator_id", 5], ["created_at", "2016-05-20 15:56:37.920410"], ["updated_at", "2016-05-20 15:56:37.920410"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (6.7ms)[0m  [1mUPDATE "groups" SET "group_slug" = $1, "updated_at" = $2 WHERE "groups"."id" = $3[0m  [["group_slug", "t"], ["updated_at", "2016-05-20 15:56:37.925452"], ["id", 14]]
+  [1m[35m (0.4ms)[0m  COMMIT
+Redirected to http://localhost:3000/t/memes
+Completed 302 Found in 17365ms (ActiveRecord: 9.1ms)
+
+
+Started GET "/t/memes" for ::1 at 2016-05-20 11:56:37 -0400
+Processing by MemesController#index as HTML
+  Parameters: {"group_slug"=>"t"}
+  [1m[36mGroup Load (0.5ms)[0m  [1mSELECT  "groups".* FROM "groups" WHERE "groups"."group_slug" = $1 LIMIT 1[0m  [["group_slug", "t"]]
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "groups".* FROM "groups" WHERE "groups"."group_slug" = $1 LIMIT 1[0m  [["group_slug", "t"]]
+  [1m[35mGroup Exists (0.4ms)[0m  SELECT  1 AS one FROM "groups" INNER JOIN "memberships" ON "groups"."id" = "memberships"."group_id" WHERE "memberships"."user_id" = $1 AND "groups"."id" = $2 LIMIT 1  [["user_id", 5], ["id", 14]]
+Redirected to http://localhost:3000/t/login
+Filter chain halted as :require_login_and_access rendered or redirected
+Completed 302 Found in 11ms (ActiveRecord: 1.2ms)
+
+
+Started GET "/t/login" for ::1 at 2016-05-20 11:56:37 -0400
+Processing by SessionsController#new as HTML
+  Parameters: {"group_slug"=>"t"}
+  Rendered sessions/new.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 239ms (Views: 237.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/groups" for ::1 at 2016-05-20 11:56:50 -0400
+Processing by GroupsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"0lgmYFahZGdBamsr7x55oIqJpJYZ89tlrUb/atv/M4ZiAgC6dqPmP75Ty1ieHJB2zUf52NURbVOu19GDWpxW0A==", "group"=>{"title"=>"Testing again"}, "commit"=>"Create Group"}
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "groups" ("title", "group_creator_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["title", "Testing again"], ["group_creator_id", 5], ["created_at", "2016-05-20 15:57:14.130886"], ["updated_at", "2016-05-20 15:57:14.130886"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.6ms)[0m  [1mUPDATE "groups" SET "group_slug" = $1, "updated_at" = $2 WHERE "groups"."id" = $3[0m  [["group_slug", "t"], ["updated_at", "2016-05-20 15:57:14.137599"], ["id", 15]]
+  [1m[35m (0.4ms)[0m  COMMIT
+Redirected to http://localhost:3000/t/memes
+Completed 302 Found in 23431ms (ActiveRecord: 26.2ms)
+
+
+Started GET "/t/memes" for ::1 at 2016-05-20 11:57:14 -0400
+Processing by MemesController#index as HTML
+  Parameters: {"group_slug"=>"t"}
+  [1m[36mGroup Load (0.6ms)[0m  [1mSELECT  "groups".* FROM "groups" WHERE "groups"."group_slug" = $1 LIMIT 1[0m  [["group_slug", "t"]]
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "groups".* FROM "groups" WHERE "groups"."group_slug" = $1 LIMIT 1[0m  [["group_slug", "t"]]
+  [1m[35mGroup Exists (0.7ms)[0m  SELECT  1 AS one FROM "groups" INNER JOIN "memberships" ON "groups"."id" = "memberships"."group_id" WHERE "memberships"."user_id" = $1 AND "groups"."id" = $2 LIMIT 1  [["user_id", 5], ["id", 15]]
+Redirected to http://localhost:3000/t/login
+Filter chain halted as :require_login_and_access rendered or redirected
+Completed 302 Found in 123ms (ActiveRecord: 26.5ms)
+
+
+Started GET "/t/login" for ::1 at 2016-05-20 11:57:14 -0400
+Processing by SessionsController#new as HTML
+  Parameters: {"group_slug"=>"t"}
+  Rendered sessions/new.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 253ms (Views: 251.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/groups" for ::1 at 2016-05-20 11:57:17 -0400
+Processing by GroupsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"0lgmYFahZGdBamsr7x55oIqJpJYZ89tlrUb/atv/M4ZiAgC6dqPmP75Ty1ieHJB2zUf52NURbVOu19GDWpxW0A==", "group"=>{"title"=>"Testing again"}, "commit"=>"Create Group"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (4.1ms)[0m  INSERT INTO "groups" ("title", "group_creator_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["title", "Testing again"], ["group_creator_id", 5], ["created_at", "2016-05-20 15:57:17.848273"], ["updated_at", "2016-05-20 15:57:17.848273"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (5.1ms)[0m  BEGIN
+  [1m[36mSQL (2.2ms)[0m  [1mUPDATE "groups" SET "group_slug" = $1, "updated_at" = $2 WHERE "groups"."id" = $3[0m  [["group_slug", "t"], ["updated_at", "2016-05-20 16:01:22.154633"], ["id", 16]]
+  [1m[35m (1.8ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (5.4ms)[0m  COMMIT
+
+
+Started GET "/groups/new" for ::1 at 2016-05-20 12:02:07 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by GroupsController#new as HTML
+  [1m[35mUser Load (3.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  Rendered groups/new.html.erb within layouts/application (49.7ms)
+Completed 200 OK in 923ms (Views: 812.3ms | ActiveRecord: 17.8ms)
+
+
+Started POST "/groups" for ::1 at 2016-05-20 12:02:14 -0400
+Processing by GroupsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"BmE0H//xSfJCvwZBWRoFpBrvDxFBdBhR2WjrV0P7rme2OxLF3/PLqr2GpjIoGOxyXSFSX42Wrmfa+cW+wpjLMQ==", "group"=>{"title"=>"Meme lovers anonymous"}, "commit"=>"Create Group"}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+
+
+Started GET "/groups" for ::1 at 2016-05-20 12:03:21 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by GroupsController#index as HTML
+  [1m[35mUser Load (0.9ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mMembership Load (15.4ms)[0m  SELECT "memberships".* FROM "memberships" WHERE "memberships"."user_id" = 5
+  [1m[36mGroup Load (1.2ms)[0m  [1mSELECT  "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered groups/index.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 957ms (Views: 807.0ms | ActiveRecord: 33.1ms)
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 12:03:23 -0400
+
+
+Started GET "/assets/groups.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 12:03:23 -0400
+
+
+Started GET "/assets/memes.self-69697c92d5bfab32b888b5eeea8c0bb53f27043137ac1dba8437b8f5ef61cb29.css?body=1" for ::1 at 2016-05-20 12:03:23 -0400
+
+
+Started GET "/assets/memberships.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 12:03:23 -0400
+
+
+Started GET "/assets/invites.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 12:03:23 -0400
+
+
+Started GET "/assets/meme_tags.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 12:03:23 -0400
+
+
+Started GET "/assets/reactions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 12:03:23 -0400
+
+
+Started GET "/assets/registration.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 12:03:23 -0400
+
+
+Started GET "/assets/tags.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 12:03:23 -0400
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 12:03:23 -0400
+
+
+Started GET "/assets/application.self-fa61b361dee4caa4eab58a26e7c12b095753e3c177921488f6c102c79c4aac20.css?body=1" for ::1 at 2016-05-20 12:03:23 -0400
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for ::1 at 2016-05-20 12:03:23 -0400
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for ::1 at 2016-05-20 12:03:23 -0400
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2016-05-20 12:03:23 -0400
+
+
+Started GET "/assets/comments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 12:03:23 -0400
+
+
+Started GET "/assets/groups.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 12:03:24 -0400
+
+
+Started GET "/assets/invites.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 12:03:24 -0400
+
+
+Started GET "/assets/memberships.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 12:03:24 -0400
+
+
+Started GET "/assets/meme_tags.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 12:03:24 -0400
+
+
+Started GET "/assets/memes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 12:03:24 -0400
+
+
+Started GET "/assets/reactions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 12:03:24 -0400
+
+
+Started GET "/assets/registration.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 12:03:24 -0400
+
+
+Started GET "/assets/tags.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 12:03:24 -0400
+
+
+Started GET "/assets/users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 12:03:24 -0400
+
+
+Started GET "/assets/bootstrap/affix.self-3555752f8a930795ee9e56751a52e6871104ae85d01b3ab8363da3802a5ecc78.js?body=1" for ::1 at 2016-05-20 12:03:24 -0400
+
+
+Started GET "/assets/bootstrap/alert.self-d8b7bd612b3dcfdefb7b5539b9d5848d66ccbd3e7af8bb8d48bfb3288aaa7be8.js?body=1" for ::1 at 2016-05-20 12:03:24 -0400
+
+
+Started GET "/assets/bootstrap/carousel.self-35d204878d906298e55bc24553e11fd89b980fc4ffe5792fe36af8c0da289c54.js?body=1" for ::1 at 2016-05-20 12:03:24 -0400
+
+
+Started GET "/assets/bootstrap/button.self-e74d33ba39500940a78d6fa4d2d64f6ca7fd86d60a2149641f7fde7ba711d8a1.js?body=1" for ::1 at 2016-05-20 12:03:24 -0400
+
+
+Started GET "/assets/bootstrap/collapse.self-056c40532d9f0f126ec17e839f60c942f573fbd61a086e7f156306e3fc5e8c1f.js?body=1" for ::1 at 2016-05-20 12:03:24 -0400
+
+
+Started GET "/assets/bootstrap/dropdown.self-e56c2ffee4618411d43ecf15c89273f6223847ad756e1cd17545d04afa732ed4.js?body=1" for ::1 at 2016-05-20 12:03:24 -0400
+
+
+Started GET "/assets/bootstrap/modal.self-62463080dba6b9d024ff0a3192da0e76eacbc683194f3395047c6f5cfa0acb59.js?body=1" for ::1 at 2016-05-20 12:03:24 -0400
+
+
+Started GET "/assets/bootstrap/scrollspy.self-52afd90e8ba97d9f08617a13986e8869d6c4a45751c0bff59a6f91241e722aca.js?body=1" for ::1 at 2016-05-20 12:03:24 -0400
+
+
+Started GET "/assets/bootstrap/tab.self-dad0d5c377f9fae26394484535ebb23ccf68afae084f896af6ea4cdf8c9f6ae0.js?body=1" for ::1 at 2016-05-20 12:03:24 -0400
+
+
+Started GET "/assets/bootstrap/transition.self-3b268d4cd8c79e46ded7392885f72f64ffb5b0d49948a12b8cf9779f6163e13a.js?body=1" for ::1 at 2016-05-20 12:03:24 -0400
+
+
+Started GET "/assets/bootstrap/tooltip.self-facdc69246a072acb927ded77ff655f7c27a518b9357fddd45d119fbc8a0ab9f.js?body=1" for ::1 at 2016-05-20 12:03:24 -0400
+
+
+Started GET "/assets/bootstrap-sprockets.self-fbfa5ad7d9aa0afe439ec4ff3883acc4cb92b62cb67c40d674320c9aa1d4642d.js?body=1" for ::1 at 2016-05-20 12:03:24 -0400
+
+
+Started GET "/assets/application.self-f8806224e027f3e3f0138ea9ce99319e298dfdb323304d1f1be6eae8e8c74724.js?body=1" for ::1 at 2016-05-20 12:03:24 -0400
+
+
+Started GET "/assets/bootstrap/popover.self-210cff1fb4b72b71a29b5122180cb5937c8145cd13a934dc838280f1d9607a3e.js?body=1" for ::1 at 2016-05-20 12:03:24 -0400
+
+
+Started GET "/groups/new" for ::1 at 2016-05-20 12:03:24 -0400
+Processing by GroupsController#new as HTML
+  [1m[35mUser Load (1.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  Rendered groups/new.html.erb within layouts/application (75.5ms)
+Completed 200 OK in 316ms (Views: 311.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/groups/new" for ::1 at 2016-05-20 12:03:25 -0400
+Processing by GroupsController#new as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  Rendered groups/new.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 205ms (Views: 202.5ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/groups" for ::1 at 2016-05-20 12:03:32 -0400
+Processing by GroupsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"RbdLujM40Lnfj/dR4Rr5hmLJkmA9mWk8vLS1EMt74eH17W1gEzpS4SC2VyKQGBBQJQfPLvF73wq/JZv5ShiEtw==", "group"=>{"title"=>"Meme lovers unite!"}, "commit"=>"Create Group"}
+  [1m[35mUser Load (0.7ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (6.7ms)[0m  [1mINSERT INTO "groups" ("title", "group_creator_id", "group_slug", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "Meme lovers unite!"], ["group_creator_id", 5], ["group_slug", "meme-lovers-unite!"], ["created_at", "2016-05-20 16:03:32.267230"], ["updated_at", "2016-05-20 16:03:32.267230"]]
+  [1m[35m (1.1ms)[0m  COMMIT
+Redirected to http://localhost:3000/meme-lovers-unite!/memes
+Completed 302 Found in 25ms (ActiveRecord: 8.7ms)
+
+
+Started GET "/meme-lovers-unite!/memes" for ::1 at 2016-05-20 12:03:32 -0400
+Processing by MemesController#index as HTML
+  Parameters: {"group_slug"=>"meme-lovers-unite!"}
+  [1m[36mGroup Load (0.8ms)[0m  [1mSELECT  "groups".* FROM "groups" WHERE "groups"."group_slug" = $1 LIMIT 1[0m  [["group_slug", "meme-lovers-unite!"]]
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "groups".* FROM "groups" WHERE "groups"."group_slug" = $1 LIMIT 1[0m  [["group_slug", "meme-lovers-unite!"]]
+  [1m[35mGroup Exists (1.4ms)[0m  SELECT  1 AS one FROM "groups" INNER JOIN "memberships" ON "groups"."id" = "memberships"."group_id" WHERE "memberships"."user_id" = $1 AND "groups"."id" = $2 LIMIT 1  [["user_id", 5], ["id", 17]]
+Redirected to http://localhost:3000/meme-lovers-unite!/login
+Filter chain halted as :require_login_and_access rendered or redirected
+Completed 302 Found in 66ms (ActiveRecord: 2.8ms)
+
+
+Started GET "/meme-lovers-unite!/login" for ::1 at 2016-05-20 12:03:32 -0400
+Processing by SessionsController#new as HTML
+  Parameters: {"group_slug"=>"meme-lovers-unite!"}
+  Rendered sessions/new.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 158ms (Views: 156.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/groups" for ::1 at 2016-05-20 12:04:17 -0400
+Processing by GroupsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"RbdLujM40Lnfj/dR4Rr5hmLJkmA9mWk8vLS1EMt74eH17W1gEzpS4SC2VyKQGBBQJQfPLvF73wq/JZv5ShiEtw==", "group"=>{"title"=>"Meme lovers unite!"}, "commit"=>"Create Group"}
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (3.5ms)[0m  INSERT INTO "groups" ("title", "group_creator_id", "group_slug", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["title", "Meme lovers unite!"], ["group_creator_id", 5], ["group_slug", "meme-lovers-unite"], ["created_at", "2016-05-20 16:04:17.859982"], ["updated_at", "2016-05-20 16:04:17.859982"]]
+  [1m[36m (1.6ms)[0m  [1mCOMMIT[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+Redirected to http://localhost:3000/meme-lovers-unite/memes.5
+Completed 302 Found in 158ms (ActiveRecord: 17.7ms)
+
+
+Started GET "/meme-lovers-unite/memes.5" for ::1 at 2016-05-20 12:04:17 -0400
+Processing by MemesController#index as 
+  Parameters: {"group_slug"=>"meme-lovers-unite"}
+  [1m[36mGroup Load (0.8ms)[0m  [1mSELECT  "groups".* FROM "groups" WHERE "groups"."group_slug" = $1 LIMIT 1[0m  [["group_slug", "meme-lovers-unite"]]
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "groups".* FROM "groups" WHERE "groups"."group_slug" = $1 LIMIT 1[0m  [["group_slug", "meme-lovers-unite"]]
+  [1m[35mGroup Exists (1.1ms)[0m  SELECT  1 AS one FROM "groups" INNER JOIN "memberships" ON "groups"."id" = "memberships"."group_id" WHERE "memberships"."user_id" = $1 AND "groups"."id" = $2 LIMIT 1  [["user_id", 5], ["id", 18]]
+Redirected to http://localhost:3000/meme-lovers-unite/login
+Filter chain halted as :require_login_and_access rendered or redirected
+Completed 302 Found in 35ms (ActiveRecord: 4.2ms)
+
+
+Started GET "/meme-lovers-unite/login" for ::1 at 2016-05-20 12:04:17 -0400
+Processing by SessionsController#new as HTML
+  Parameters: {"group_slug"=>"meme-lovers-unite"}
+  Rendered sessions/new.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 216ms (Views: 214.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/groups" for ::1 at 2016-05-20 12:05:46 -0400
+Processing by GroupsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"RbdLujM40Lnfj/dR4Rr5hmLJkmA9mWk8vLS1EMt74eH17W1gEzpS4SC2VyKQGBBQJQfPLvF73wq/JZv5ShiEtw==", "group"=>{"title"=>"Bangarangs"}, "commit"=>"Create Group", "group_slug"=>"groups"}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "groups" ("title", "group_creator_id", "group_slug", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["title", "Bangarangs"], ["group_creator_id", 5], ["group_slug", "bangarangs"], ["created_at", "2016-05-20 16:05:46.701636"], ["updated_at", "2016-05-20 16:05:46.701636"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+Redirected to http://localhost:3000/bangarangs/memes.5
+Completed 302 Found in 95ms (ActiveRecord: 13.8ms)
+
+
+Started GET "/bangarangs/memes.5" for ::1 at 2016-05-20 12:05:46 -0400
+Processing by MemesController#index as 
+  Parameters: {"group_slug"=>"bangarangs"}
+  [1m[36mGroup Load (1.0ms)[0m  [1mSELECT  "groups".* FROM "groups" WHERE "groups"."group_slug" = $1 LIMIT 1[0m  [["group_slug", "bangarangs"]]
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "groups".* FROM "groups" WHERE "groups"."group_slug" = $1 LIMIT 1[0m  [["group_slug", "bangarangs"]]
+  [1m[35mGroup Exists (0.7ms)[0m  SELECT  1 AS one FROM "groups" INNER JOIN "memberships" ON "groups"."id" = "memberships"."group_id" WHERE "memberships"."user_id" = $1 AND "groups"."id" = $2 LIMIT 1  [["user_id", 5], ["id", 19]]
+Redirected to http://localhost:3000/bangarangs/login
+Filter chain halted as :require_login_and_access rendered or redirected
+Completed 302 Found in 30ms (ActiveRecord: 3.9ms)
+
+
+Started GET "/bangarangs/login" for ::1 at 2016-05-20 12:05:46 -0400
+Processing by SessionsController#new as HTML
+  Parameters: {"group_slug"=>"bangarangs"}
+  Rendered sessions/new.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 253ms (Views: 252.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/groups" for ::1 at 2016-05-20 12:07:05 -0400
+Processing by GroupsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"RbdLujM40Lnfj/dR4Rr5hmLJkmA9mWk8vLS1EMt74eH17W1gEzpS4SC2VyKQGBBQJQfPLvF73wq/JZv5ShiEtw==", "group"=>{"title"=>"Bangarangs0416"}, "commit"=>"Create Group", "groups"=>"groups"}
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (1.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE ("users"."username" = 'meme100' AND "users"."id" != 5) LIMIT 1[0m
+  [1m[35m (0.9ms)[0m  ROLLBACK
+Redirected to http://localhost:3000/bangarangs0416
+Completed 302 Found in 123ms (ActiveRecord: 16.1ms)
+
+
+Started GET "/bangarangs0416" for ::1 at 2016-05-20 12:07:06 -0400
+Processing by MemesController#index as HTML
+  Parameters: {"group_slug"=>"bangarangs0416"}
+  [1m[36mGroup Load (0.6ms)[0m  [1mSELECT  "groups".* FROM "groups" WHERE "groups"."group_slug" = $1 LIMIT 1[0m  [["group_slug", "bangarangs0416"]]
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "groups".* FROM "groups" WHERE "groups"."group_slug" = $1 LIMIT 1[0m  [["group_slug", "bangarangs0416"]]
+Redirected to http://localhost:3000/bangarangs0416/login
+Filter chain halted as :require_login_and_access rendered or redirected
+Completed 302 Found in 17ms (ActiveRecord: 0.9ms)
+
+
+Started GET "/bangarangs0416/login" for ::1 at 2016-05-20 12:07:06 -0400
+Processing by SessionsController#new as HTML
+  Parameters: {"group_slug"=>"bangarangs0416"}
+  Rendered sessions/new.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 218ms (Views: 217.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/groups" for ::1 at 2016-05-20 12:07:40 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by GroupsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"RbdLujM40Lnfj/dR4Rr5hmLJkmA9mWk8vLS1EMt74eH17W1gEzpS4SC2VyKQGBBQJQfPLvF73wq/JZv5ShiEtw==", "group"=>{"title"=>"Bangarangsweb0416"}, "commit"=>"Create Group", "groups"=>"groups"}
+  [1m[35mUser Load (0.8ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (1.4ms)[0m  SELECT  1 AS one FROM "users" WHERE ("users"."username" = 'meme100' AND "users"."id" != 5) LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+Redirected to http://localhost:3000/bangarangsweb0416
+Completed 302 Found in 193ms (ActiveRecord: 16.1ms)
+
+
+Started GET "/bangarangsweb0416" for ::1 at 2016-05-20 12:07:41 -0400
+Processing by MemesController#index as HTML
+  Parameters: {"group_slug"=>"bangarangsweb0416"}
+  [1m[35mGroup Load (1.1ms)[0m  SELECT  "groups".* FROM "groups" WHERE "groups"."group_slug" = $1 LIMIT 1  [["group_slug", "bangarangsweb0416"]]
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "groups".* FROM "groups" WHERE "groups"."group_slug" = $1 LIMIT 1  [["group_slug", "bangarangsweb0416"]]
+Redirected to http://localhost:3000/bangarangsweb0416/login
+Filter chain halted as :require_login_and_access rendered or redirected
+Completed 302 Found in 15ms (ActiveRecord: 1.7ms)
+
+
+Started GET "/bangarangsweb0416/login" for ::1 at 2016-05-20 12:07:41 -0400
+Processing by SessionsController#new as HTML
+  Parameters: {"group_slug"=>"bangarangsweb0416"}
+  Rendered sessions/new.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 887ms (Views: 885.5ms | ActiveRecord: 0.0ms)

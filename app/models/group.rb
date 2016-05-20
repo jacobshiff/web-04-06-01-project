@@ -5,10 +5,9 @@ class Group < ActiveRecord::Base
   belongs_to :group_creator, class_name: 'User'
 
   def to_slug
-    rev = self.name.downcase.tr("()&.*',+", ' ')
-    ary = rev.split(" ")
-    slug = ary.join("-")
-    self.save(group_slug: slug)
+    revised = self.title.downcase.tr("()&.*',+!", ' ')
+    array = revised.split(" ")
+    array.join("-")
   end
 
   def self.find_groups_for_user(user)
