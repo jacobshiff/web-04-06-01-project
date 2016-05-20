@@ -2,28 +2,32 @@
 class RegistrationsController < ApplicationController
 
   def new
-    @user = User.new
+    if current_user
+      flash[:danger] = "You are already logged in."
+      redirect_to memes_path(current_user.groups.first.group_slug)
+    end
+      @user = User.new
   end
 
   def create
     @user = User.new(user_params)
     @user.avatar = user_avatar
     #This might be a vulnerability...
-    @user.groups << Group.find_by(group_slug: params[:group_slug])
     if @user.save
       binding.pry
       session[:user_id] = @user.id
-      redirect_to memes_path(params[:group_slug])
+      redirect_to memes_path(@user.groups.first.group_slug)
+      #if there is an error in registration, the error message carries through to the group/memes index??
     else
       error_type
       render :new
       #add in flash
-    end 
+    end
   end
 
   private
   def user_params
-    params.require(:user).permit(:username, :email, :password, :password_confirmation, :avatar)
+    params.require(:user).permit(:username, :email, :password, :password_confirmation, :avatar, :group_ids)
   end
 
   def user_avatar
