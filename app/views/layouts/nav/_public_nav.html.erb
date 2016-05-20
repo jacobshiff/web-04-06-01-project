@@ -15,7 +15,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <!-- Removed reference to group title since user will have no group association if not logged in  -->
       <!-- <p class="navbar-text">< group.title ></p> -->
-      <button type="button" class="btn btn-default navbar-btn">Sign in</button>
+      <a href="<%= login_path %>"><button type="button" class="btn btn-default navbar-btn">Sign in</button></a>
       <a href="<%= registration_new_path %>"><button type="button" class="btn btn-default navbar-btn">Sign up</button></a>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

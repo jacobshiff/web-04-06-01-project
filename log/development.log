@@ -1,3 +1,4 @@
+<<<<<<< HEAD
   [1m[36mActiveRecord::SchemaMigration Load (1.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
 Migrating to AddAvatarColumnsToUsers (20160519202632)
   [1m[35m (1.3ms)[0m  BEGIN
@@ -1551,3 +1552,5 @@ Processing by MemesController#index as HTML
   [1m[35mMeme Load (0.5ms)[0m  SELECT "memes".* FROM "memes" WHERE "memes"."group_id" = 5
   Rendered memes/index.html.erb within layouts/application (2.2ms)
 Completed 200 OK in 138ms (Views: 131.1ms | ActiveRecord: 1.9ms)
+=======
+>>>>>>> 1a7c614a3d329755ca12a466f5cc832282c6ada2
