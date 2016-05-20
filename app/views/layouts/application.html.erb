@@ -8,6 +8,7 @@
 </head>
 <body>
 <!-- Navbar -->
+<!-- If session id exists, user_nav. If not, generic public nav. -->
   <% if !session[:user_id].nil? %>
     <%= render partial: 'layouts/user_nav', locals: { group: Group.find_by(group_slug: params[:group_slug]), user: User.find(session[:user_id])} %>
   <% else %>

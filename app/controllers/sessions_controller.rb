@@ -6,24 +6,24 @@ class SessionsController < ApplicationController
 
   end
 
-  def create
+  def create  #create a session
     # This is the action associated with logging in (post request)
     # This finds the user id and adds it to his/her cookie
 
-#    @user = User.find(params[:user][:id])
+    # @user = User.find(params[:user][:id])
     @user = User.find_by(username: user_params[:username])
     if @user.authenticate(user_params[:password])
-      binding.pry
+      #make active sesh, bring up first group of their groups
       session[:user_id] = @user.id
-      redirect_to user_path(@user)
+      redirect_to memes_path(@user.groups.first.group_slug)
     else
       render :new
     end
   end
 
   def destroy
-    session.delete :user_id
-    redirect_to root_path
+    session[:user_id] = nil
+    redirect_to home_path
   end
 
   private
