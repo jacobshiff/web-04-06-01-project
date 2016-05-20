@@ -11,15 +11,19 @@ doge = Meme.create({
 })
 
 pepe = Meme.create({
-  :image => File.new("#{Rails.root}/public/system/memes/images/seeds/trump-pepe.png")
+  :image => File.new("#{Rails.root}/public/system/memes/images/seeds/pepe.jpeg")
 })
 
 y_u_no = Meme.create({
-  :image => File.new("#{Rails.root}/public/system/memes/images/seeds/yuno.png")
+  :image => File.new("#{Rails.root}/public/system/memes/images/seeds/yuno.jpg")
 })
 
 beef = Meme.create({
   :image => File.new("#{Rails.root}/public/system/memes/images/seeds/beef.jpg")
+})
+
+skeltal = Meme.create({
+  :image => File.new("#{Rails.root}/public/system/memes/images/seeds/skeltal.png")
 })
 
 # doge = Meme.new
@@ -33,16 +37,19 @@ beef = Meme.create({
 jacob = User.create(username: 'jacobshiff', email: 'jacob@flatironschool.com', password: 'password')
 chris = User.create(username: 'xristo', email: 'chris@flatironschool.com', password: 'password')
 rachel = User.create(username: 'rachelb', email: 'rachel@flatironschool.com', password: 'password')
+kevin = User.create(username: 'kwebster2', email: 'kevin@flatironschool.com', password: 'password')
 
 doge.creator = rachel
 pepe.creator = rachel
 y_u_no.creator = chris
 beef.creator = chris
+skeltal.creator = kevin
 
 doge.save
 pepe.save
 y_u_no.save
 beef.save
+skeltal.save
 
 flatiron = Group.create(title: "Flatiron School")
 google = Group.create(title: "Google")
@@ -126,11 +133,13 @@ doge.group = flatiron
 pepe.group = flatiron
 y_u_no.group = flatiron
 beef.group = flatiron
+skeltal.group = google
 
 doge.save
 pepe.save
 y_u_no.save
 beef.save
+skeltal.save
 
 comment_1.group = flatiron
 comment_2.group = flatiron
