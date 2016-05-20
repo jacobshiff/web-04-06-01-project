@@ -3,7 +3,9 @@ class SessionsController < ApplicationController
 
   def new
     # This is the action associated with logging in (get request)
-
+    # renders new.html.erb, then submits heads DOWN to....(sessions#create)
+    # | | | | | |
+    # V V V V V V  jacob i wrote this for you to get mad.
   end
 
   def create  #create a session
