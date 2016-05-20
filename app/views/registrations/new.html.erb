@@ -37,21 +37,12 @@
         <%= f.file_field(:avatar, accept: 'image/png,image/gif,image/jpeg') %>
       </div>
     
-      <% if @user.avatar? %>
+     <!--  <% if @user.avatar? %>
       <%= image_tag(@user.avatar_url) %><br />
-      <%= f.hidden_field :avatar_cache %>
+      <%= f.hidden_field :avatar_cache %> -->
     <% end %>
 
     </div>
 
-<!--   </div>
-    <div class="row">
-      <div class="col-md-6">
-        <div>
-          <%= f.submit 'Sign Me Up'%>
-        </div>
-      </div>
-    </div>
- -->
   <% end %>
 
