@@ -1,0 +1,22 @@
+<!-- Button trigger modal -->
+
+<button class="btn btn-primary" data-toggle="modal" data-target="#new-meme-modal"><span class='glyphicon glyphicon-plus'></span>Upload A New Meme!</button>
+
+<div class="modal fade" id="new-meme-modal" tabindex="-1" role="dialog" aria-labelledby="add-new-meme" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="add-new-meme">Add A New Meme!</h4>
+        </div>
+        <div class="modal-body">
+          <%= form_for meme do |f| %>
+            <%= f.file_field(:image, accept: 'image/png,image/gif,image/jpeg') %>
+            <%= f.submit %>
+          <% end %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
