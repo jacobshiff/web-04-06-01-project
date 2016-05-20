@@ -11,9 +11,9 @@ class RegistrationsController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.avatar = user_avatar
     #This might be a vulnerability...
     if @user.save
-      #binding.pry
       session[:user_id] = @user.id
       redirect_to memes_path(@user.groups.first.group_slug)
       #if there is an error in registration, the error message carries through to the group/memes index??
@@ -27,6 +27,10 @@ class RegistrationsController < ApplicationController
   private
   def user_params
     params.require(:user).permit(:username, :email, :password, :password_confirmation, :avatar, :group_ids)
+  end
+
+  def user_avatar
+    params.require(:user).permit(:avatar)
   end
 
   def error_type
