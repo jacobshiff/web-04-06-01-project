@@ -6,6 +6,10 @@ Rails.application.routes.draw do
   #   resources :memes, only: [:index, :show]
   # end
 
+
+  ######## Home routes
+  get '/' => 'home#index', as: 'home'
+
 ######### Memes routes
   #Create
   get '/:group_slug/memes/new' => 'memes#new'
@@ -25,8 +29,8 @@ Rails.application.routes.draw do
   # post '/:group_slug/login' => 'sessions#create', as: 'login'
 
   # Registration
-  get '/:group_slug/users/new' => 'registrations#new', as: 'registration_new'
-  post '/:group_slug/users/new' => 'registrations#create', as: 'registration_create'
+  get '/users/new' => 'registrations#new', as: 'registration_new'
+  post '/users/new' => 'registrations#create', as: 'registration_create'
 
   # User path
   get '/:group_slug/users/:username' => 'users#show', as: 'user'

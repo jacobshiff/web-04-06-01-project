@@ -1,7 +1,6 @@
 <!-- This is the new user registration form -->
 <div class="container">
-  <h1>Sign up for <%= Group.find_by(group_slug: params[:group_slug]).title %>'s GroupMeme</h1>
-  
+
   <div class="row">
     <div class="col-md-6">
       <%= form_for @user, url: registration_create_path(params[:group_slug]), html: { multipart: true } do |f| %>
@@ -21,6 +20,12 @@
         <%= f.label :password_confirmation %>
         <%= f.password_field :password_confirmation %>
       </div>
+
+      <div>
+        <%= f.label :groups %>
+        <%= f.collection_select :group_ids, Group.all, :id, :title %>
+      </div>
+
       <div>
         <%= f.submit 'Sign Me Up'%>
       </div>
@@ -34,7 +39,7 @@
         <%= f.file_field(:avatar, accept: 'image/png,image/gif,image/jpeg') %>
       </div>
     </div>
-    
+
 <!--   </div>
     <div class="row">
       <div class="col-md-6">
@@ -47,5 +52,5 @@
   <% end %>
 
 
-  
+
 </div>
