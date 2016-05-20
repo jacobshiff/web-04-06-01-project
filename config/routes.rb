@@ -37,7 +37,7 @@ Rails.application.routes.draw do
 #####Groups
   #index
   get '/groups' => 'groups#index'
-  get '/:group_slug' => 'groups#show', as: 'group'
+  get '/:group_slug' => 'memes#index', as: 'group'
   get '/groups/new' => 'groups#new'
   post '/groups' => 'groups#create'
 end
