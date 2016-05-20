@@ -9,9 +9,12 @@ class User < ActiveRecord::Base
   has_many :created_groups, class_name: 'Group', foreign_key: 'group_creator_id'
 
   #paperclip validations; must include for upload
-  has_attached_file :avatar, default_url: "/system/users/avatars/default-avatars/avatar-bono.jpg"
-  validates_attachment :avatar, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
+  # has_attached_file :avatar, default_url: "/system/users/avatars/default-avatars/avatar-bono.jpg"
+  # validates_attachment :avatar, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
 
+  #CarrierWave
+  mount_uploader :avatar, AvatarUploader
+  
   has_secure_password
 
   # Validations
