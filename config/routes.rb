@@ -34,4 +34,10 @@ Rails.application.routes.draw do
   patch '/:group_slug/users/:username' => 'users#update'
   delete '/:group_slug/users/:username' => 'users#destroy'
 
+#####Groups
+  #index
+  get '/groups' => 'groups#index'
+  get '/:group_slug' => 'groups#show', as: 'group'
+  get '/groups/new' => 'groups#new'
+  post '/groups' => 'groups#create'
 end

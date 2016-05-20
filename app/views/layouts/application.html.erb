@@ -8,11 +8,7 @@
 </head>
 <body>
 <!-- Navbar -->
-  <% if !session[:user_id].nil? %>
-    <%= render partial: 'layouts/user_nav', locals: { group: Group.find_by(group_slug: params[:group_slug]), user: User.find(session[:user_id])} %>
-  <% else %>
-    <%= render partial: 'layouts/public_nav', locals: { group: Group.find_by(group_slug: params[:group_slug]) } %>
-  <% end %>
+  
 
 <!-- Flashes -->
 <% flash.each do |type, message| %>
