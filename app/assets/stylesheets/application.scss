@@ -16,7 +16,12 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+.index-meme-container{
+  width:90%;
+}
+
 .index-meme-img {
+  width:100%;
 }
 
 .row-eq-height {
