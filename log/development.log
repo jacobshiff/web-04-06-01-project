@@ -1,3 +1,4 @@
+<<<<<<< HEAD
   [1m[36m (5034.4ms)[0m  [1mDROP DATABASE IF EXISTS "GroupMeme_development"[0m
   [1m[35m (164.6ms)[0m  DROP DATABASE IF EXISTS "GroupMeme_test"
   [1m[36m (2.8ms)[0m  [1mCREATE DATABASE "GroupMeme_development" ENCODING = 'unicode'[0m
@@ -5129,3 +5130,5 @@ Started GET "/assets/bootstrap-sprockets.self-fbfa5ad7d9aa0afe439ec4ff3883acc4cb
 
 
 Started GET "/assets/application.self-f8806224e027f3e3f0138ea9ce99319e298dfdb323304d1f1be6eae8e8c74724.js?body=1" for ::1 at 2016-05-19 18:41:56 -0400
+=======
+>>>>>>> 31b983c181a96069dc209fc358108be65ddd7e1a

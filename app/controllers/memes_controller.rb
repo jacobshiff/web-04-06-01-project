@@ -1,7 +1,6 @@
 class MemesController < ApplicationController
-
     before_action :set_group, only: [:index, :new]
-    before_action :set_meme, only: [:show, :destroy]
+    before_action :set_meme, only: [:show, :destroy, :react]
     before_action :require_login_and_access
 
   def index
@@ -18,11 +17,6 @@ class MemesController < ApplicationController
     @meme = Meme.new
   end
 
-  def destroy
-    @meme.destroy
-    redirect_to memes_path(@meme.group.group_slug)
-  end
-
   def create
     @meme = Meme.new(meme_params)
     @meme.group = Group.find_by(group_slug: params[:group_slug])
@@ -31,6 +25,20 @@ class MemesController < ApplicationController
       redirect_to meme_path(group_slug: @meme.group.group_slug, id: @meme.id)
     else
       render :new
+    end
+  end
+
+  def destroy
+    @meme.destroy
+    redirect_to memes_path(@meme.group.group_slug)
+  end
+
+  def react
+    @meme.update_reactions(current_user)
+    @current_user = current_user
+
+    respond_to do |format|
+      format.js
     end
   end
 

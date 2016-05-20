@@ -7,11 +7,18 @@
   <!-- Image -->
   <!-- To center, add .row-centered class -->
   <div class="col-mid-10">
-    <div class="row">
-      <!-- To center, add .col-centered class -->
+    <div class="row-centered">
+      <!-- Main image div -->
        <div class="col-mid-6 show-page-img">
-        <%= image_tag @meme.image.url, class: "img-responsive show-page-image" %>
+          <div class="meme-img">
+            <%= image_tag @meme.image.url class: "img-responsive show-page-image" %>
+          </div>
+          <!-- Reactions div -->
+          <div class="react" meme_parent_id="<%=@meme.id%>">
+            <%= render partial: "memes/memes_reactions", locals: {meme: @meme} %>
+          </div>
       </div>
+
     </div>
 
   <!-- Creator -->
@@ -55,6 +62,7 @@
                   <button class="btn btn-default">Add</button>
               </div>
           </form>
+          <script src="comments.js.erb" charset="utf-8"></script>
       </div>
     </div>
   </div>
