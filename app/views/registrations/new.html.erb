@@ -38,6 +38,12 @@
         <%= f.label :avatar, "Customize your avatar" %>
         <%= f.file_field(:avatar, accept: 'image/png,image/gif,image/jpeg') %>
       </div>
+    
+      <% if @user.avatar? %>
+      <%= image_tag(@user.avatar_url) %><br />
+      <%= f.hidden_field :avatar_cache %>
+    <% end %>
+
     </div>
 
 <!--   </div>
