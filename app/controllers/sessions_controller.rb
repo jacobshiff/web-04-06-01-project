@@ -2,6 +2,12 @@
 class SessionsController < ApplicationController
 
   def new
+
+    if current_user
+      flash[:warning] = "You're already logged in, clown!"
+      redirect_to memes_path(current_user.groups.first.group_slug)
+    end
+
     # This is the action associated with logging in (get request)
     # renders new.html.erb, then submits heads DOWN to....(sessions#create)
     # | | | | | |
