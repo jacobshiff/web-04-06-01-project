@@ -3283,3 +3283,1520 @@ ActionController::RoutingError (No route matches [GET] "/flatiron-school/memes/c
   Rendered /Users/flatironschool/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
   Rendered /Users/flatironschool/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.7ms)
   Rendered /Users/flatironschool/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (126.8ms)
+  [1m[36m (5045.4ms)[0m  [1mDROP DATABASE IF EXISTS "GroupMeme_development"[0m
+  [1m[35m (143.9ms)[0m  DROP DATABASE IF EXISTS "GroupMeme_test"
+  [1m[36m (1.4ms)[0m  [1mCREATE DATABASE "GroupMeme_development" ENCODING = 'unicode'[0m
+  [1m[35m (485.9ms)[0m  CREATE DATABASE "GroupMeme_test" ENCODING = 'unicode'
+  [1m[36mSQL (11.6ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (35.0ms)[0m  DROP TABLE "comments" CASCADE
+  [1m[36m (81.3ms)[0m  [1mCREATE TABLE "comments" ("id" serial primary key, "user_id" integer, "meme_id" integer, "content" text, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "group_id" integer) [0m
+  [1m[35m (6.4ms)[0m  CREATE  INDEX  "index_comments_on_group_id" ON "comments" USING btree ("group_id")
+  [1m[36m (2.0ms)[0m  [1mCREATE  INDEX  "index_comments_on_meme_id" ON "comments" USING btree ("meme_id")[0m
+  [1m[35m (1.4ms)[0m  CREATE  INDEX  "index_comments_on_user_id" ON "comments" USING btree ("user_id")
+  [1m[36m (19.0ms)[0m  [1mDROP TABLE "groups" CASCADE[0m
+  [1m[35m (9.3ms)[0m  CREATE TABLE "groups" ("id" serial primary key, "title" character varying, "group_creator_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "group_slug" character varying) 
+  [1m[36m (3.3ms)[0m  [1mCREATE  INDEX  "index_groups_on_group_creator_id" ON "groups" USING btree ("group_creator_id")[0m
+  [1m[35m (2.1ms)[0m  CREATE  INDEX  "index_groups_on_group_slug" ON "groups" USING btree ("group_slug")
+  [1m[36m (10.8ms)[0m  [1mDROP TABLE "invites" CASCADE[0m
+  [1m[35m (10.1ms)[0m  CREATE TABLE "invites" ("id" serial primary key, "inviter_id" integer, "invitee_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "group_id" integer) 
+  [1m[36m (5.7ms)[0m  [1mCREATE  INDEX  "index_invites_on_group_id" ON "invites" USING btree ("group_id")[0m
+  [1m[35m (3.2ms)[0m  CREATE  INDEX  "index_invites_on_invitee_id" ON "invites" USING btree ("invitee_id")
+  [1m[36m (1.3ms)[0m  [1mCREATE  INDEX  "index_invites_on_inviter_id" ON "invites" USING btree ("inviter_id")[0m
+  [1m[35m (14.9ms)[0m  DROP TABLE "memberships" CASCADE
+  [1m[36m (6.7ms)[0m  [1mCREATE TABLE "memberships" ("id" serial primary key, "user_id" integer, "group_id" integer, "user_type" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (2.8ms)[0m  CREATE  INDEX  "index_memberships_on_group_id" ON "memberships" USING btree ("group_id")
+  [1m[36m (2.0ms)[0m  [1mCREATE  INDEX  "index_memberships_on_user_id" ON "memberships" USING btree ("user_id")[0m
+  [1m[35m (3.2ms)[0m  DROP TABLE "meme_tags" CASCADE
+  [1m[36m (5.9ms)[0m  [1mCREATE TABLE "meme_tags" ("id" serial primary key, "tag_id" integer, "meme_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "group_id" integer) [0m
+  [1m[35m (4.9ms)[0m  CREATE  INDEX  "index_meme_tags_on_group_id" ON "meme_tags" USING btree ("group_id")
+  [1m[36m (4.4ms)[0m  [1mCREATE  INDEX  "index_meme_tags_on_meme_id" ON "meme_tags" USING btree ("meme_id")[0m
+  [1m[35m (2.1ms)[0m  CREATE  INDEX  "index_meme_tags_on_tag_id" ON "meme_tags" USING btree ("tag_id")
+  [1m[36m (3.4ms)[0m  [1mDROP TABLE "memes" CASCADE[0m
+  [1m[35m (14.0ms)[0m  CREATE TABLE "memes" ("id" serial primary key, "creator_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "group_id" integer, "image_file_name" character varying, "image_content_type" character varying, "image_file_size" integer, "image_updated_at" timestamp) 
+  [1m[36m (11.1ms)[0m  [1mDROP TABLE "reactions" CASCADE[0m
+  [1m[35m (6.7ms)[0m  CREATE TABLE "reactions" ("id" serial primary key, "meme_id" integer, "user_id" integer, "reaction_type" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "group_id" integer) 
+  [1m[36m (10.5ms)[0m  [1mCREATE  INDEX  "index_reactions_on_group_id" ON "reactions" USING btree ("group_id")[0m
+  [1m[35m (6.5ms)[0m  CREATE  INDEX  "index_reactions_on_meme_id" ON "reactions" USING btree ("meme_id")
+  [1m[36m (1.3ms)[0m  [1mCREATE  INDEX  "index_reactions_on_user_id" ON "reactions" USING btree ("user_id")[0m
+  [1m[35m (7.3ms)[0m  DROP TABLE "tags" CASCADE
+  [1m[36m (35.9ms)[0m  [1mCREATE TABLE "tags" ("id" serial primary key, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "group_id" integer) [0m
+  [1m[35m (1.7ms)[0m  CREATE  INDEX  "index_tags_on_group_id" ON "tags" USING btree ("group_id")
+  [1m[36m (3.2ms)[0m  [1mDROP TABLE "users" CASCADE[0m
+  [1m[35m (15.3ms)[0m  CREATE TABLE "users" ("id" serial primary key, "username" character varying, "email" character varying, "password_digest" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "avatar" character varying) 
+  [1m[36m (1.5ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35mSQL (0.6ms)[0m  CREATE EXTENSION IF NOT EXISTS "plpgsql"
+  [1m[36m (12.5ms)[0m  [1mCREATE TABLE "comments" ("id" serial primary key, "user_id" integer, "meme_id" integer, "content" text, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "group_id" integer) [0m
+  [1m[35m (1.7ms)[0m  CREATE  INDEX  "index_comments_on_group_id" ON "comments" USING btree ("group_id")
+  [1m[36m (1.7ms)[0m  [1mCREATE  INDEX  "index_comments_on_meme_id" ON "comments" USING btree ("meme_id")[0m
+  [1m[35m (3.9ms)[0m  CREATE  INDEX  "index_comments_on_user_id" ON "comments" USING btree ("user_id")
+  [1m[36m (8.2ms)[0m  [1mCREATE TABLE "groups" ("id" serial primary key, "title" character varying, "group_creator_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "group_slug" character varying) [0m
+  [1m[35m (3.4ms)[0m  CREATE  INDEX  "index_groups_on_group_creator_id" ON "groups" USING btree ("group_creator_id")
+  [1m[36m (3.8ms)[0m  [1mCREATE  INDEX  "index_groups_on_group_slug" ON "groups" USING btree ("group_slug")[0m
+  [1m[35m (7.9ms)[0m  CREATE TABLE "invites" ("id" serial primary key, "inviter_id" integer, "invitee_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "group_id" integer) 
+  [1m[36m (1.4ms)[0m  [1mCREATE  INDEX  "index_invites_on_group_id" ON "invites" USING btree ("group_id")[0m
+  [1m[35m (1.4ms)[0m  CREATE  INDEX  "index_invites_on_invitee_id" ON "invites" USING btree ("invitee_id")
+  [1m[36m (9.3ms)[0m  [1mCREATE  INDEX  "index_invites_on_inviter_id" ON "invites" USING btree ("inviter_id")[0m
+  [1m[35m (7.0ms)[0m  CREATE TABLE "memberships" ("id" serial primary key, "user_id" integer, "group_id" integer, "user_type" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[36m (1.6ms)[0m  [1mCREATE  INDEX  "index_memberships_on_group_id" ON "memberships" USING btree ("group_id")[0m
+  [1m[35m (1.6ms)[0m  CREATE  INDEX  "index_memberships_on_user_id" ON "memberships" USING btree ("user_id")
+  [1m[36m (12.8ms)[0m  [1mCREATE TABLE "meme_tags" ("id" serial primary key, "tag_id" integer, "meme_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "group_id" integer) [0m
+  [1m[35m (1.7ms)[0m  CREATE  INDEX  "index_meme_tags_on_group_id" ON "meme_tags" USING btree ("group_id")
+  [1m[36m (2.5ms)[0m  [1mCREATE  INDEX  "index_meme_tags_on_meme_id" ON "meme_tags" USING btree ("meme_id")[0m
+  [1m[35m (3.2ms)[0m  CREATE  INDEX  "index_meme_tags_on_tag_id" ON "meme_tags" USING btree ("tag_id")
+  [1m[36m (19.0ms)[0m  [1mCREATE TABLE "memes" ("id" serial primary key, "creator_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "group_id" integer, "image_file_name" character varying, "image_content_type" character varying, "image_file_size" integer, "image_updated_at" timestamp) [0m
+  [1m[35m (13.8ms)[0m  CREATE TABLE "reactions" ("id" serial primary key, "meme_id" integer, "user_id" integer, "reaction_type" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "group_id" integer) 
+  [1m[36m (1.6ms)[0m  [1mCREATE  INDEX  "index_reactions_on_group_id" ON "reactions" USING btree ("group_id")[0m
+  [1m[35m (1.6ms)[0m  CREATE  INDEX  "index_reactions_on_meme_id" ON "reactions" USING btree ("meme_id")
+  [1m[36m (1.6ms)[0m  [1mCREATE  INDEX  "index_reactions_on_user_id" ON "reactions" USING btree ("user_id")[0m
+  [1m[35m (5.1ms)[0m  CREATE TABLE "tags" ("id" serial primary key, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "group_id" integer) 
+  [1m[36m (6.8ms)[0m  [1mCREATE  INDEX  "index_tags_on_group_id" ON "tags" USING btree ("group_id")[0m
+  [1m[35m (16.8ms)[0m  CREATE TABLE "users" ("id" serial primary key, "username" character varying, "email" character varying, "password_digest" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "avatar" character varying) 
+  [1m[36m (4.5ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
+  [1m[35m (1.7ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36m (0.9ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (8.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160520144522')
+  [1m[36m (3.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160517220005')[0m
+  [1m[35m (0.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160517220134')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160517220216')[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160517220236')
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160517220314')[0m
+  [1m[35m (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160517220336')
+  [1m[36m (0.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160517220425')[0m
+  [1m[35m (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160517220500')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160517220524')[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160518005942')
+  [1m[36m (1.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160518010530')[0m
+  [1m[35m (0.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160518193948')
+  [1m[36m (0.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160518202955')[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160518215637')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160519153457')[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160519174042')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160519202632')[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160520144418')
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Command :: file -b --mime '/var/folders/7g/9142rygs6bngwl84c7bh4d6c0000gn/T/03ea345ce429b6581d7c28c33305c2b620160520-44663-1542ds3.jpg'
+  [1m[35m (0.5ms)[0m  BEGIN
+Command :: file -b --mime '/var/folders/7g/9142rygs6bngwl84c7bh4d6c0000gn/T/03ea345ce429b6581d7c28c33305c2b620160520-44663-yah3c5.jpg'
+  [1m[36mSQL (2.2ms)[0m  [1mINSERT INTO "memes" ("image_file_name", "image_content_type", "image_file_size", "image_updated_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["image_file_name", "doge.jpg"], ["image_content_type", "image/jpeg"], ["image_file_size", 28208], ["image_updated_at", "2016-05-20 18:11:03.210406"], ["created_at", "2016-05-20 18:11:03.277376"], ["updated_at", "2016-05-20 18:11:03.277376"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+Command :: file -b --mime '/var/folders/7g/9142rygs6bngwl84c7bh4d6c0000gn/T/926e27eecdbc7a18858b3798ba99bddd20160520-44663-tx8hyg.jpeg'
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+Command :: file -b --mime '/var/folders/7g/9142rygs6bngwl84c7bh4d6c0000gn/T/926e27eecdbc7a18858b3798ba99bddd20160520-44663-11scoxy.jpeg'
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "memes" ("image_file_name", "image_content_type", "image_file_size", "image_updated_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["image_file_name", "pepe.jpeg"], ["image_content_type", "image/jpeg"], ["image_file_size", 14728], ["image_updated_at", "2016-05-20 18:11:03.304418"], ["created_at", "2016-05-20 18:11:03.338067"], ["updated_at", "2016-05-20 18:11:03.338067"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[36m (5093.6ms)[0m  [1mDROP DATABASE IF EXISTS "GroupMeme_development"[0m
+  [1m[35m (148.2ms)[0m  DROP DATABASE IF EXISTS "GroupMeme_test"
+  [1m[36m (6.6ms)[0m  [1mCREATE DATABASE "GroupMeme_development" ENCODING = 'unicode'[0m
+  [1m[35m (531.4ms)[0m  CREATE DATABASE "GroupMeme_test" ENCODING = 'unicode'
+  [1m[36mSQL (4.9ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (36.8ms)[0m  DROP TABLE "comments" CASCADE
+  [1m[36m (40.8ms)[0m  [1mCREATE TABLE "comments" ("id" serial primary key, "user_id" integer, "meme_id" integer, "content" text, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "group_id" integer) [0m
+  [1m[35m (3.8ms)[0m  CREATE  INDEX  "index_comments_on_group_id" ON "comments" USING btree ("group_id")
+  [1m[36m (2.3ms)[0m  [1mCREATE  INDEX  "index_comments_on_meme_id" ON "comments" USING btree ("meme_id")[0m
+  [1m[35m (14.0ms)[0m  CREATE  INDEX  "index_comments_on_user_id" ON "comments" USING btree ("user_id")
+  [1m[36m (4.3ms)[0m  [1mDROP TABLE "groups" CASCADE[0m
+  [1m[35m (9.4ms)[0m  CREATE TABLE "groups" ("id" serial primary key, "title" character varying, "group_creator_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "group_slug" character varying) 
+  [1m[36m (3.9ms)[0m  [1mCREATE  INDEX  "index_groups_on_group_creator_id" ON "groups" USING btree ("group_creator_id")[0m
+  [1m[35m (2.6ms)[0m  CREATE  INDEX  "index_groups_on_group_slug" ON "groups" USING btree ("group_slug")
+  [1m[36m (4.6ms)[0m  [1mDROP TABLE "invites" CASCADE[0m
+  [1m[35m (16.2ms)[0m  CREATE TABLE "invites" ("id" serial primary key, "inviter_id" integer, "invitee_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "group_id" integer) 
+  [1m[36m (1.7ms)[0m  [1mCREATE  INDEX  "index_invites_on_group_id" ON "invites" USING btree ("group_id")[0m
+  [1m[35m (1.9ms)[0m  CREATE  INDEX  "index_invites_on_invitee_id" ON "invites" USING btree ("invitee_id")
+  [1m[36m (1.9ms)[0m  [1mCREATE  INDEX  "index_invites_on_inviter_id" ON "invites" USING btree ("inviter_id")[0m
+  [1m[35m (5.4ms)[0m  DROP TABLE "memberships" CASCADE
+  [1m[36m (25.9ms)[0m  [1mCREATE TABLE "memberships" ("id" serial primary key, "user_id" integer, "group_id" integer, "user_type" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (16.8ms)[0m  CREATE  INDEX  "index_memberships_on_group_id" ON "memberships" USING btree ("group_id")
+  [1m[36m (4.8ms)[0m  [1mCREATE  INDEX  "index_memberships_on_user_id" ON "memberships" USING btree ("user_id")[0m
+  [1m[35m (4.3ms)[0m  DROP TABLE "meme_tags" CASCADE
+  [1m[36m (5.7ms)[0m  [1mCREATE TABLE "meme_tags" ("id" serial primary key, "tag_id" integer, "meme_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "group_id" integer) [0m
+  [1m[35m (1.9ms)[0m  CREATE  INDEX  "index_meme_tags_on_group_id" ON "meme_tags" USING btree ("group_id")
+  [1m[36m (3.0ms)[0m  [1mCREATE  INDEX  "index_meme_tags_on_meme_id" ON "meme_tags" USING btree ("meme_id")[0m
+  [1m[35m (1.7ms)[0m  CREATE  INDEX  "index_meme_tags_on_tag_id" ON "meme_tags" USING btree ("tag_id")
+  [1m[36m (5.3ms)[0m  [1mDROP TABLE "memes" CASCADE[0m
+  [1m[35m (10.5ms)[0m  CREATE TABLE "memes" ("id" serial primary key, "creator_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "group_id" integer, "image_file_name" character varying, "image_content_type" character varying, "image_file_size" integer, "image_updated_at" timestamp) 
+  [1m[36m (5.5ms)[0m  [1mDROP TABLE "reactions" CASCADE[0m
+  [1m[35m (34.5ms)[0m  CREATE TABLE "reactions" ("id" serial primary key, "meme_id" integer, "user_id" integer, "reaction_type" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "group_id" integer) 
+  [1m[36m (3.2ms)[0m  [1mCREATE  INDEX  "index_reactions_on_group_id" ON "reactions" USING btree ("group_id")[0m
+  [1m[35m (2.9ms)[0m  CREATE  INDEX  "index_reactions_on_meme_id" ON "reactions" USING btree ("meme_id")
+  [1m[36m (2.3ms)[0m  [1mCREATE  INDEX  "index_reactions_on_user_id" ON "reactions" USING btree ("user_id")[0m
+  [1m[35m (3.9ms)[0m  DROP TABLE "tags" CASCADE
+  [1m[36m (14.7ms)[0m  [1mCREATE TABLE "tags" ("id" serial primary key, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "group_id" integer) [0m
+  [1m[35m (11.6ms)[0m  CREATE  INDEX  "index_tags_on_group_id" ON "tags" USING btree ("group_id")
+  [1m[36m (3.7ms)[0m  [1mDROP TABLE "users" CASCADE[0m
+  [1m[35m (34.0ms)[0m  CREATE TABLE "users" ("id" serial primary key, "username" character varying, "email" character varying, "password_digest" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "avatar" character varying) 
+  [1m[36m (4.4ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35mSQL (1.0ms)[0m  CREATE EXTENSION IF NOT EXISTS "plpgsql"
+  [1m[36m (20.4ms)[0m  [1mCREATE TABLE "comments" ("id" serial primary key, "user_id" integer, "meme_id" integer, "content" text, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "group_id" integer) [0m
+  [1m[35m (2.0ms)[0m  CREATE  INDEX  "index_comments_on_group_id" ON "comments" USING btree ("group_id")
+  [1m[36m (3.7ms)[0m  [1mCREATE  INDEX  "index_comments_on_meme_id" ON "comments" USING btree ("meme_id")[0m
+  [1m[35m (2.2ms)[0m  CREATE  INDEX  "index_comments_on_user_id" ON "comments" USING btree ("user_id")
+  [1m[36m (7.5ms)[0m  [1mCREATE TABLE "groups" ("id" serial primary key, "title" character varying, "group_creator_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "group_slug" character varying) [0m
+  [1m[35m (3.1ms)[0m  CREATE  INDEX  "index_groups_on_group_creator_id" ON "groups" USING btree ("group_creator_id")
+  [1m[36m (25.6ms)[0m  [1mCREATE  INDEX  "index_groups_on_group_slug" ON "groups" USING btree ("group_slug")[0m
+  [1m[35m (7.2ms)[0m  CREATE TABLE "invites" ("id" serial primary key, "inviter_id" integer, "invitee_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "group_id" integer) 
+  [1m[36m (4.5ms)[0m  [1mCREATE  INDEX  "index_invites_on_group_id" ON "invites" USING btree ("group_id")[0m
+  [1m[35m (1.7ms)[0m  CREATE  INDEX  "index_invites_on_invitee_id" ON "invites" USING btree ("invitee_id")
+  [1m[36m (1.3ms)[0m  [1mCREATE  INDEX  "index_invites_on_inviter_id" ON "invites" USING btree ("inviter_id")[0m
+  [1m[35m (7.7ms)[0m  CREATE TABLE "memberships" ("id" serial primary key, "user_id" integer, "group_id" integer, "user_type" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[36m (2.1ms)[0m  [1mCREATE  INDEX  "index_memberships_on_group_id" ON "memberships" USING btree ("group_id")[0m
+  [1m[35m (2.4ms)[0m  CREATE  INDEX  "index_memberships_on_user_id" ON "memberships" USING btree ("user_id")
+  [1m[36m (4.3ms)[0m  [1mCREATE TABLE "meme_tags" ("id" serial primary key, "tag_id" integer, "meme_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "group_id" integer) [0m
+  [1m[35m (1.6ms)[0m  CREATE  INDEX  "index_meme_tags_on_group_id" ON "meme_tags" USING btree ("group_id")
+  [1m[36m (1.6ms)[0m  [1mCREATE  INDEX  "index_meme_tags_on_meme_id" ON "meme_tags" USING btree ("meme_id")[0m
+  [1m[35m (1.5ms)[0m  CREATE  INDEX  "index_meme_tags_on_tag_id" ON "meme_tags" USING btree ("tag_id")
+  [1m[36m (14.4ms)[0m  [1mCREATE TABLE "memes" ("id" serial primary key, "creator_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "group_id" integer, "image_file_name" character varying, "image_content_type" character varying, "image_file_size" integer, "image_updated_at" timestamp) [0m
+  [1m[35m (8.5ms)[0m  CREATE TABLE "reactions" ("id" serial primary key, "meme_id" integer, "user_id" integer, "reaction_type" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "group_id" integer) 
+  [1m[36m (1.6ms)[0m  [1mCREATE  INDEX  "index_reactions_on_group_id" ON "reactions" USING btree ("group_id")[0m
+  [1m[35m (2.4ms)[0m  CREATE  INDEX  "index_reactions_on_meme_id" ON "reactions" USING btree ("meme_id")
+  [1m[36m (1.6ms)[0m  [1mCREATE  INDEX  "index_reactions_on_user_id" ON "reactions" USING btree ("user_id")[0m
+  [1m[35m (6.3ms)[0m  CREATE TABLE "tags" ("id" serial primary key, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "group_id" integer) 
+  [1m[36m (2.6ms)[0m  [1mCREATE  INDEX  "index_tags_on_group_id" ON "tags" USING btree ("group_id")[0m
+  [1m[35m (7.6ms)[0m  CREATE TABLE "users" ("id" serial primary key, "username" character varying, "email" character varying, "password_digest" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "avatar" character varying) 
+  [1m[36m (4.0ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
+  [1m[35m (2.1ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36m (0.6ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (2.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160520144522')
+  [1m[36m (2.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160517220005')[0m
+  [1m[35m (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160517220134')
+  [1m[36m (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160517220216')[0m
+  [1m[35m (0.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160517220236')
+  [1m[36m (0.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160517220314')[0m
+  [1m[35m (1.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160517220336')
+  [1m[36m (0.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160517220425')[0m
+  [1m[35m (0.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160517220500')
+  [1m[36m (0.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160517220524')[0m
+  [1m[35m (0.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160518005942')
+  [1m[36m (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160518010530')[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160518193948')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160518202955')[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160518215637')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160519153457')[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160519174042')
+  [1m[36m (1.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160519202632')[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160520144418')
+  [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Command :: file -b --mime '/var/folders/7g/9142rygs6bngwl84c7bh4d6c0000gn/T/03ea345ce429b6581d7c28c33305c2b620160520-44731-qqmogj.jpg'
+  [1m[35m (1.0ms)[0m  BEGIN
+Command :: file -b --mime '/var/folders/7g/9142rygs6bngwl84c7bh4d6c0000gn/T/03ea345ce429b6581d7c28c33305c2b620160520-44731-n0qy67.jpg'
+  [1m[36mSQL (12.6ms)[0m  [1mINSERT INTO "memes" ("image_file_name", "image_content_type", "image_file_size", "image_updated_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["image_file_name", "doge.jpg"], ["image_content_type", "image/jpeg"], ["image_file_size", 28208], ["image_updated_at", "2016-05-20 18:12:11.169247"], ["created_at", "2016-05-20 18:12:11.318338"], ["updated_at", "2016-05-20 18:12:11.318338"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+Command :: file -b --mime '/var/folders/7g/9142rygs6bngwl84c7bh4d6c0000gn/T/926e27eecdbc7a18858b3798ba99bddd20160520-44731-j6u3mp.jpeg'
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+Command :: file -b --mime '/var/folders/7g/9142rygs6bngwl84c7bh4d6c0000gn/T/926e27eecdbc7a18858b3798ba99bddd20160520-44731-yrjw12.jpeg'
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "memes" ("image_file_name", "image_content_type", "image_file_size", "image_updated_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["image_file_name", "pepe.jpeg"], ["image_content_type", "image/jpeg"], ["image_file_size", 14728], ["image_updated_at", "2016-05-20 18:12:11.369661"], ["created_at", "2016-05-20 18:12:11.403680"], ["updated_at", "2016-05-20 18:12:11.403680"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+Command :: file -b --mime '/var/folders/7g/9142rygs6bngwl84c7bh4d6c0000gn/T/57793f7a37ed58746aafa76a7cda86da20160520-44731-qw4og3.jpg'
+  [1m[35m (0.2ms)[0m  BEGIN
+Command :: file -b --mime '/var/folders/7g/9142rygs6bngwl84c7bh4d6c0000gn/T/57793f7a37ed58746aafa76a7cda86da20160520-44731-fgwklc.jpg'
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "memes" ("image_file_name", "image_content_type", "image_file_size", "image_updated_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["image_file_name", "yuno.jpg"], ["image_content_type", "image/jpeg"], ["image_file_size", 78155], ["image_updated_at", "2016-05-20 18:12:11.416317"], ["created_at", "2016-05-20 18:12:11.441346"], ["updated_at", "2016-05-20 18:12:11.441346"]]
+  [1m[35m (1.2ms)[0m  COMMIT
+Command :: file -b --mime '/var/folders/7g/9142rygs6bngwl84c7bh4d6c0000gn/T/34902903de8d4fee8e6afe868982f0dd20160520-44731-1579tjc.jpg'
+  [1m[36m (0.5ms)[0m  [1mBEGIN[0m
+Command :: file -b --mime '/var/folders/7g/9142rygs6bngwl84c7bh4d6c0000gn/T/34902903de8d4fee8e6afe868982f0dd20160520-44731-12gu8fk.jpg'
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "memes" ("image_file_name", "image_content_type", "image_file_size", "image_updated_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["image_file_name", "beef.jpg"], ["image_content_type", "image/jpeg"], ["image_file_size", 166954], ["image_updated_at", "2016-05-20 18:12:11.465422"], ["created_at", "2016-05-20 18:12:11.491170"], ["updated_at", "2016-05-20 18:12:11.491170"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Command :: file -b --mime '/var/folders/7g/9142rygs6bngwl84c7bh4d6c0000gn/T/19b0edc9d1c65b91a8da5388a52f522620160520-44731-opb4dm.png'
+  [1m[35m (0.2ms)[0m  BEGIN
+Command :: file -b --mime '/var/folders/7g/9142rygs6bngwl84c7bh4d6c0000gn/T/19b0edc9d1c65b91a8da5388a52f522620160520-44731-k44bo7.png'
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "memes" ("image_file_name", "image_content_type", "image_file_size", "image_updated_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["image_file_name", "skeltal.png"], ["image_content_type", "image/png"], ["image_file_size", 147830], ["image_updated_at", "2016-05-20 18:12:11.507601"], ["created_at", "2016-05-20 18:12:11.528121"], ["updated_at", "2016-05-20 18:12:11.528121"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (1.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'jacobshiff' LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "jacobshiff"], ["email", "jacob@flatironschool.com"], ["password_digest", "$2a$10$XTYXz0cQUs7TxyzpQjinnOXfUWrtmkATys6q2Mx4s3hKGgNyt5Oxq"], ["created_at", "2016-05-20 18:12:11.713304"], ["updated_at", "2016-05-20 18:12:11.713304"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.5ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'xristo' LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "xristo"], ["email", "chris@flatironschool.com"], ["password_digest", "$2a$10$.yIdDUaDkOhSAwKNfClCpuRoIhFHFBhurCgOf725FT9ufpQaub.ry"], ["created_at", "2016-05-20 18:12:11.815162"], ["updated_at", "2016-05-20 18:12:11.815162"]]
+  [1m[35m (0.8ms)[0m  COMMIT
+  [1m[36m (0.5ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (1.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'rachelb' LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "rachelb"], ["email", "rachel@flatironschool.com"], ["password_digest", "$2a$10$ekwRuVv1r4jrff6lGHnc9eetO2rwH8bPNilO8lEoiNyZc1QiLrwgO"], ["created_at", "2016-05-20 18:12:11.919749"], ["updated_at", "2016-05-20 18:12:11.919749"]]
+  [1m[35m (0.9ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'kwebster2' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "kwebster2"], ["email", "kevin@flatironschool.com"], ["password_digest", "$2a$10$/N7H/53.k8ZPkqi.Sjahde4G.5k4Qt4Z.3G6M.ERmlVBL8309KdrK"], ["created_at", "2016-05-20 18:12:12.021299"], ["updated_at", "2016-05-20 18:12:12.021299"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (5.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.7ms)[0m  UPDATE "memes" SET "creator_id" = $1, "updated_at" = $2 WHERE "memes"."id" = $3  [["creator_id", 3], ["updated_at", "2016-05-20 18:12:12.063878"], ["id", 1]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.6ms)[0m  [1mUPDATE "memes" SET "creator_id" = $1, "updated_at" = $2 WHERE "memes"."id" = $3[0m  [["creator_id", 3], ["updated_at", "2016-05-20 18:12:12.088943"], ["id", 2]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "memes" SET "creator_id" = $1, "updated_at" = $2 WHERE "memes"."id" = $3  [["creator_id", 2], ["updated_at", "2016-05-20 18:12:12.095838"], ["id", 3]]
+  [1m[36m (1.0ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "memes" SET "creator_id" = $1, "updated_at" = $2 WHERE "memes"."id" = $3[0m  [["creator_id", 2], ["updated_at", "2016-05-20 18:12:12.101692"], ["id", 4]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.1ms)[0m  UPDATE "memes" SET "creator_id" = $1, "updated_at" = $2 WHERE "memes"."id" = $3  [["creator_id", 4], ["updated_at", "2016-05-20 18:12:12.105629"], ["id", 5]]
+  [1m[36m (3.0ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (1.8ms)[0m  [1mINSERT INTO "groups" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["title", "Flatiron School"], ["created_at", "2016-05-20 18:12:12.129101"], ["updated_at", "2016-05-20 18:12:12.129101"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "groups" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["title", "Google"], ["created_at", "2016-05-20 18:12:12.134860"], ["updated_at", "2016-05-20 18:12:12.134860"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "groups" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["title", "Delta Nu Sorority"], ["created_at", "2016-05-20 18:12:12.139264"], ["updated_at", "2016-05-20 18:12:12.139264"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "groups" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["title", "Friends"], ["created_at", "2016-05-20 18:12:12.142274"], ["updated_at", "2016-05-20 18:12:12.142274"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "groups" SET "group_slug" = $1, "group_creator_id" = $2, "updated_at" = $3 WHERE "groups"."id" = $4[0m  [["group_slug", "flatiron-school"], ["group_creator_id", 2], ["updated_at", "2016-05-20 18:12:12.146837"], ["id", 1]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  UPDATE "groups" SET "group_slug" = $1, "group_creator_id" = $2, "updated_at" = $3 WHERE "groups"."id" = $4  [["group_slug", "google"], ["group_creator_id", 1], ["updated_at", "2016-05-20 18:12:12.156483"], ["id", 2]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "groups" SET "group_slug" = $1, "group_creator_id" = $2, "updated_at" = $3 WHERE "groups"."id" = $4[0m  [["group_slug", "delta-nu"], ["group_creator_id", 3], ["updated_at", "2016-05-20 18:12:12.160237"], ["id", 3]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "groups" SET "group_slug" = $1, "group_creator_id" = $2, "updated_at" = $3 WHERE "groups"."id" = $4  [["group_slug", "my-friends"], ["group_creator_id", 3], ["updated_at", "2016-05-20 18:12:12.162962"], ["id", 4]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (1.4ms)[0m  [1mINSERT INTO "comments" ("content", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["content", "Lollllzzzzz"], ["created_at", "2016-05-20 18:12:12.183942"], ["updated_at", "2016-05-20 18:12:12.183942"]]
+  [1m[35m (0.7ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "comments" ("content", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["content", "This is amazing"], ["created_at", "2016-05-20 18:12:12.189685"], ["updated_at", "2016-05-20 18:12:12.189685"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "comments" ("content", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["content", "Ron Paul 2012"], ["created_at", "2016-05-20 18:12:12.192882"], ["updated_at", "2016-05-20 18:12:12.192882"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "comments" ("content", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["content", "What is this meme?"], ["created_at", "2016-05-20 18:12:12.195707"], ["updated_at", "2016-05-20 18:12:12.195707"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "comments" ("content", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["content", "Haahhahaah. Amazing"], ["created_at", "2016-05-20 18:12:12.198656"], ["updated_at", "2016-05-20 18:12:12.198656"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  UPDATE "comments" SET "user_id" = $1, "meme_id" = $2, "updated_at" = $3 WHERE "comments"."id" = $4  [["user_id", 1], ["meme_id", 1], ["updated_at", "2016-05-20 18:12:12.207066"], ["id", 1]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "comments" SET "user_id" = $1, "meme_id" = $2, "updated_at" = $3 WHERE "comments"."id" = $4[0m  [["user_id", 1], ["meme_id", 2], ["updated_at", "2016-05-20 18:12:12.211189"], ["id", 2]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "comments" SET "user_id" = $1, "meme_id" = $2, "updated_at" = $3 WHERE "comments"."id" = $4  [["user_id", 2], ["meme_id", 1], ["updated_at", "2016-05-20 18:12:12.214255"], ["id", 3]]
+  [1m[36m (0.8ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (1.0ms)[0m  [1mUPDATE "comments" SET "user_id" = $1, "meme_id" = $2, "updated_at" = $3 WHERE "comments"."id" = $4[0m  [["user_id", 1], ["meme_id", 4], ["updated_at", "2016-05-20 18:12:12.218322"], ["id", 4]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  UPDATE "comments" SET "user_id" = $1, "meme_id" = $2, "updated_at" = $3 WHERE "comments"."id" = $4  [["user_id", 1], ["meme_id", 1], ["updated_at", "2016-05-20 18:12:12.223879"], ["id", 5]]
+  [1m[36m (1.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36mSQL (1.3ms)[0m  [1mINSERT INTO "reactions" ("reaction_type", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["reaction_type", "like"], ["created_at", "2016-05-20 18:12:12.249524"], ["updated_at", "2016-05-20 18:12:12.249524"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.1ms)[0m  INSERT INTO "reactions" ("reaction_type", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["reaction_type", "like"], ["created_at", "2016-05-20 18:12:12.256664"], ["updated_at", "2016-05-20 18:12:12.256664"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "reactions" ("reaction_type", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["reaction_type", "like"], ["created_at", "2016-05-20 18:12:12.262005"], ["updated_at", "2016-05-20 18:12:12.262005"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "reactions" ("reaction_type", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["reaction_type", "dislike"], ["created_at", "2016-05-20 18:12:12.265971"], ["updated_at", "2016-05-20 18:12:12.265971"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "reactions" ("reaction_type", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["reaction_type", "dislike"], ["created_at", "2016-05-20 18:12:12.269021"], ["updated_at", "2016-05-20 18:12:12.269021"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "reactions" SET "user_id" = $1, "meme_id" = $2, "updated_at" = $3 WHERE "reactions"."id" = $4  [["user_id", 3], ["meme_id", 1], ["updated_at", "2016-05-20 18:12:12.276750"], ["id", 1]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.6ms)[0m  [1mUPDATE "reactions" SET "user_id" = $1, "meme_id" = $2, "updated_at" = $3 WHERE "reactions"."id" = $4[0m  [["user_id", 2], ["meme_id", 1], ["updated_at", "2016-05-20 18:12:12.280245"], ["id", 2]]
+  [1m[35m (0.7ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "reactions" SET "user_id" = $1, "meme_id" = $2, "updated_at" = $3 WHERE "reactions"."id" = $4  [["user_id", 3], ["meme_id", 2], ["updated_at", "2016-05-20 18:12:12.284521"], ["id", 3]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.6ms)[0m  [1mUPDATE "reactions" SET "user_id" = $1, "meme_id" = $2, "updated_at" = $3 WHERE "reactions"."id" = $4[0m  [["user_id", 1], ["meme_id", 2], ["updated_at", "2016-05-20 18:12:12.289239"], ["id", 4]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  UPDATE "reactions" SET "user_id" = $1, "meme_id" = $2, "updated_at" = $3 WHERE "reactions"."id" = $4  [["user_id", 2], ["meme_id", 4], ["updated_at", "2016-05-20 18:12:12.293870"], ["id", 5]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "tags" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Ping Pong"], ["created_at", "2016-05-20 18:12:12.319096"], ["updated_at", "2016-05-20 18:12:12.319096"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (3.1ms)[0m  INSERT INTO "meme_tags" ("meme_id", "tag_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["meme_id", 1], ["tag_id", 1], ["created_at", "2016-05-20 18:12:12.362136"], ["updated_at", "2016-05-20 18:12:12.362136"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "meme_tags" ("meme_id", "tag_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["meme_id", 2], ["tag_id", 1], ["created_at", "2016-05-20 18:12:12.372177"], ["updated_at", "2016-05-20 18:12:12.372177"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "meme_tags" ("meme_id", "tag_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["meme_id", 4], ["tag_id", 1], ["created_at", "2016-05-20 18:12:12.380300"], ["updated_at", "2016-05-20 18:12:12.380300"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "tags" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "JavaScript"], ["created_at", "2016-05-20 18:12:12.383255"], ["updated_at", "2016-05-20 18:12:12.383255"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "meme_tags" ("meme_id", "tag_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["meme_id", 3], ["tag_id", 2], ["created_at", "2016-05-20 18:12:12.388065"], ["updated_at", "2016-05-20 18:12:12.388065"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "tags" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Ruby"], ["created_at", "2016-05-20 18:12:12.391019"], ["updated_at", "2016-05-20 18:12:12.391019"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "meme_tags" ("meme_id", "tag_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["meme_id", 4], ["tag_id", 3], ["created_at", "2016-05-20 18:12:12.394966"], ["updated_at", "2016-05-20 18:12:12.394966"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (4.3ms)[0m  [1mINSERT INTO "meme_tags" ("meme_id", "tag_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["meme_id", 1], ["tag_id", 3], ["created_at", "2016-05-20 18:12:12.398688"], ["updated_at", "2016-05-20 18:12:12.398688"]]
+  [1m[35m (0.7ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Lunch"], ["created_at", "2016-05-20 18:12:12.406812"], ["updated_at", "2016-05-20 18:12:12.406812"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "meme_tags" ("meme_id", "tag_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["meme_id", 2], ["tag_id", 4], ["created_at", "2016-05-20 18:12:12.411428"], ["updated_at", "2016-05-20 18:12:12.411428"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "memes" SET "group_id" = $1, "updated_at" = $2 WHERE "memes"."id" = $3  [["group_id", 1], ["updated_at", "2016-05-20 18:12:12.416626"], ["id", 1]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mUPDATE "memes" SET "group_id" = $1, "updated_at" = $2 WHERE "memes"."id" = $3[0m  [["group_id", 1], ["updated_at", "2016-05-20 18:12:12.421328"], ["id", 2]]
+  [1m[35m (0.9ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "memes" SET "group_id" = $1, "updated_at" = $2 WHERE "memes"."id" = $3  [["group_id", 1], ["updated_at", "2016-05-20 18:12:12.426957"], ["id", 3]]
+  [1m[36m (0.8ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mUPDATE "memes" SET "group_id" = $1, "updated_at" = $2 WHERE "memes"."id" = $3[0m  [["group_id", 1], ["updated_at", "2016-05-20 18:12:12.431846"], ["id", 4]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  UPDATE "memes" SET "group_id" = $1, "updated_at" = $2 WHERE "memes"."id" = $3  [["group_id", 2], ["updated_at", "2016-05-20 18:12:12.436271"], ["id", 5]]
+  [1m[36m (1.7ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "comments" SET "group_id" = $1, "updated_at" = $2 WHERE "comments"."id" = $3[0m  [["group_id", 1], ["updated_at", "2016-05-20 18:12:12.443660"], ["id", 1]]
+  [1m[35m (1.1ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  UPDATE "comments" SET "group_id" = $1, "updated_at" = $2 WHERE "comments"."id" = $3  [["group_id", 1], ["updated_at", "2016-05-20 18:12:12.448304"], ["id", 2]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mUPDATE "comments" SET "group_id" = $1, "updated_at" = $2 WHERE "comments"."id" = $3[0m  [["group_id", 1], ["updated_at", "2016-05-20 18:12:12.452786"], ["id", 3]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "comments" SET "group_id" = $1, "updated_at" = $2 WHERE "comments"."id" = $3  [["group_id", 1], ["updated_at", "2016-05-20 18:12:12.457085"], ["id", 4]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "comments" SET "group_id" = $1, "updated_at" = $2 WHERE "comments"."id" = $3[0m  [["group_id", 1], ["updated_at", "2016-05-20 18:12:12.460876"], ["id", 5]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "reactions" SET "group_id" = $1, "updated_at" = $2 WHERE "reactions"."id" = $3  [["group_id", 1], ["updated_at", "2016-05-20 18:12:12.465285"], ["id", 1]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.7ms)[0m  [1mUPDATE "reactions" SET "group_id" = $1, "updated_at" = $2 WHERE "reactions"."id" = $3[0m  [["group_id", 1], ["updated_at", "2016-05-20 18:12:12.468441"], ["id", 2]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "reactions" SET "group_id" = $1, "updated_at" = $2 WHERE "reactions"."id" = $3  [["group_id", 1], ["updated_at", "2016-05-20 18:12:12.471704"], ["id", 3]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "reactions" SET "group_id" = $1, "updated_at" = $2 WHERE "reactions"."id" = $3[0m  [["group_id", 1], ["updated_at", "2016-05-20 18:12:12.474433"], ["id", 4]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "reactions" SET "group_id" = $1, "updated_at" = $2 WHERE "reactions"."id" = $3  [["group_id", 1], ["updated_at", "2016-05-20 18:12:12.477918"], ["id", 5]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (6.5ms)[0m  [1mINSERT INTO "memberships" ("group_id", "user_id", "user_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["group_id", 1], ["user_id", 1], ["user_type", "admin"], ["created_at", "2016-05-20 18:12:12.493671"], ["updated_at", "2016-05-20 18:12:12.493671"]]
+  [1m[35m (1.3ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "memberships" ("group_id", "user_id", "user_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["group_id", 1], ["user_id", 2], ["user_type", "member"], ["created_at", "2016-05-20 18:12:12.505785"], ["updated_at", "2016-05-20 18:12:12.505785"]]
+  [1m[36m (1.0ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "memberships" ("group_id", "user_id", "user_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["group_id", 1], ["user_id", 3], ["user_type", "member"], ["created_at", "2016-05-20 18:12:12.510065"], ["updated_at", "2016-05-20 18:12:12.510065"]]
+  [1m[35m (0.8ms)[0m  COMMIT
+
+
+Started GET "/flatiron-school/memes" for ::1 at 2016-05-20 14:12:17 -0400
+Processing by MemesController#index as HTML
+  Parameters: {"group_slug"=>"flatiron-school"}
+  [1m[35mGroup Load (6.6ms)[0m  SELECT  "groups".* FROM "groups" WHERE "groups"."group_slug" = $1 LIMIT 1  [["group_slug", "flatiron-school"]]
+  [1m[36mUser Load (5.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "groups".* FROM "groups" WHERE "groups"."group_slug" = $1 LIMIT 1  [["group_slug", "flatiron-school"]]
+  [1m[36mGroup Exists (7.7ms)[0m  [1mSELECT  1 AS one FROM "groups" INNER JOIN "memberships" ON "groups"."id" = "memberships"."group_id" WHERE "memberships"."user_id" = $1 AND "groups"."id" = $2 LIMIT 1[0m  [["user_id", 1], ["id", 1]]
+  [1m[35mMeme Load (3.1ms)[0m  SELECT "memes".* FROM "memes" WHERE "memes"."group_id" = 1
+  [1m[36mGroup Load (8.2ms)[0m  [1mSELECT  "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered memes/index.html.erb within layouts/application (126.3ms)
+Completed 200 OK in 1050ms (Views: 864.8ms | ActiveRecord: 31.1ms)
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 14:12:19 -0400
+
+
+Started GET "/assets/invites.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 14:12:19 -0400
+
+
+Started GET "/assets/meme_tags.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 14:12:19 -0400
+
+
+Started GET "/assets/memberships.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 14:12:19 -0400
+
+
+Started GET "/assets/groups.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 14:12:19 -0400
+
+
+Started GET "/assets/application.self-1f2644396014951a67414c412f8a67fbfd21a3cfc0063a7ff075e180fe5f50dc.css?body=1" for ::1 at 2016-05-20 14:12:19 -0400
+
+
+Started GET "/assets/tags.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 14:12:19 -0400
+
+
+Started GET "/assets/registration.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 14:12:19 -0400
+
+
+Started GET "/assets/reactions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 14:12:19 -0400
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 14:12:19 -0400
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for ::1 at 2016-05-20 14:12:19 -0400
+
+
+Started GET "/assets/memes.self-0c79d5d68de531b9d9b39e20891d36a075748e76df1c42aea66d7a4b8aad2d78.css?body=1" for ::1 at 2016-05-20 14:12:19 -0400
+
+
+Started GET "/assets/memberships.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 14:12:19 -0400
+
+
+Started GET "/assets/comments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 14:12:19 -0400
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for ::1 at 2016-05-20 14:12:19 -0400
+
+
+Started GET "/assets/invites.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 14:12:19 -0400
+
+
+Started GET "/assets/groups.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 14:12:19 -0400
+
+
+Started GET "/assets/reactions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 14:12:19 -0400
+
+
+Started GET "/assets/memes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 14:12:19 -0400
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2016-05-20 14:12:19 -0400
+
+
+Started GET "/assets/meme_tags.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 14:12:19 -0400
+
+
+Started GET "/assets/users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 14:12:20 -0400
+
+
+Started GET "/assets/tags.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 14:12:20 -0400
+
+
+Started GET "/assets/bootstrap/affix.self-3555752f8a930795ee9e56751a52e6871104ae85d01b3ab8363da3802a5ecc78.js?body=1" for ::1 at 2016-05-20 14:12:20 -0400
+
+
+Started GET "/assets/bootstrap/alert.self-d8b7bd612b3dcfdefb7b5539b9d5848d66ccbd3e7af8bb8d48bfb3288aaa7be8.js?body=1" for ::1 at 2016-05-20 14:12:20 -0400
+
+
+Started GET "/assets/registration.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 14:12:20 -0400
+
+
+Started GET "/assets/bootstrap/carousel.self-35d204878d906298e55bc24553e11fd89b980fc4ffe5792fe36af8c0da289c54.js?body=1" for ::1 at 2016-05-20 14:12:20 -0400
+
+
+Started GET "/assets/bootstrap/button.self-e74d33ba39500940a78d6fa4d2d64f6ca7fd86d60a2149641f7fde7ba711d8a1.js?body=1" for ::1 at 2016-05-20 14:12:20 -0400
+
+
+Started GET "/assets/bootstrap/modal.self-62463080dba6b9d024ff0a3192da0e76eacbc683194f3395047c6f5cfa0acb59.js?body=1" for ::1 at 2016-05-20 14:12:20 -0400
+
+
+Started GET "/assets/bootstrap/collapse.self-056c40532d9f0f126ec17e839f60c942f573fbd61a086e7f156306e3fc5e8c1f.js?body=1" for ::1 at 2016-05-20 14:12:20 -0400
+
+
+Started GET "/assets/bootstrap/dropdown.self-e56c2ffee4618411d43ecf15c89273f6223847ad756e1cd17545d04afa732ed4.js?body=1" for ::1 at 2016-05-20 14:12:20 -0400
+
+
+Started GET "/assets/bootstrap/tooltip.self-facdc69246a072acb927ded77ff655f7c27a518b9357fddd45d119fbc8a0ab9f.js?body=1" for ::1 at 2016-05-20 14:12:20 -0400
+
+
+Started GET "/assets/bootstrap/transition.self-3b268d4cd8c79e46ded7392885f72f64ffb5b0d49948a12b8cf9779f6163e13a.js?body=1" for ::1 at 2016-05-20 14:12:20 -0400
+
+
+Started GET "/assets/bootstrap/scrollspy.self-52afd90e8ba97d9f08617a13986e8869d6c4a45751c0bff59a6f91241e722aca.js?body=1" for ::1 at 2016-05-20 14:12:20 -0400
+
+
+Started GET "/assets/bootstrap-sprockets.self-fbfa5ad7d9aa0afe439ec4ff3883acc4cb92b62cb67c40d674320c9aa1d4642d.js?body=1" for ::1 at 2016-05-20 14:12:20 -0400
+
+
+Started GET "/assets/bootstrap/popover.self-210cff1fb4b72b71a29b5122180cb5937c8145cd13a934dc838280f1d9607a3e.js?body=1" for ::1 at 2016-05-20 14:12:20 -0400
+
+
+Started GET "/assets/application.self-f8806224e027f3e3f0138ea9ce99319e298dfdb323304d1f1be6eae8e8c74724.js?body=1" for ::1 at 2016-05-20 14:12:20 -0400
+
+
+Started GET "/assets/bootstrap/tab.self-dad0d5c377f9fae26394484535ebb23ccf68afae084f896af6ea4cdf8c9f6ae0.js?body=1" for ::1 at 2016-05-20 14:12:20 -0400
+
+
+Started GET "/flatiron-school/memes" for ::1 at 2016-05-20 14:13:00 -0400
+Processing by MemesController#index as HTML
+  Parameters: {"group_slug"=>"flatiron-school"}
+  [1m[36mGroup Load (7.9ms)[0m  [1mSELECT  "groups".* FROM "groups" WHERE "groups"."group_slug" = $1 LIMIT 1[0m  [["group_slug", "flatiron-school"]]
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.1ms)[0m  [1mSELECT  "groups".* FROM "groups" WHERE "groups"."group_slug" = $1 LIMIT 1[0m  [["group_slug", "flatiron-school"]]
+  [1m[35mGroup Exists (15.9ms)[0m  SELECT  1 AS one FROM "groups" INNER JOIN "memberships" ON "groups"."id" = "memberships"."group_id" WHERE "memberships"."user_id" = $1 AND "groups"."id" = $2 LIMIT 1  [["user_id", 1], ["id", 1]]
+  [1m[36mMeme Load (3.1ms)[0m  [1mSELECT "memes".* FROM "memes" WHERE "memes"."group_id" = 1[0m
+  [1m[35mGroup Load (1.9ms)[0m  SELECT  "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered memes/index.html.erb within layouts/application (65.8ms)
+Completed 200 OK in 645ms (Views: 489.4ms | ActiveRecord: 29.6ms)
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 14:13:01 -0400
+
+
+Started GET "/assets/groups.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 14:13:01 -0400
+
+
+Started GET "/assets/meme_tags.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 14:13:01 -0400
+
+
+Started GET "/assets/memes.self-0c79d5d68de531b9d9b39e20891d36a075748e76df1c42aea66d7a4b8aad2d78.css?body=1" for ::1 at 2016-05-20 14:13:01 -0400
+
+
+Started GET "/assets/invites.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 14:13:01 -0400
+
+
+Started GET "/assets/memberships.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 14:13:01 -0400
+
+
+Started GET "/assets/reactions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 14:13:01 -0400
+
+
+Started GET "/assets/registration.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 14:13:01 -0400
+
+
+Started GET "/assets/tags.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 14:13:01 -0400
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 14:13:01 -0400
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2016-05-20 14:13:01 -0400
+
+
+Started GET "/assets/comments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 14:13:01 -0400
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for ::1 at 2016-05-20 14:13:02 -0400
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for ::1 at 2016-05-20 14:13:02 -0400
+
+
+Started GET "/assets/application.self-1f2644396014951a67414c412f8a67fbfd21a3cfc0063a7ff075e180fe5f50dc.css?body=1" for ::1 at 2016-05-20 14:13:02 -0400
+
+
+Started GET "/assets/groups.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 14:13:02 -0400
+
+
+Started GET "/assets/memberships.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 14:13:02 -0400
+
+
+Started GET "/assets/invites.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 14:13:02 -0400
+
+
+Started GET "/assets/meme_tags.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 14:13:02 -0400
+
+
+Started GET "/assets/memes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 14:13:02 -0400
+
+
+Started GET "/assets/reactions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 14:13:02 -0400
+
+
+Started GET "/assets/registration.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 14:13:02 -0400
+
+
+Started GET "/assets/tags.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 14:13:02 -0400
+
+
+Started GET "/assets/users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 14:13:02 -0400
+
+
+Started GET "/assets/bootstrap/affix.self-3555752f8a930795ee9e56751a52e6871104ae85d01b3ab8363da3802a5ecc78.js?body=1" for ::1 at 2016-05-20 14:13:02 -0400
+
+
+Started GET "/assets/bootstrap/alert.self-d8b7bd612b3dcfdefb7b5539b9d5848d66ccbd3e7af8bb8d48bfb3288aaa7be8.js?body=1" for ::1 at 2016-05-20 14:13:02 -0400
+
+
+Started GET "/assets/bootstrap/button.self-e74d33ba39500940a78d6fa4d2d64f6ca7fd86d60a2149641f7fde7ba711d8a1.js?body=1" for ::1 at 2016-05-20 14:13:02 -0400
+
+
+Started GET "/assets/bootstrap/carousel.self-35d204878d906298e55bc24553e11fd89b980fc4ffe5792fe36af8c0da289c54.js?body=1" for ::1 at 2016-05-20 14:13:02 -0400
+
+
+Started GET "/assets/bootstrap/collapse.self-056c40532d9f0f126ec17e839f60c942f573fbd61a086e7f156306e3fc5e8c1f.js?body=1" for ::1 at 2016-05-20 14:13:02 -0400
+
+
+Started GET "/assets/bootstrap/tab.self-dad0d5c377f9fae26394484535ebb23ccf68afae084f896af6ea4cdf8c9f6ae0.js?body=1" for ::1 at 2016-05-20 14:13:02 -0400
+
+
+Started GET "/assets/bootstrap/dropdown.self-e56c2ffee4618411d43ecf15c89273f6223847ad756e1cd17545d04afa732ed4.js?body=1" for ::1 at 2016-05-20 14:13:02 -0400
+
+
+Started GET "/assets/bootstrap/modal.self-62463080dba6b9d024ff0a3192da0e76eacbc683194f3395047c6f5cfa0acb59.js?body=1" for ::1 at 2016-05-20 14:13:02 -0400
+
+
+Started GET "/assets/bootstrap/scrollspy.self-52afd90e8ba97d9f08617a13986e8869d6c4a45751c0bff59a6f91241e722aca.js?body=1" for ::1 at 2016-05-20 14:13:02 -0400
+
+
+Started GET "/assets/bootstrap/transition.self-3b268d4cd8c79e46ded7392885f72f64ffb5b0d49948a12b8cf9779f6163e13a.js?body=1" for ::1 at 2016-05-20 14:13:02 -0400
+
+
+Started GET "/assets/bootstrap/tooltip.self-facdc69246a072acb927ded77ff655f7c27a518b9357fddd45d119fbc8a0ab9f.js?body=1" for ::1 at 2016-05-20 14:13:02 -0400
+
+
+Started GET "/assets/bootstrap/popover.self-210cff1fb4b72b71a29b5122180cb5937c8145cd13a934dc838280f1d9607a3e.js?body=1" for ::1 at 2016-05-20 14:13:02 -0400
+
+
+Started GET "/assets/application.self-f8806224e027f3e3f0138ea9ce99319e298dfdb323304d1f1be6eae8e8c74724.js?body=1" for ::1 at 2016-05-20 14:13:02 -0400
+
+
+Started GET "/assets/bootstrap-sprockets.self-fbfa5ad7d9aa0afe439ec4ff3883acc4cb92b62cb67c40d674320c9aa1d4642d.js?body=1" for ::1 at 2016-05-20 14:13:02 -0400
+
+
+Started GET "/flatiron-school/memes" for ::1 at 2016-05-20 14:13:04 -0400
+Processing by MemesController#index as HTML
+  Parameters: {"group_slug"=>"flatiron-school"}
+  [1m[35mGroup Load (1.1ms)[0m  SELECT  "groups".* FROM "groups" WHERE "groups"."group_slug" = $1 LIMIT 1  [["group_slug", "flatiron-school"]]
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.1ms)[0m  SELECT  "groups".* FROM "groups" WHERE "groups"."group_slug" = $1 LIMIT 1  [["group_slug", "flatiron-school"]]
+  [1m[36mGroup Exists (1.9ms)[0m  [1mSELECT  1 AS one FROM "groups" INNER JOIN "memberships" ON "groups"."id" = "memberships"."group_id" WHERE "memberships"."user_id" = $1 AND "groups"."id" = $2 LIMIT 1[0m  [["user_id", 1], ["id", 1]]
+  [1m[35mMeme Load (1.0ms)[0m  SELECT "memes".* FROM "memes" WHERE "memes"."group_id" = 1
+  [1m[36mGroup Load (0.5ms)[0m  [1mSELECT  "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.1ms)[0m  SELECT  "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered memes/index.html.erb within layouts/application (46.8ms)
+Completed 200 OK in 732ms (Views: 556.5ms | ActiveRecord: 5.4ms)
+
+
+Started GET "/assets/groups.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 14:13:05 -0400
+
+
+Started GET "/assets/invites.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 14:13:05 -0400
+
+
+Started GET "/assets/memberships.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 14:13:05 -0400
+
+
+Started GET "/assets/meme_tags.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 14:13:05 -0400
+
+
+Started GET "/assets/memes.self-0c79d5d68de531b9d9b39e20891d36a075748e76df1c42aea66d7a4b8aad2d78.css?body=1" for ::1 at 2016-05-20 14:13:05 -0400
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 14:13:05 -0400
+
+
+Started GET "/assets/registration.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 14:13:05 -0400
+
+
+Started GET "/assets/reactions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 14:13:05 -0400
+
+
+Started GET "/assets/tags.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 14:13:05 -0400
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 14:13:05 -0400
+
+
+Started GET "/assets/application.self-1f2644396014951a67414c412f8a67fbfd21a3cfc0063a7ff075e180fe5f50dc.css?body=1" for ::1 at 2016-05-20 14:13:05 -0400
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for ::1 at 2016-05-20 14:13:05 -0400
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for ::1 at 2016-05-20 14:13:05 -0400
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2016-05-20 14:13:05 -0400
+
+
+Started GET "/assets/groups.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 14:13:05 -0400
+
+
+Started GET "/assets/comments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 14:13:05 -0400
+
+
+Started GET "/assets/invites.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 14:13:05 -0400
+
+
+Started GET "/assets/meme_tags.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 14:13:05 -0400
+
+
+Started GET "/assets/memberships.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 14:13:05 -0400
+
+
+Started GET "/assets/memes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 14:13:05 -0400
+
+
+Started GET "/assets/reactions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 14:13:05 -0400
+
+
+Started GET "/assets/registration.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 14:13:05 -0400
+
+
+Started GET "/assets/tags.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 14:13:05 -0400
+
+
+Started GET "/assets/users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 14:13:05 -0400
+
+
+Started GET "/assets/bootstrap/affix.self-3555752f8a930795ee9e56751a52e6871104ae85d01b3ab8363da3802a5ecc78.js?body=1" for ::1 at 2016-05-20 14:13:05 -0400
+
+
+Started GET "/assets/bootstrap/alert.self-d8b7bd612b3dcfdefb7b5539b9d5848d66ccbd3e7af8bb8d48bfb3288aaa7be8.js?body=1" for ::1 at 2016-05-20 14:13:05 -0400
+
+
+Started GET "/assets/bootstrap/button.self-e74d33ba39500940a78d6fa4d2d64f6ca7fd86d60a2149641f7fde7ba711d8a1.js?body=1" for ::1 at 2016-05-20 14:13:05 -0400
+
+
+Started GET "/assets/bootstrap/carousel.self-35d204878d906298e55bc24553e11fd89b980fc4ffe5792fe36af8c0da289c54.js?body=1" for ::1 at 2016-05-20 14:13:05 -0400
+
+
+Started GET "/assets/bootstrap/collapse.self-056c40532d9f0f126ec17e839f60c942f573fbd61a086e7f156306e3fc5e8c1f.js?body=1" for ::1 at 2016-05-20 14:13:05 -0400
+
+
+Started GET "/assets/bootstrap/dropdown.self-e56c2ffee4618411d43ecf15c89273f6223847ad756e1cd17545d04afa732ed4.js?body=1" for ::1 at 2016-05-20 14:13:05 -0400
+
+
+Started GET "/assets/bootstrap/modal.self-62463080dba6b9d024ff0a3192da0e76eacbc683194f3395047c6f5cfa0acb59.js?body=1" for ::1 at 2016-05-20 14:13:05 -0400
+
+
+Started GET "/assets/bootstrap/scrollspy.self-52afd90e8ba97d9f08617a13986e8869d6c4a45751c0bff59a6f91241e722aca.js?body=1" for ::1 at 2016-05-20 14:13:05 -0400
+
+
+Started GET "/assets/bootstrap/tab.self-dad0d5c377f9fae26394484535ebb23ccf68afae084f896af6ea4cdf8c9f6ae0.js?body=1" for ::1 at 2016-05-20 14:13:05 -0400
+
+
+Started GET "/assets/bootstrap/transition.self-3b268d4cd8c79e46ded7392885f72f64ffb5b0d49948a12b8cf9779f6163e13a.js?body=1" for ::1 at 2016-05-20 14:13:05 -0400
+
+
+Started GET "/assets/bootstrap/tooltip.self-facdc69246a072acb927ded77ff655f7c27a518b9357fddd45d119fbc8a0ab9f.js?body=1" for ::1 at 2016-05-20 14:13:05 -0400
+
+
+Started GET "/assets/bootstrap/popover.self-210cff1fb4b72b71a29b5122180cb5937c8145cd13a934dc838280f1d9607a3e.js?body=1" for ::1 at 2016-05-20 14:13:05 -0400
+
+
+Started GET "/assets/application.self-f8806224e027f3e3f0138ea9ce99319e298dfdb323304d1f1be6eae8e8c74724.js?body=1" for ::1 at 2016-05-20 14:13:05 -0400
+
+
+Started GET "/assets/bootstrap-sprockets.self-fbfa5ad7d9aa0afe439ec4ff3883acc4cb92b62cb67c40d674320c9aa1d4642d.js?body=1" for ::1 at 2016-05-20 14:13:05 -0400
+  [1m[36m (5057.9ms)[0m  [1mDROP DATABASE IF EXISTS "GroupMeme_development"[0m
+  [1m[35m (138.4ms)[0m  DROP DATABASE IF EXISTS "GroupMeme_test"
+  [1m[36m (2.5ms)[0m  [1mCREATE DATABASE "GroupMeme_development" ENCODING = 'unicode'[0m
+  [1m[35m (499.1ms)[0m  CREATE DATABASE "GroupMeme_test" ENCODING = 'unicode'
+  [1m[36mSQL (0.3ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (10.8ms)[0m  DROP TABLE "comments" CASCADE
+  [1m[36m (26.4ms)[0m  [1mCREATE TABLE "comments" ("id" serial primary key, "user_id" integer, "meme_id" integer, "content" text, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "group_id" integer) [0m
+  [1m[35m (1.9ms)[0m  CREATE  INDEX  "index_comments_on_group_id" ON "comments" USING btree ("group_id")
+  [1m[36m (3.2ms)[0m  [1mCREATE  INDEX  "index_comments_on_meme_id" ON "comments" USING btree ("meme_id")[0m
+  [1m[35m (1.6ms)[0m  CREATE  INDEX  "index_comments_on_user_id" ON "comments" USING btree ("user_id")
+  [1m[36m (4.7ms)[0m  [1mDROP TABLE "groups" CASCADE[0m
+  [1m[35m (26.8ms)[0m  CREATE TABLE "groups" ("id" serial primary key, "title" character varying, "group_creator_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "group_slug" character varying) 
+  [1m[36m (3.7ms)[0m  [1mCREATE  INDEX  "index_groups_on_group_creator_id" ON "groups" USING btree ("group_creator_id")[0m
+  [1m[35m (1.8ms)[0m  CREATE  INDEX  "index_groups_on_group_slug" ON "groups" USING btree ("group_slug")
+  [1m[36m (4.6ms)[0m  [1mDROP TABLE "invites" CASCADE[0m
+  [1m[35m (6.0ms)[0m  CREATE TABLE "invites" ("id" serial primary key, "inviter_id" integer, "invitee_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "group_id" integer) 
+  [1m[36m (1.8ms)[0m  [1mCREATE  INDEX  "index_invites_on_group_id" ON "invites" USING btree ("group_id")[0m
+  [1m[35m (1.9ms)[0m  CREATE  INDEX  "index_invites_on_invitee_id" ON "invites" USING btree ("invitee_id")
+  [1m[36m (1.5ms)[0m  [1mCREATE  INDEX  "index_invites_on_inviter_id" ON "invites" USING btree ("inviter_id")[0m
+  [1m[35m (4.7ms)[0m  DROP TABLE "memberships" CASCADE
+  [1m[36m (4.9ms)[0m  [1mCREATE TABLE "memberships" ("id" serial primary key, "user_id" integer, "group_id" integer, "user_type" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (2.3ms)[0m  CREATE  INDEX  "index_memberships_on_group_id" ON "memberships" USING btree ("group_id")
+  [1m[36m (4.7ms)[0m  [1mCREATE  INDEX  "index_memberships_on_user_id" ON "memberships" USING btree ("user_id")[0m
+  [1m[35m (3.6ms)[0m  DROP TABLE "meme_tags" CASCADE
+  [1m[36m (9.3ms)[0m  [1mCREATE TABLE "meme_tags" ("id" serial primary key, "tag_id" integer, "meme_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "group_id" integer) [0m
+  [1m[35m (7.2ms)[0m  CREATE  INDEX  "index_meme_tags_on_group_id" ON "meme_tags" USING btree ("group_id")
+  [1m[36m (2.4ms)[0m  [1mCREATE  INDEX  "index_meme_tags_on_meme_id" ON "meme_tags" USING btree ("meme_id")[0m
+  [1m[35m (1.6ms)[0m  CREATE  INDEX  "index_meme_tags_on_tag_id" ON "meme_tags" USING btree ("tag_id")
+  [1m[36m (3.2ms)[0m  [1mDROP TABLE "memes" CASCADE[0m
+  [1m[35m (9.5ms)[0m  CREATE TABLE "memes" ("id" serial primary key, "creator_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "group_id" integer, "image_file_name" character varying, "image_content_type" character varying, "image_file_size" integer, "image_updated_at" timestamp) 
+  [1m[36m (4.3ms)[0m  [1mDROP TABLE "reactions" CASCADE[0m
+  [1m[35m (7.4ms)[0m  CREATE TABLE "reactions" ("id" serial primary key, "meme_id" integer, "user_id" integer, "reaction_type" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "group_id" integer) 
+  [1m[36m (1.3ms)[0m  [1mCREATE  INDEX  "index_reactions_on_group_id" ON "reactions" USING btree ("group_id")[0m
+  [1m[35m (1.5ms)[0m  CREATE  INDEX  "index_reactions_on_meme_id" ON "reactions" USING btree ("meme_id")
+  [1m[36m (1.3ms)[0m  [1mCREATE  INDEX  "index_reactions_on_user_id" ON "reactions" USING btree ("user_id")[0m
+  [1m[35m (3.7ms)[0m  DROP TABLE "tags" CASCADE
+  [1m[36m (17.8ms)[0m  [1mCREATE TABLE "tags" ("id" serial primary key, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "group_id" integer) [0m
+  [1m[35m (1.5ms)[0m  CREATE  INDEX  "index_tags_on_group_id" ON "tags" USING btree ("group_id")
+  [1m[36m (4.0ms)[0m  [1mDROP TABLE "users" CASCADE[0m
+  [1m[35m (6.4ms)[0m  CREATE TABLE "users" ("id" serial primary key, "username" character varying, "email" character varying, "password_digest" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "avatar" character varying) 
+  [1m[36m (0.6ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35mSQL (0.8ms)[0m  CREATE EXTENSION IF NOT EXISTS "plpgsql"
+  [1m[36m (11.2ms)[0m  [1mCREATE TABLE "comments" ("id" serial primary key, "user_id" integer, "meme_id" integer, "content" text, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "group_id" integer) [0m
+  [1m[35m (1.8ms)[0m  CREATE  INDEX  "index_comments_on_group_id" ON "comments" USING btree ("group_id")
+  [1m[36m (2.2ms)[0m  [1mCREATE  INDEX  "index_comments_on_meme_id" ON "comments" USING btree ("meme_id")[0m
+  [1m[35m (1.4ms)[0m  CREATE  INDEX  "index_comments_on_user_id" ON "comments" USING btree ("user_id")
+  [1m[36m (7.4ms)[0m  [1mCREATE TABLE "groups" ("id" serial primary key, "title" character varying, "group_creator_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "group_slug" character varying) [0m
+  [1m[35m (5.8ms)[0m  CREATE  INDEX  "index_groups_on_group_creator_id" ON "groups" USING btree ("group_creator_id")
+  [1m[36m (2.2ms)[0m  [1mCREATE  INDEX  "index_groups_on_group_slug" ON "groups" USING btree ("group_slug")[0m
+  [1m[35m (5.8ms)[0m  CREATE TABLE "invites" ("id" serial primary key, "inviter_id" integer, "invitee_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "group_id" integer) 
+  [1m[36m (4.5ms)[0m  [1mCREATE  INDEX  "index_invites_on_group_id" ON "invites" USING btree ("group_id")[0m
+  [1m[35m (4.5ms)[0m  CREATE  INDEX  "index_invites_on_invitee_id" ON "invites" USING btree ("invitee_id")
+  [1m[36m (1.7ms)[0m  [1mCREATE  INDEX  "index_invites_on_inviter_id" ON "invites" USING btree ("inviter_id")[0m
+  [1m[35m (17.7ms)[0m  CREATE TABLE "memberships" ("id" serial primary key, "user_id" integer, "group_id" integer, "user_type" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[36m (2.1ms)[0m  [1mCREATE  INDEX  "index_memberships_on_group_id" ON "memberships" USING btree ("group_id")[0m
+  [1m[35m (2.2ms)[0m  CREATE  INDEX  "index_memberships_on_user_id" ON "memberships" USING btree ("user_id")
+  [1m[36m (8.1ms)[0m  [1mCREATE TABLE "meme_tags" ("id" serial primary key, "tag_id" integer, "meme_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "group_id" integer) [0m
+  [1m[35m (2.8ms)[0m  CREATE  INDEX  "index_meme_tags_on_group_id" ON "meme_tags" USING btree ("group_id")
+  [1m[36m (1.6ms)[0m  [1mCREATE  INDEX  "index_meme_tags_on_meme_id" ON "meme_tags" USING btree ("meme_id")[0m
+  [1m[35m (1.9ms)[0m  CREATE  INDEX  "index_meme_tags_on_tag_id" ON "meme_tags" USING btree ("tag_id")
+  [1m[36m (19.7ms)[0m  [1mCREATE TABLE "memes" ("id" serial primary key, "creator_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "group_id" integer, "image_file_name" character varying, "image_content_type" character varying, "image_file_size" integer, "image_updated_at" timestamp) [0m
+  [1m[35m (9.9ms)[0m  CREATE TABLE "reactions" ("id" serial primary key, "meme_id" integer, "user_id" integer, "reaction_type" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "group_id" integer) 
+  [1m[36m (3.0ms)[0m  [1mCREATE  INDEX  "index_reactions_on_group_id" ON "reactions" USING btree ("group_id")[0m
+  [1m[35m (1.7ms)[0m  CREATE  INDEX  "index_reactions_on_meme_id" ON "reactions" USING btree ("meme_id")
+  [1m[36m (2.0ms)[0m  [1mCREATE  INDEX  "index_reactions_on_user_id" ON "reactions" USING btree ("user_id")[0m
+  [1m[35m (5.4ms)[0m  CREATE TABLE "tags" ("id" serial primary key, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "group_id" integer) 
+  [1m[36m (10.0ms)[0m  [1mCREATE  INDEX  "index_tags_on_group_id" ON "tags" USING btree ("group_id")[0m
+  [1m[35m (9.5ms)[0m  CREATE TABLE "users" ("id" serial primary key, "username" character varying, "email" character varying, "password_digest" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "avatar" character varying) 
+  [1m[36m (2.7ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
+  [1m[35m (3.6ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36m (5.2ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (1.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160520144522')
+  [1m[36m (0.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160517220005')[0m
+  [1m[35m (0.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160517220134')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160517220216')[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160517220236')
+  [1m[36m (11.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160517220314')[0m
+  [1m[35m (1.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160517220336')
+  [1m[36m (1.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160517220425')[0m
+  [1m[35m (25.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160517220500')
+  [1m[36m (2.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160517220524')[0m
+  [1m[35m (0.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160518005942')
+  [1m[36m (0.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160518010530')[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160518193948')
+  [1m[36m (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160518202955')[0m
+  [1m[35m (0.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160518215637')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160519153457')[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160519174042')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160519202632')[0m
+  [1m[35m (0.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160520144418')
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Command :: file -b --mime '/var/folders/7g/9142rygs6bngwl84c7bh4d6c0000gn/T/03ea345ce429b6581d7c28c33305c2b620160520-44796-103fm4u.jpg'
+  [1m[35m (0.3ms)[0m  BEGIN
+Command :: file -b --mime '/var/folders/7g/9142rygs6bngwl84c7bh4d6c0000gn/T/03ea345ce429b6581d7c28c33305c2b620160520-44796-1065jsk.jpg'
+  [1m[36mSQL (1.1ms)[0m  [1mINSERT INTO "memes" ("image_file_name", "image_content_type", "image_file_size", "image_updated_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["image_file_name", "doge.jpg"], ["image_content_type", "image/jpeg"], ["image_file_size", 28208], ["image_updated_at", "2016-05-20 18:13:24.921116"], ["created_at", "2016-05-20 18:13:25.005224"], ["updated_at", "2016-05-20 18:13:25.005224"]]
+  [1m[35m (10.0ms)[0m  COMMIT
+Command :: file -b --mime '/var/folders/7g/9142rygs6bngwl84c7bh4d6c0000gn/T/926e27eecdbc7a18858b3798ba99bddd20160520-44796-z40eid.jpeg'
+  [1m[36m (3.4ms)[0m  [1mBEGIN[0m
+Command :: file -b --mime '/var/folders/7g/9142rygs6bngwl84c7bh4d6c0000gn/T/926e27eecdbc7a18858b3798ba99bddd20160520-44796-1yv1x53.jpeg'
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "memes" ("image_file_name", "image_content_type", "image_file_size", "image_updated_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["image_file_name", "pepe.jpeg"], ["image_content_type", "image/jpeg"], ["image_file_size", 14403], ["image_updated_at", "2016-05-20 18:13:25.073993"], ["created_at", "2016-05-20 18:13:25.149488"], ["updated_at", "2016-05-20 18:13:25.149488"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Command :: file -b --mime '/var/folders/7g/9142rygs6bngwl84c7bh4d6c0000gn/T/57793f7a37ed58746aafa76a7cda86da20160520-44796-u63b4g.jpg'
+  [1m[35m (0.3ms)[0m  BEGIN
+Command :: file -b --mime '/var/folders/7g/9142rygs6bngwl84c7bh4d6c0000gn/T/57793f7a37ed58746aafa76a7cda86da20160520-44796-1bxabol.jpg'
+  [1m[36mSQL (2.5ms)[0m  [1mINSERT INTO "memes" ("image_file_name", "image_content_type", "image_file_size", "image_updated_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["image_file_name", "yuno.jpg"], ["image_content_type", "image/jpeg"], ["image_file_size", 78155], ["image_updated_at", "2016-05-20 18:13:25.171506"], ["created_at", "2016-05-20 18:13:25.208428"], ["updated_at", "2016-05-20 18:13:25.208428"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+Command :: file -b --mime '/var/folders/7g/9142rygs6bngwl84c7bh4d6c0000gn/T/34902903de8d4fee8e6afe868982f0dd20160520-44796-hcr6lx.jpg'
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+Command :: file -b --mime '/var/folders/7g/9142rygs6bngwl84c7bh4d6c0000gn/T/34902903de8d4fee8e6afe868982f0dd20160520-44796-z7koll.jpg'
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "memes" ("image_file_name", "image_content_type", "image_file_size", "image_updated_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["image_file_name", "beef.jpg"], ["image_content_type", "image/jpeg"], ["image_file_size", 166954], ["image_updated_at", "2016-05-20 18:13:25.231341"], ["created_at", "2016-05-20 18:13:25.295338"], ["updated_at", "2016-05-20 18:13:25.295338"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+Command :: file -b --mime '/var/folders/7g/9142rygs6bngwl84c7bh4d6c0000gn/T/19b0edc9d1c65b91a8da5388a52f522620160520-44796-46l4r0.png'
+  [1m[35m (0.3ms)[0m  BEGIN
+Command :: file -b --mime '/var/folders/7g/9142rygs6bngwl84c7bh4d6c0000gn/T/19b0edc9d1c65b91a8da5388a52f522620160520-44796-1apbx5w.png'
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "memes" ("image_file_name", "image_content_type", "image_file_size", "image_updated_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["image_file_name", "skeltal.png"], ["image_content_type", "image/png"], ["image_file_size", 147830], ["image_updated_at", "2016-05-20 18:13:25.316844"], ["created_at", "2016-05-20 18:13:25.358046"], ["updated_at", "2016-05-20 18:13:25.358046"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (1.6ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'jacobshiff' LIMIT 1
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "jacobshiff"], ["email", "jacob@flatironschool.com"], ["password_digest", "$2a$10$XGWRjb1NRS.HoHZ0kH4l2OZyo5Wvjw8RQH8cjsyycCLYSjl/zooby"], ["created_at", "2016-05-20 18:13:25.542385"], ["updated_at", "2016-05-20 18:13:25.542385"]]
+  [1m[35m (2.2ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.6ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'xristo' LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "xristo"], ["email", "chris@flatironschool.com"], ["password_digest", "$2a$10$iBl86860WPQNKN30HZ2cBexAS5lCz5NQEazF6fOrI6ZX22sUyFBam"], ["created_at", "2016-05-20 18:13:25.638571"], ["updated_at", "2016-05-20 18:13:25.638571"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.7ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'rachelb' LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "rachelb"], ["email", "rachel@flatironschool.com"], ["password_digest", "$2a$10$9Gv8lg06XLzjvTXGDh4MRehew/gsXy1HShTREe3/7nNcpGbHiwSFW"], ["created_at", "2016-05-20 18:13:25.747200"], ["updated_at", "2016-05-20 18:13:25.747200"]]
+  [1m[35m (0.7ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'kwebster2' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "kwebster2"], ["email", "kevin@flatironschool.com"], ["password_digest", "$2a$10$.dclD1T1tCwpv.SuBmEKpOLoiXQk2WboyvSbtAlxt6B.rovPBmoES"], ["created_at", "2016-05-20 18:13:25.841082"], ["updated_at", "2016-05-20 18:13:25.841082"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  UPDATE "memes" SET "creator_id" = $1, "updated_at" = $2 WHERE "memes"."id" = $3  [["creator_id", 3], ["updated_at", "2016-05-20 18:13:25.873986"], ["id", 1]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "memes" SET "creator_id" = $1, "updated_at" = $2 WHERE "memes"."id" = $3[0m  [["creator_id", 3], ["updated_at", "2016-05-20 18:13:25.884571"], ["id", 2]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  UPDATE "memes" SET "creator_id" = $1, "updated_at" = $2 WHERE "memes"."id" = $3  [["creator_id", 2], ["updated_at", "2016-05-20 18:13:25.887898"], ["id", 3]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "memes" SET "creator_id" = $1, "updated_at" = $2 WHERE "memes"."id" = $3[0m  [["creator_id", 2], ["updated_at", "2016-05-20 18:13:25.891571"], ["id", 4]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  UPDATE "memes" SET "creator_id" = $1, "updated_at" = $2 WHERE "memes"."id" = $3  [["creator_id", 4], ["updated_at", "2016-05-20 18:13:25.896122"], ["id", 5]]
+  [1m[36m (1.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "groups" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["title", "Flatiron School"], ["created_at", "2016-05-20 18:13:25.915662"], ["updated_at", "2016-05-20 18:13:25.915662"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "groups" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["title", "Google"], ["created_at", "2016-05-20 18:13:25.919768"], ["updated_at", "2016-05-20 18:13:25.919768"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "groups" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["title", "Delta Nu Sorority"], ["created_at", "2016-05-20 18:13:25.922427"], ["updated_at", "2016-05-20 18:13:25.922427"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "groups" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["title", "Friends"], ["created_at", "2016-05-20 18:13:25.925029"], ["updated_at", "2016-05-20 18:13:25.925029"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "groups" SET "group_slug" = $1, "group_creator_id" = $2, "updated_at" = $3 WHERE "groups"."id" = $4[0m  [["group_slug", "flatiron-school"], ["group_creator_id", 2], ["updated_at", "2016-05-20 18:13:25.929375"], ["id", 1]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "groups" SET "group_slug" = $1, "group_creator_id" = $2, "updated_at" = $3 WHERE "groups"."id" = $4  [["group_slug", "google"], ["group_creator_id", 1], ["updated_at", "2016-05-20 18:13:25.932917"], ["id", 2]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.6ms)[0m  [1mUPDATE "groups" SET "group_slug" = $1, "group_creator_id" = $2, "updated_at" = $3 WHERE "groups"."id" = $4[0m  [["group_slug", "delta-nu"], ["group_creator_id", 3], ["updated_at", "2016-05-20 18:13:25.935612"], ["id", 3]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "groups" SET "group_slug" = $1, "group_creator_id" = $2, "updated_at" = $3 WHERE "groups"."id" = $4  [["group_slug", "my-friends"], ["group_creator_id", 3], ["updated_at", "2016-05-20 18:13:25.939509"], ["id", 4]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (1.4ms)[0m  [1mINSERT INTO "comments" ("content", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["content", "Lollllzzzzz"], ["created_at", "2016-05-20 18:13:25.959645"], ["updated_at", "2016-05-20 18:13:25.959645"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "comments" ("content", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["content", "This is amazing"], ["created_at", "2016-05-20 18:13:25.964531"], ["updated_at", "2016-05-20 18:13:25.964531"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "comments" ("content", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["content", "Ron Paul 2012"], ["created_at", "2016-05-20 18:13:25.968434"], ["updated_at", "2016-05-20 18:13:25.968434"]]
+  [1m[35m (0.7ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "comments" ("content", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["content", "What is this meme?"], ["created_at", "2016-05-20 18:13:25.973181"], ["updated_at", "2016-05-20 18:13:25.973181"]]
+  [1m[36m (0.9ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "comments" ("content", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["content", "Haahhahaah. Amazing"], ["created_at", "2016-05-20 18:13:25.977027"], ["updated_at", "2016-05-20 18:13:25.977027"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "comments" SET "user_id" = $1, "meme_id" = $2, "updated_at" = $3 WHERE "comments"."id" = $4  [["user_id", 1], ["meme_id", 1], ["updated_at", "2016-05-20 18:13:25.982610"], ["id", 1]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (2.2ms)[0m  [1mUPDATE "comments" SET "user_id" = $1, "meme_id" = $2, "updated_at" = $3 WHERE "comments"."id" = $4[0m  [["user_id", 1], ["meme_id", 2], ["updated_at", "2016-05-20 18:13:25.985677"], ["id", 2]]
+  [1m[35m (2.1ms)[0m  COMMIT
+  [1m[36m (0.5ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  UPDATE "comments" SET "user_id" = $1, "meme_id" = $2, "updated_at" = $3 WHERE "comments"."id" = $4  [["user_id", 2], ["meme_id", 1], ["updated_at", "2016-05-20 18:13:25.993171"], ["id", 3]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mUPDATE "comments" SET "user_id" = $1, "meme_id" = $2, "updated_at" = $3 WHERE "comments"."id" = $4[0m  [["user_id", 1], ["meme_id", 4], ["updated_at", "2016-05-20 18:13:25.998255"], ["id", 4]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "comments" SET "user_id" = $1, "meme_id" = $2, "updated_at" = $3 WHERE "comments"."id" = $4  [["user_id", 1], ["meme_id", 1], ["updated_at", "2016-05-20 18:13:26.002073"], ["id", 5]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (21.1ms)[0m  BEGIN
+  [1m[36mSQL (1.6ms)[0m  [1mINSERT INTO "reactions" ("reaction_type", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["reaction_type", "like"], ["created_at", "2016-05-20 18:13:26.103830"], ["updated_at", "2016-05-20 18:13:26.103830"]]
+  [1m[35m (0.7ms)[0m  COMMIT
+  [1m[36m (0.4ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "reactions" ("reaction_type", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["reaction_type", "like"], ["created_at", "2016-05-20 18:13:26.111512"], ["updated_at", "2016-05-20 18:13:26.111512"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "reactions" ("reaction_type", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["reaction_type", "like"], ["created_at", "2016-05-20 18:13:26.123416"], ["updated_at", "2016-05-20 18:13:26.123416"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "reactions" ("reaction_type", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["reaction_type", "dislike"], ["created_at", "2016-05-20 18:13:26.126588"], ["updated_at", "2016-05-20 18:13:26.126588"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.7ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "reactions" ("reaction_type", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["reaction_type", "dislike"], ["created_at", "2016-05-20 18:13:26.135902"], ["updated_at", "2016-05-20 18:13:26.135902"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (3.7ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  UPDATE "reactions" SET "user_id" = $1, "meme_id" = $2, "updated_at" = $3 WHERE "reactions"."id" = $4  [["user_id", 3], ["meme_id", 1], ["updated_at", "2016-05-20 18:13:26.159792"], ["id", 1]]
+  [1m[36m (1.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (1.3ms)[0m  [1mUPDATE "reactions" SET "user_id" = $1, "meme_id" = $2, "updated_at" = $3 WHERE "reactions"."id" = $4[0m  [["user_id", 2], ["meme_id", 1], ["updated_at", "2016-05-20 18:13:26.172264"], ["id", 2]]
+  [1m[35m (5.5ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  UPDATE "reactions" SET "user_id" = $1, "meme_id" = $2, "updated_at" = $3 WHERE "reactions"."id" = $4  [["user_id", 3], ["meme_id", 2], ["updated_at", "2016-05-20 18:13:26.192876"], ["id", 3]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (19.4ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mUPDATE "reactions" SET "user_id" = $1, "meme_id" = $2, "updated_at" = $3 WHERE "reactions"."id" = $4[0m  [["user_id", 1], ["meme_id", 2], ["updated_at", "2016-05-20 18:13:26.309065"], ["id", 4]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "reactions" SET "user_id" = $1, "meme_id" = $2, "updated_at" = $3 WHERE "reactions"."id" = $4  [["user_id", 2], ["meme_id", 4], ["updated_at", "2016-05-20 18:13:26.315797"], ["id", 5]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "tags" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Ping Pong"], ["created_at", "2016-05-20 18:13:26.372618"], ["updated_at", "2016-05-20 18:13:26.372618"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (2.7ms)[0m  INSERT INTO "meme_tags" ("meme_id", "tag_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["meme_id", 1], ["tag_id", 1], ["created_at", "2016-05-20 18:13:26.486992"], ["updated_at", "2016-05-20 18:13:26.486992"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "meme_tags" ("meme_id", "tag_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["meme_id", 2], ["tag_id", 1], ["created_at", "2016-05-20 18:13:26.496575"], ["updated_at", "2016-05-20 18:13:26.496575"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.6ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "meme_tags" ("meme_id", "tag_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["meme_id", 4], ["tag_id", 1], ["created_at", "2016-05-20 18:13:26.504344"], ["updated_at", "2016-05-20 18:13:26.504344"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "tags" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "JavaScript"], ["created_at", "2016-05-20 18:13:26.507505"], ["updated_at", "2016-05-20 18:13:26.507505"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "meme_tags" ("meme_id", "tag_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["meme_id", 3], ["tag_id", 2], ["created_at", "2016-05-20 18:13:26.511912"], ["updated_at", "2016-05-20 18:13:26.511912"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "tags" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Ruby"], ["created_at", "2016-05-20 18:13:26.514839"], ["updated_at", "2016-05-20 18:13:26.514839"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "meme_tags" ("meme_id", "tag_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["meme_id", 4], ["tag_id", 3], ["created_at", "2016-05-20 18:13:26.518094"], ["updated_at", "2016-05-20 18:13:26.518094"]]
+  [1m[36m (0.8ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "meme_tags" ("meme_id", "tag_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["meme_id", 1], ["tag_id", 3], ["created_at", "2016-05-20 18:13:26.522067"], ["updated_at", "2016-05-20 18:13:26.522067"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Lunch"], ["created_at", "2016-05-20 18:13:26.524719"], ["updated_at", "2016-05-20 18:13:26.524719"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "meme_tags" ("meme_id", "tag_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["meme_id", 2], ["tag_id", 4], ["created_at", "2016-05-20 18:13:26.528298"], ["updated_at", "2016-05-20 18:13:26.528298"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "memes" SET "group_id" = $1, "updated_at" = $2 WHERE "memes"."id" = $3  [["group_id", 1], ["updated_at", "2016-05-20 18:13:26.532258"], ["id", 1]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.6ms)[0m  [1mUPDATE "memes" SET "group_id" = $1, "updated_at" = $2 WHERE "memes"."id" = $3[0m  [["group_id", 1], ["updated_at", "2016-05-20 18:13:26.537289"], ["id", 2]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "memes" SET "group_id" = $1, "updated_at" = $2 WHERE "memes"."id" = $3  [["group_id", 1], ["updated_at", "2016-05-20 18:13:26.544290"], ["id", 3]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mUPDATE "memes" SET "group_id" = $1, "updated_at" = $2 WHERE "memes"."id" = $3[0m  [["group_id", 1], ["updated_at", "2016-05-20 18:13:26.549514"], ["id", 4]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "memes" SET "group_id" = $1, "updated_at" = $2 WHERE "memes"."id" = $3  [["group_id", 2], ["updated_at", "2016-05-20 18:13:26.553489"], ["id", 5]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "comments" SET "group_id" = $1, "updated_at" = $2 WHERE "comments"."id" = $3[0m  [["group_id", 1], ["updated_at", "2016-05-20 18:13:26.558062"], ["id", 1]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "comments" SET "group_id" = $1, "updated_at" = $2 WHERE "comments"."id" = $3  [["group_id", 1], ["updated_at", "2016-05-20 18:13:26.561371"], ["id", 2]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "comments" SET "group_id" = $1, "updated_at" = $2 WHERE "comments"."id" = $3[0m  [["group_id", 1], ["updated_at", "2016-05-20 18:13:26.564712"], ["id", 3]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "comments" SET "group_id" = $1, "updated_at" = $2 WHERE "comments"."id" = $3  [["group_id", 1], ["updated_at", "2016-05-20 18:13:26.567742"], ["id", 4]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "comments" SET "group_id" = $1, "updated_at" = $2 WHERE "comments"."id" = $3[0m  [["group_id", 1], ["updated_at", "2016-05-20 18:13:26.570572"], ["id", 5]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "reactions" SET "group_id" = $1, "updated_at" = $2 WHERE "reactions"."id" = $3  [["group_id", 1], ["updated_at", "2016-05-20 18:13:26.575265"], ["id", 1]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "reactions" SET "group_id" = $1, "updated_at" = $2 WHERE "reactions"."id" = $3[0m  [["group_id", 1], ["updated_at", "2016-05-20 18:13:26.578470"], ["id", 2]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "reactions" SET "group_id" = $1, "updated_at" = $2 WHERE "reactions"."id" = $3  [["group_id", 1], ["updated_at", "2016-05-20 18:13:26.580817"], ["id", 3]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "reactions" SET "group_id" = $1, "updated_at" = $2 WHERE "reactions"."id" = $3[0m  [["group_id", 1], ["updated_at", "2016-05-20 18:13:26.583648"], ["id", 4]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  UPDATE "reactions" SET "group_id" = $1, "updated_at" = $2 WHERE "reactions"."id" = $3  [["group_id", 1], ["updated_at", "2016-05-20 18:13:26.587703"], ["id", 5]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "memberships" ("group_id", "user_id", "user_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["group_id", 1], ["user_id", 1], ["user_type", "admin"], ["created_at", "2016-05-20 18:13:26.609549"], ["updated_at", "2016-05-20 18:13:26.609549"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "memberships" ("group_id", "user_id", "user_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["group_id", 1], ["user_id", 2], ["user_type", "member"], ["created_at", "2016-05-20 18:13:26.614113"], ["updated_at", "2016-05-20 18:13:26.614113"]]
+  [1m[36m (1.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "memberships" ("group_id", "user_id", "user_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["group_id", 1], ["user_id", 3], ["user_type", "member"], ["created_at", "2016-05-20 18:13:26.621248"], ["updated_at", "2016-05-20 18:13:26.621248"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+
+
+Started GET "/flatiron-school/memes" for ::1 at 2016-05-20 14:13:29 -0400
+Processing by MemesController#index as HTML
+  Parameters: {"group_slug"=>"flatiron-school"}
+  [1m[36mGroup Load (3.1ms)[0m  [1mSELECT  "groups".* FROM "groups" WHERE "groups"."group_slug" = $1 LIMIT 1[0m  [["group_slug", "flatiron-school"]]
+  [1m[35mUser Load (1.6ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.1ms)[0m  [1mSELECT  "groups".* FROM "groups" WHERE "groups"."group_slug" = $1 LIMIT 1[0m  [["group_slug", "flatiron-school"]]
+  [1m[35mGroup Exists (13.9ms)[0m  SELECT  1 AS one FROM "groups" INNER JOIN "memberships" ON "groups"."id" = "memberships"."group_id" WHERE "memberships"."user_id" = $1 AND "groups"."id" = $2 LIMIT 1  [["user_id", 1], ["id", 1]]
+  [1m[36mMeme Load (1.0ms)[0m  [1mSELECT "memes".* FROM "memes" WHERE "memes"."group_id" = 1[0m
+  [1m[35mGroup Load (2.0ms)[0m  SELECT  "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered memes/index.html.erb within layouts/application (31.6ms)
+Completed 200 OK in 781ms (Views: 688.8ms | ActiveRecord: 21.7ms)
+
+
+Started GET "/assets/groups.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 14:13:30 -0400
+
+
+Started GET "/assets/invites.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 14:13:30 -0400
+
+
+Started GET "/assets/memberships.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 14:13:30 -0400
+
+
+Started GET "/assets/meme_tags.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 14:13:30 -0400
+
+
+Started GET "/assets/memes.self-0c79d5d68de531b9d9b39e20891d36a075748e76df1c42aea66d7a4b8aad2d78.css?body=1" for ::1 at 2016-05-20 14:13:30 -0400
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 14:13:30 -0400
+
+
+Started GET "/assets/reactions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 14:13:30 -0400
+
+
+Started GET "/assets/tags.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 14:13:30 -0400
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 14:13:30 -0400
+
+
+Started GET "/assets/registration.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 14:13:30 -0400
+
+
+Started GET "/assets/application.self-1f2644396014951a67414c412f8a67fbfd21a3cfc0063a7ff075e180fe5f50dc.css?body=1" for ::1 at 2016-05-20 14:13:30 -0400
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for ::1 at 2016-05-20 14:13:30 -0400
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for ::1 at 2016-05-20 14:13:30 -0400
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2016-05-20 14:13:30 -0400
+
+
+Started GET "/assets/comments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 14:13:31 -0400
+
+
+Started GET "/assets/groups.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 14:13:31 -0400
+
+
+Started GET "/assets/invites.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 14:13:31 -0400
+
+
+Started GET "/assets/memberships.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 14:13:31 -0400
+
+
+Started GET "/assets/meme_tags.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 14:13:31 -0400
+
+
+Started GET "/assets/memes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 14:13:31 -0400
+
+
+Started GET "/assets/reactions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 14:13:31 -0400
+
+
+Started GET "/assets/registration.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 14:13:31 -0400
+
+
+Started GET "/assets/tags.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 14:13:31 -0400
+
+
+Started GET "/assets/users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 14:13:31 -0400
+
+
+Started GET "/assets/bootstrap/affix.self-3555752f8a930795ee9e56751a52e6871104ae85d01b3ab8363da3802a5ecc78.js?body=1" for ::1 at 2016-05-20 14:13:31 -0400
+
+
+Started GET "/assets/bootstrap/alert.self-d8b7bd612b3dcfdefb7b5539b9d5848d66ccbd3e7af8bb8d48bfb3288aaa7be8.js?body=1" for ::1 at 2016-05-20 14:13:31 -0400
+
+
+Started GET "/assets/bootstrap/carousel.self-35d204878d906298e55bc24553e11fd89b980fc4ffe5792fe36af8c0da289c54.js?body=1" for ::1 at 2016-05-20 14:13:31 -0400
+
+
+Started GET "/assets/bootstrap/button.self-e74d33ba39500940a78d6fa4d2d64f6ca7fd86d60a2149641f7fde7ba711d8a1.js?body=1" for ::1 at 2016-05-20 14:13:31 -0400
+
+
+Started GET "/assets/bootstrap/collapse.self-056c40532d9f0f126ec17e839f60c942f573fbd61a086e7f156306e3fc5e8c1f.js?body=1" for ::1 at 2016-05-20 14:13:31 -0400
+
+
+Started GET "/assets/bootstrap/dropdown.self-e56c2ffee4618411d43ecf15c89273f6223847ad756e1cd17545d04afa732ed4.js?body=1" for ::1 at 2016-05-20 14:13:31 -0400
+
+
+Started GET "/assets/bootstrap/modal.self-62463080dba6b9d024ff0a3192da0e76eacbc683194f3395047c6f5cfa0acb59.js?body=1" for ::1 at 2016-05-20 14:13:31 -0400
+
+
+Started GET "/assets/bootstrap/tab.self-dad0d5c377f9fae26394484535ebb23ccf68afae084f896af6ea4cdf8c9f6ae0.js?body=1" for ::1 at 2016-05-20 14:13:31 -0400
+
+
+Started GET "/assets/bootstrap/scrollspy.self-52afd90e8ba97d9f08617a13986e8869d6c4a45751c0bff59a6f91241e722aca.js?body=1" for ::1 at 2016-05-20 14:13:31 -0400
+
+
+Started GET "/assets/bootstrap/transition.self-3b268d4cd8c79e46ded7392885f72f64ffb5b0d49948a12b8cf9779f6163e13a.js?body=1" for ::1 at 2016-05-20 14:13:31 -0400
+
+
+Started GET "/assets/bootstrap/tooltip.self-facdc69246a072acb927ded77ff655f7c27a518b9357fddd45d119fbc8a0ab9f.js?body=1" for ::1 at 2016-05-20 14:13:31 -0400
+
+
+Started GET "/assets/bootstrap/popover.self-210cff1fb4b72b71a29b5122180cb5937c8145cd13a934dc838280f1d9607a3e.js?body=1" for ::1 at 2016-05-20 14:13:31 -0400
+
+
+Started GET "/assets/bootstrap-sprockets.self-fbfa5ad7d9aa0afe439ec4ff3883acc4cb92b62cb67c40d674320c9aa1d4642d.js?body=1" for ::1 at 2016-05-20 14:13:31 -0400
+
+
+Started GET "/assets/application.self-f8806224e027f3e3f0138ea9ce99319e298dfdb323304d1f1be6eae8e8c74724.js?body=1" for ::1 at 2016-05-20 14:13:31 -0400
+
+
+Started GET "/flatiron-school/memes" for ::1 at 2016-05-20 14:14:54 -0400
+Processing by MemesController#index as HTML
+  Parameters: {"group_slug"=>"flatiron-school"}
+  [1m[35mGroup Load (1.1ms)[0m  SELECT  "groups".* FROM "groups" WHERE "groups"."group_slug" = $1 LIMIT 1  [["group_slug", "flatiron-school"]]
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.1ms)[0m  SELECT  "groups".* FROM "groups" WHERE "groups"."group_slug" = $1 LIMIT 1  [["group_slug", "flatiron-school"]]
+  [1m[36mGroup Exists (2.7ms)[0m  [1mSELECT  1 AS one FROM "groups" INNER JOIN "memberships" ON "groups"."id" = "memberships"."group_id" WHERE "memberships"."user_id" = $1 AND "groups"."id" = $2 LIMIT 1[0m  [["user_id", 1], ["id", 1]]
+  [1m[35mMeme Load (2.2ms)[0m  SELECT "memes".* FROM "memes" WHERE "memes"."group_id" = 1
+  [1m[36mGroup Load (0.4ms)[0m  [1mSELECT  "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.1ms)[0m  [1mSELECT  "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered memes/index.html.erb within layouts/application (89.3ms)
+Completed 200 OK in 625ms (Views: 531.4ms | ActiveRecord: 7.5ms)
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 14:14:55 -0400
+
+
+Started GET "/assets/groups.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 14:14:55 -0400
+
+
+Started GET "/assets/memberships.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 14:14:55 -0400
+
+
+Started GET "/assets/memes.self-0c79d5d68de531b9d9b39e20891d36a075748e76df1c42aea66d7a4b8aad2d78.css?body=1" for ::1 at 2016-05-20 14:14:55 -0400
+
+
+Started GET "/assets/meme_tags.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 14:14:55 -0400
+
+
+Started GET "/assets/invites.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 14:14:55 -0400
+
+
+Started GET "/assets/reactions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 14:14:55 -0400
+
+
+Started GET "/assets/registration.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 14:14:55 -0400
+
+
+Started GET "/assets/tags.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 14:14:55 -0400
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 14:14:55 -0400
+
+
+Started GET "/assets/application.self-1f2644396014951a67414c412f8a67fbfd21a3cfc0063a7ff075e180fe5f50dc.css?body=1" for ::1 at 2016-05-20 14:14:55 -0400
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for ::1 at 2016-05-20 14:14:55 -0400
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for ::1 at 2016-05-20 14:14:55 -0400
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2016-05-20 14:14:55 -0400
+
+
+Started GET "/assets/comments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 14:14:55 -0400
+
+
+Started GET "/assets/groups.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 14:14:55 -0400
+
+
+Started GET "/assets/invites.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 14:14:56 -0400
+
+
+Started GET "/assets/meme_tags.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 14:14:56 -0400
+
+
+Started GET "/assets/memberships.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 14:14:56 -0400
+
+
+Started GET "/assets/memes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 14:14:56 -0400
+
+
+Started GET "/assets/reactions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 14:14:56 -0400
+
+
+Started GET "/assets/registration.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 14:14:56 -0400
+
+
+Started GET "/assets/tags.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 14:14:56 -0400
+
+
+Started GET "/assets/users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 14:14:56 -0400
+
+
+Started GET "/assets/bootstrap/affix.self-3555752f8a930795ee9e56751a52e6871104ae85d01b3ab8363da3802a5ecc78.js?body=1" for ::1 at 2016-05-20 14:14:56 -0400
+
+
+Started GET "/assets/bootstrap/alert.self-d8b7bd612b3dcfdefb7b5539b9d5848d66ccbd3e7af8bb8d48bfb3288aaa7be8.js?body=1" for ::1 at 2016-05-20 14:14:56 -0400
+
+
+Started GET "/assets/bootstrap/button.self-e74d33ba39500940a78d6fa4d2d64f6ca7fd86d60a2149641f7fde7ba711d8a1.js?body=1" for ::1 at 2016-05-20 14:14:56 -0400
+
+
+Started GET "/assets/bootstrap/carousel.self-35d204878d906298e55bc24553e11fd89b980fc4ffe5792fe36af8c0da289c54.js?body=1" for ::1 at 2016-05-20 14:14:56 -0400
+
+
+Started GET "/assets/bootstrap/collapse.self-056c40532d9f0f126ec17e839f60c942f573fbd61a086e7f156306e3fc5e8c1f.js?body=1" for ::1 at 2016-05-20 14:14:56 -0400
+
+
+Started GET "/assets/bootstrap/dropdown.self-e56c2ffee4618411d43ecf15c89273f6223847ad756e1cd17545d04afa732ed4.js?body=1" for ::1 at 2016-05-20 14:14:56 -0400
+
+
+Started GET "/assets/bootstrap/scrollspy.self-52afd90e8ba97d9f08617a13986e8869d6c4a45751c0bff59a6f91241e722aca.js?body=1" for ::1 at 2016-05-20 14:14:56 -0400
+
+
+Started GET "/assets/bootstrap/tab.self-dad0d5c377f9fae26394484535ebb23ccf68afae084f896af6ea4cdf8c9f6ae0.js?body=1" for ::1 at 2016-05-20 14:14:56 -0400
+
+
+Started GET "/assets/bootstrap/transition.self-3b268d4cd8c79e46ded7392885f72f64ffb5b0d49948a12b8cf9779f6163e13a.js?body=1" for ::1 at 2016-05-20 14:14:56 -0400
+
+
+Started GET "/assets/bootstrap/tooltip.self-facdc69246a072acb927ded77ff655f7c27a518b9357fddd45d119fbc8a0ab9f.js?body=1" for ::1 at 2016-05-20 14:14:56 -0400
+
+
+Started GET "/assets/bootstrap/popover.self-210cff1fb4b72b71a29b5122180cb5937c8145cd13a934dc838280f1d9607a3e.js?body=1" for ::1 at 2016-05-20 14:14:56 -0400
+
+
+Started GET "/assets/bootstrap-sprockets.self-fbfa5ad7d9aa0afe439ec4ff3883acc4cb92b62cb67c40d674320c9aa1d4642d.js?body=1" for ::1 at 2016-05-20 14:14:56 -0400
+
+
+Started GET "/assets/application.self-f8806224e027f3e3f0138ea9ce99319e298dfdb323304d1f1be6eae8e8c74724.js?body=1" for ::1 at 2016-05-20 14:14:56 -0400
+
+
+Started GET "/assets/bootstrap/modal.self-62463080dba6b9d024ff0a3192da0e76eacbc683194f3395047c6f5cfa0acb59.js?body=1" for ::1 at 2016-05-20 14:14:56 -0400
+
+
+Started GET "/flatiron-school/memes" for ::1 at 2016-05-20 14:15:22 -0400
+Processing by MemesController#index as HTML
+  Parameters: {"group_slug"=>"flatiron-school"}
+  [1m[36mGroup Load (1.6ms)[0m  [1mSELECT  "groups".* FROM "groups" WHERE "groups"."group_slug" = $1 LIMIT 1[0m  [["group_slug", "flatiron-school"]]
+  [1m[35mUser Load (0.9ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.1ms)[0m  [1mSELECT  "groups".* FROM "groups" WHERE "groups"."group_slug" = $1 LIMIT 1[0m  [["group_slug", "flatiron-school"]]
+  [1m[35mGroup Exists (3.0ms)[0m  SELECT  1 AS one FROM "groups" INNER JOIN "memberships" ON "groups"."id" = "memberships"."group_id" WHERE "memberships"."user_id" = $1 AND "groups"."id" = $2 LIMIT 1  [["user_id", 1], ["id", 1]]
+  [1m[36mMeme Load (4.3ms)[0m  [1mSELECT "memes".* FROM "memes" WHERE "memes"."group_id" = 1[0m
+  [1m[35mGroup Load (1.1ms)[0m  SELECT  "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.2ms)[0m  [1mSELECT  "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.1ms)[0m  SELECT  "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered memes/index.html.erb within layouts/application (78.6ms)
+Completed 200 OK in 648ms (Views: 548.6ms | ActiveRecord: 11.3ms)
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 14:15:23 -0400
+
+
+Started GET "/assets/groups.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 14:15:23 -0400
+
+
+Started GET "/assets/meme_tags.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 14:15:23 -0400
+
+
+Started GET "/assets/memes.self-0c79d5d68de531b9d9b39e20891d36a075748e76df1c42aea66d7a4b8aad2d78.css?body=1" for ::1 at 2016-05-20 14:15:23 -0400
+
+
+Started GET "/assets/memberships.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 14:15:23 -0400
+
+
+Started GET "/assets/invites.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 14:15:23 -0400
+
+
+Started GET "/assets/reactions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 14:15:23 -0400
+
+
+Started GET "/assets/registration.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 14:15:23 -0400
+
+
+Started GET "/assets/tags.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 14:15:23 -0400
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-05-20 14:15:23 -0400
+
+
+Started GET "/assets/application.self-1f2644396014951a67414c412f8a67fbfd21a3cfc0063a7ff075e180fe5f50dc.css?body=1" for ::1 at 2016-05-20 14:15:23 -0400
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for ::1 at 2016-05-20 14:15:23 -0400
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for ::1 at 2016-05-20 14:15:23 -0400
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2016-05-20 14:15:23 -0400
+
+
+Started GET "/assets/comments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 14:15:23 -0400
+
+
+Started GET "/assets/groups.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 14:15:23 -0400
+
+
+Started GET "/assets/memberships.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 14:15:23 -0400
+
+
+Started GET "/assets/meme_tags.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 14:15:23 -0400
+
+
+Started GET "/assets/invites.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 14:15:23 -0400
+
+
+Started GET "/assets/memes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 14:15:23 -0400
+
+
+Started GET "/assets/reactions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 14:15:23 -0400
+
+
+Started GET "/assets/registration.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 14:15:23 -0400
+
+
+Started GET "/assets/tags.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 14:15:23 -0400
+
+
+Started GET "/assets/users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-05-20 14:15:23 -0400
+
+
+Started GET "/assets/bootstrap/affix.self-3555752f8a930795ee9e56751a52e6871104ae85d01b3ab8363da3802a5ecc78.js?body=1" for ::1 at 2016-05-20 14:15:24 -0400
+
+
+Started GET "/assets/bootstrap/alert.self-d8b7bd612b3dcfdefb7b5539b9d5848d66ccbd3e7af8bb8d48bfb3288aaa7be8.js?body=1" for ::1 at 2016-05-20 14:15:24 -0400
+
+
+Started GET "/assets/bootstrap/button.self-e74d33ba39500940a78d6fa4d2d64f6ca7fd86d60a2149641f7fde7ba711d8a1.js?body=1" for ::1 at 2016-05-20 14:15:24 -0400
+
+
+Started GET "/assets/bootstrap/carousel.self-35d204878d906298e55bc24553e11fd89b980fc4ffe5792fe36af8c0da289c54.js?body=1" for ::1 at 2016-05-20 14:15:24 -0400
+
+
+Started GET "/assets/bootstrap/collapse.self-056c40532d9f0f126ec17e839f60c942f573fbd61a086e7f156306e3fc5e8c1f.js?body=1" for ::1 at 2016-05-20 14:15:24 -0400
+
+
+Started GET "/assets/bootstrap/dropdown.self-e56c2ffee4618411d43ecf15c89273f6223847ad756e1cd17545d04afa732ed4.js?body=1" for ::1 at 2016-05-20 14:15:24 -0400
+
+
+Started GET "/assets/bootstrap/modal.self-62463080dba6b9d024ff0a3192da0e76eacbc683194f3395047c6f5cfa0acb59.js?body=1" for ::1 at 2016-05-20 14:15:24 -0400
+
+
+Started GET "/assets/bootstrap/scrollspy.self-52afd90e8ba97d9f08617a13986e8869d6c4a45751c0bff59a6f91241e722aca.js?body=1" for ::1 at 2016-05-20 14:15:24 -0400
+
+
+Started GET "/assets/bootstrap/tab.self-dad0d5c377f9fae26394484535ebb23ccf68afae084f896af6ea4cdf8c9f6ae0.js?body=1" for ::1 at 2016-05-20 14:15:24 -0400
+
+
+Started GET "/assets/bootstrap/transition.self-3b268d4cd8c79e46ded7392885f72f64ffb5b0d49948a12b8cf9779f6163e13a.js?body=1" for ::1 at 2016-05-20 14:15:24 -0400
+
+
+Started GET "/assets/bootstrap/tooltip.self-facdc69246a072acb927ded77ff655f7c27a518b9357fddd45d119fbc8a0ab9f.js?body=1" for ::1 at 2016-05-20 14:15:24 -0400
+
+
+Started GET "/assets/bootstrap/popover.self-210cff1fb4b72b71a29b5122180cb5937c8145cd13a934dc838280f1d9607a3e.js?body=1" for ::1 at 2016-05-20 14:15:24 -0400
+
+
+Started GET "/assets/bootstrap-sprockets.self-fbfa5ad7d9aa0afe439ec4ff3883acc4cb92b62cb67c40d674320c9aa1d4642d.js?body=1" for ::1 at 2016-05-20 14:15:24 -0400
+
+
+Started GET "/assets/application.self-f8806224e027f3e3f0138ea9ce99319e298dfdb323304d1f1be6eae8e8c74724.js?body=1" for ::1 at 2016-05-20 14:15:24 -0400
