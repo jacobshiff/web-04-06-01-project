@@ -6,12 +6,12 @@ class RegistrationsController < ApplicationController
   end
 
   def create
-    #binding.pry
     @user = User.new(user_params)
+    @user.avatar = user_avatar
     #This might be a vulnerability...
     @user.groups << Group.find_by(group_slug: params[:group_slug])
     if @user.save
-      #binding.pry
+      binding.pry
       session[:user_id] = @user.id
       redirect_to memes_path(params[:group_slug])
     else
@@ -24,6 +24,10 @@ class RegistrationsController < ApplicationController
   private
   def user_params
     params.require(:user).permit(:username, :email, :password, :password_confirmation, :avatar)
+  end
+
+  def user_avatar
+    params.require(:user).permit(:avatar)
   end
 
   def error_type
