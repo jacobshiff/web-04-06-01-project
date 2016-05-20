@@ -14,7 +14,6 @@ class RegistrationsController < ApplicationController
     @user.avatar = user_avatar
     #This might be a vulnerability...
     if @user.save
-      binding.pry
       session[:user_id] = @user.id
       redirect_to memes_path(@user.groups.first.group_slug)
       #if there is an error in registration, the error message carries through to the group/memes index??
