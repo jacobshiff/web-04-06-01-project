@@ -16,11 +16,11 @@ class GroupsController < ApplicationController
 
   def create
     @group = Group.new(group_params)
-    @group.group_creator = current_user
-    @group.users << current_user
     @group.group_slug = @group.to_slug
+    @group.group_creator = current_user
     #binding.pry
     @group.save
+    @group.users << current_user
     redirect_to group_path(@group.group_slug)
   end
 
