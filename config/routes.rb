@@ -25,8 +25,11 @@ Rails.application.routes.draw do
 
 ######## Users
   # Login
-  get '/:group_slug/login' => 'sessions#new', as: 'login'
-  # post '/:group_slug/login' => 'sessions#create', as: 'login'
+  get '/login' => 'sessions#new', as: 'login'
+  post '/login' => 'sessions#create', as: 'create_login'
+
+  # Logout
+  delete '/:group_slug/logout' => 'sessions#destroy', as: 'logout'
 
   # Registration
   get '/users/new' => 'registrations#new', as: 'registration_new'
