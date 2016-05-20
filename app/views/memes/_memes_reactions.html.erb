@@ -1,7 +1,7 @@
 <%= link_to react_path(id: meme.id), method: :post, remote: true do %>
-  <div class="react-btn" meme_id="<%= meme.id %>">
-    <span class="<%= meme.heart_class(current_user) %>"></span>
-  </div>
+  <span class="react-btn" meme_id="<%= meme.id %>">
+    <span class="<%= meme.heart_class(current_user) %>"></span> 
+  </span>
 <% end %>
-<div class="reactions-message" meme_message_id="<%= meme.id%>"><%= meme.reactions_message(current_user) %>
-</div>
+<span class="reactions-message" meme_message_id="<%= meme.id%>"><%= meme.reactions_message(current_user) %>
+</span>
