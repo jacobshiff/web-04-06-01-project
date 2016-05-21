@@ -4,9 +4,11 @@ class User < ActiveRecord::Base
   has_many :reactions
   has_many :comments
   has_many :memes, foreign_key: 'creator_id'
-  has_many :sent_invites, class_name: 'Invite', foreign_key: 'inviter_id'
-  has_many :received_invites, class_name: 'Invite', foreign_key: 'invitee_id'
+  has_many :sent_invites, class_name: 'Invite', foreign_key: 'sender_id'
+  #has_many :received_invites, class_name: 'Invite', foreign_key: 'invitee_id'
   has_many :created_groups, class_name: 'Group', foreign_key: 'group_creator_id'
+
+  belongs_to :invitation
 
   #paperclip validations; must include for upload
   # has_attached_file :avatar, default_url: "/system/users/avatars/default-avatars/avatar-bono.jpg"

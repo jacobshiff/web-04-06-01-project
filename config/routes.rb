@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   # end
 
 
-  ######## Home routes
+######## Home routes
   get '/' => 'home#index', as: 'home'
 
 #####Groups
@@ -54,5 +54,6 @@ Rails.application.routes.draw do
   #get '/users/:user_id/edit' => 'users#edit'
 
 
+#####Invitations
 
 end
