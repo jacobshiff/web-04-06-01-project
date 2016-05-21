@@ -9,13 +9,15 @@
         <div class="modal-body">
           <%= form_for meme do |f| %>
             <div class="form-group">
-            <%= f.file_field(:image, accept: 'image/png,image/gif,image/jpeg') %>
+              <%= f.label :image, "Upload A File", class: 'btn btn-success btn-file' %>
+            <%= f.file_field(:image, accept: 'image/png,image/gif,image/jpeg', class:
+            'hidden') %>
             </div>
-            <%= f.submit %>
-          <% end %>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <%= f.submit class: "btn btn-primary"%>
+        <% end %>
         </div>
       </div>
     </div>
