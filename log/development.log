@@ -3102,3 +3102,66 @@ Started GET "/assets/application.self-f8806224e027f3e3f0138ea9ce99319e298dfdb323
 
 
 Started GET "/assets/bootstrap/glyphicons-halflings-regular-fe185d11a49676890d47bb783312a0cda5a44c4039214094e7957b4c040ef11c.woff2" for ::1 at 2016-05-21 15:14:06 -0400
+
+
+Started DELETE "/flatiron-school/logout" for ::1 at 2016-05-21 15:25:37 -0400
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"+VrLy838FSrFyag7NRBLvq60NPuC8a0UDvzYHHdDQFmq7ES2dWra1PpW+nUmoSHujuSYg7dnuao890+cKnOvdg==", "group_slug"=>"flatiron-school"}
+Redirected to http://localhost:3000/
+Completed 302 Found in 51ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-05-21 15:25:37 -0400
+Processing by HomeController#index as HTML
+  [1m[36mGroup Load (5.2ms)[0m  [1mSELECT "groups".* FROM "groups"[0m
+  Rendered home/index.html.erb within layouts/application (2.5ms)
+  Rendered layouts/nav/_public_home_nav.html.erb (0.5ms)
+Completed 200 OK in 398ms (Views: 362.0ms | ActiveRecord: 5.2ms)
+
+
+Started GET "/login" for ::1 at 2016-05-21 15:25:41 -0400
+Processing by SessionsController#new as HTML
+  [1m[35mUser Load (6.7ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1
+  Rendered sessions/new.html.erb within layouts/application (5.1ms)
+  Rendered layouts/nav/_public_home_nav.html.erb (0.5ms)
+Completed 200 OK in 385ms (Views: 349.3ms | ActiveRecord: 6.7ms)
+
+
+Started POST "/login" for ::1 at 2016-05-21 15:26:39 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"GglLqjKVmmUsKaf7/MWJU4yzbXHa31qv8A0vDNPjOtFJv8TXigNVmxO29bXvdOMDrOPBCe9JThHCBriMjtPV/g==", "user"=>{"username"=>"rachelb", "password"=>"[FILTERED]"}, "commit"=>"Login!"}
+  [1m[36mUser Load (9.6ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT 1[0m  [["username", "rachelb"]]
+  [1m[35mGroup Load (34.7ms)[0m  SELECT  "groups".* FROM "groups" INNER JOIN "memberships" ON "groups"."id" = "memberships"."group_id" WHERE "memberships"."user_id" = $1  ORDER BY "groups"."id" ASC LIMIT 1  [["user_id", 3]]
+Redirected to http://localhost:3000/flatiron-school/memes
+Completed 302 Found in 291ms (ActiveRecord: 44.3ms)
+
+
+Started GET "/flatiron-school/memes" for ::1 at 2016-05-21 15:26:40 -0400
+Processing by MemesController#index as HTML
+  Parameters: {"group_slug"=>"flatiron-school"}
+  [1m[36mGroup Load (8.3ms)[0m  [1mSELECT  "groups".* FROM "groups" WHERE "groups"."group_slug" = $1 LIMIT 1[0m  [["group_slug", "flatiron-school"]]
+  [1m[35mUser Load (4.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36mCACHE (0.7ms)[0m  [1mSELECT  "groups".* FROM "groups" WHERE "groups"."group_slug" = $1 LIMIT 1[0m  [["group_slug", "flatiron-school"]]
+  [1m[35mGroup Exists (8.5ms)[0m  SELECT  1 AS one FROM "groups" INNER JOIN "memberships" ON "groups"."id" = "memberships"."group_id" WHERE "memberships"."user_id" = $1 AND "groups"."id" = $2 LIMIT 1  [["user_id", 3], ["id", 1]]
+  [1m[36mMeme Load (8.8ms)[0m  [1mSELECT "memes".* FROM "memes" WHERE "memes"."group_id" = 1[0m
+  [1m[35mGroup Load (8.0ms)[0m  SELECT  "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered memes/index.html.erb within layouts/application (68.5ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "groups".* FROM "groups" WHERE "groups"."group_slug" = $1 LIMIT 1  [["group_slug", "flatiron-school"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  Rendered layouts/nav/_upload.html.erb (8.3ms)
+  Rendered layouts/nav/_user_group_nav.html.erb (32.7ms)
+Completed 200 OK in 703ms (Views: 635.0ms | ActiveRecord: 38.7ms)
+
+
+Started GET "/" for ::1 at 2016-05-21 15:26:43 -0400
+Processing by HomeController#index as HTML
+  [1m[35mGroup Load (0.5ms)[0m  SELECT "groups".* FROM "groups"
+  Rendered home/index.html.erb within layouts/application (5.1ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  Rendered layouts/nav/_user_home_nav.html.erb (0.7ms)
+Completed 200 OK in 227ms (Views: 224.3ms | ActiveRecord: 0.9ms)
