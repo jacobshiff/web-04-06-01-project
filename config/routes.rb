@@ -10,6 +10,12 @@ Rails.application.routes.draw do
   ######## Home routes
   get '/' => 'home#index', as: 'home'
 
+#####Groups
+    get '/groups/new' => 'groups#new'
+    get '/groups' => 'groups#index'
+    get '/:group_slug' => 'memes#index', as: 'group'
+    post '/:groups' => 'groups#create'
+
 ######### Memes routes
   #Create
   get '/:group_slug/memes/new' => 'memes#new'
@@ -46,12 +52,7 @@ Rails.application.routes.draw do
   #can rewrite with user_slug
 
   #get '/users/:user_id/edit' => 'users#edit'
-  
-#####Groups
-  #index
-  get '/groups' => 'groups#index'
-  get '/:group_slug' => 'memes#index', as: 'group'
-  get '/groups/new' => 'groups#new'
-  post '/:groups' => 'groups#create'
+
+
 
 end

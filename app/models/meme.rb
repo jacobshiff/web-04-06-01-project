@@ -17,14 +17,27 @@ class Meme < ActiveRecord::Base
 
   def reactions_message(user)
     if !user_reacted?(user)
-      "<strong>#{self.reactions.count} people</strong> like this image".html_safe
+      message_helper.html_safe
     else
       "<strong>You</strong> and <strong>#{self.reactions.count - 1} other #{plural('person')}</strong> like this image".html_safe
     end
   end
 
+  def message_helper
+    num = self.reactions.count
+    if num > 1
+      "<strong>#{num} people</strong> like this image"
+    else
+      "<strong>#{num} person</strong> likes this image"
+    end
+  end
+
   def plural(word)
-    num = self.reactions.count - 1
+    if self.reactions.count > 1
+      num = self.reactions.count - 1
+    else
+      num = self.reactions.count
+    end
     str = ActionController::Base.helpers.pluralize(num, word)
     parts = str.split
     parts[1]
@@ -38,6 +51,10 @@ class Meme < ActiveRecord::Base
     end
   end
 
+  # def popularity_score
+  #   #self.
+  # end
+
   private
   def user_reacted?(user)
     self.reactions.where(user: user).any?
@@ -50,4 +67,5 @@ class Meme < ActiveRecord::Base
   def unreact(user)
     self.reactions.find_by(user_id: user.id).destroy
   end
+
 end

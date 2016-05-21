@@ -19,14 +19,6 @@ class Group < ActiveRecord::Base
     #select * from groups inner join memberships where memberships.user_id == user.id
   end
 
-  # def self.find_title(params)
-  #   slug = params[:group_slug]
-  #   if slug
-  #     g = Group.find_by(group_slug: slug)
-  #     return g.title
-  #   else
-  #     return " "
-  #   end
-  # end
+
 
 end
