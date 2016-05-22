@@ -20,7 +20,7 @@ class MemesController < ApplicationController
   def create
     @meme = Meme.new(meme_params)
     @meme.group = Group.find_by(group_slug: params[:group_slug])
-    @meme.creator = User.find_by(username: 'rachelb') # CHANGE THIS AFTER USERS EXIST
+    @meme.creator = current_user
     if @meme.save
       redirect_to meme_path(group_slug: @meme.group.group_slug, id: @meme.id)
     else

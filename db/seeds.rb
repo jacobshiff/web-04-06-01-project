@@ -170,6 +170,9 @@ membership_1 = Membership.create(group_id: 1, user_id: 1, user_type: 'admin')
 membership_2 = Membership.create(group_id: 1, user_id: 2, user_type: 'member')
 membership_3 = Membership.create(group_id: 1, user_id: 3, user_type: 'member')
 
+##ADD INVITES
+invitation_1 = Invite.create(sender_id: 1, recipient_email: 'bob@bob.com', token: 'cheese')
+invitation_2 = Invite.create(sender_id: 2, recipient_email: 'memelover@memes.net', token: '12345')
 
 
 # create_table "comments", force: :cascade do |t|

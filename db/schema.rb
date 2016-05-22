@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160520144522) do
+ActiveRecord::Schema.define(version: 20160522152015) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,16 +41,16 @@ ActiveRecord::Schema.define(version: 20160520144522) do
   add_index "groups", ["group_slug"], name: "index_groups_on_group_slug", using: :btree
 
   create_table "invites", force: :cascade do |t|
-    t.integer  "inviter_id"
-    t.integer  "invitee_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "sender_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.integer  "group_id"
+    t.string   "recipient_email"
+    t.string   "token"
   end
 
   add_index "invites", ["group_id"], name: "index_invites_on_group_id", using: :btree
-  add_index "invites", ["invitee_id"], name: "index_invites_on_invitee_id", using: :btree
-  add_index "invites", ["inviter_id"], name: "index_invites_on_inviter_id", using: :btree
+  add_index "invites", ["sender_id"], name: "index_invites_on_sender_id", using: :btree
 
   create_table "memberships", force: :cascade do |t|
     t.integer  "user_id"
@@ -112,9 +112,15 @@ ActiveRecord::Schema.define(version: 20160520144522) do
     t.string   "username"
     t.string   "email"
     t.string   "password_digest"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.string   "avatar"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.integer  "invite_id"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
+
+  add_index "users", ["invite_id"], name: "index_users_on_invite_id", using: :btree
 
 end
