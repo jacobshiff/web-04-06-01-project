@@ -5,7 +5,8 @@ class SessionsController < ApplicationController
 
     if current_user
       flash[:warning] = "You're already logged in, clown!"
-      redirect_to memes_path(current_user.groups.first.group_slug)
+      redirect_to groups_path
+      #redirect_to memes_path(current_user.groups.first.group_slug)
     end
 
     # This is the action associated with logging in (get request)
@@ -23,7 +24,8 @@ class SessionsController < ApplicationController
     if @user.authenticate(user_params[:password])
       #make active sesh, bring up first group of their groups
       session[:user_id] = @user.id
-      redirect_to memes_path(@user.groups.first.group_slug)
+      redirect_to groups_path
+      #redirect_to memes_path(@user.groups.first.group_slug)
     else
       render :new
     end

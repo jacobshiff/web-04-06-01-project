@@ -7,14 +7,26 @@ Rails.application.routes.draw do
   # end
 
 
-  ######## Home routes
+######## Home routes
   get '/' => 'home#index', as: 'home'
+
+
+######## Users
+    # Login
+    get '/login' => 'sessions#new', as: 'login'
+    post '/login' => 'sessions#create', as: 'create_login'
+
+    # Logout
+    delete '/logout' => 'sessions#destroy', as: 'logout'
+
+
 
 #####Groups
     get '/groups/new' => 'groups#new'
     get '/groups' => 'groups#index'
-    get '/:group_slug' => 'memes#index', as: 'group'
+    get '/:group_slug' => 'groups#show', as: 'group'
     post '/:groups' => 'groups#create'
+    get '/:group_slug/admin' => 'groups#admin', as: 'admin'
 
 ######### Memes routes
   #Create
@@ -29,23 +41,15 @@ Rails.application.routes.draw do
   #Destroy
   delete '/:group_slug/memes/:id' => 'memes#destroy'
 
-######## Users
-  # Login
-  get '/login' => 'sessions#new', as: 'login'
-  post '/login' => 'sessions#create', as: 'create_login'
-
-  # Logout
-  delete '/:group_slug/logout' => 'sessions#destroy', as: 'logout'
-
   # Registration
   get '/users/new' => 'registrations#new', as: 'registration_new'
   post '/users/new' => 'registrations#create', as: 'registration_create'
 
   # User path
-  get '/:group_slug/users/:username' => 'users#show', as: 'user'
-  get '/:group_slug/users/:username/edit' => 'users#edit', as: 'edit_user'
-  patch '/:group_slug/users/:username' => 'users#update'
-  delete '/:group_slug/users/:username' => 'users#destroy'
+  get '/users/:username' => 'users#show', as: 'user'
+  get '/users/:username/edit' => 'users#edit', as: 'edit_user'
+  patch '/users/:username' => 'users#update'
+  delete '/users/:username' => 'users#destroy'
 
   #get '/users/:user_id' => 'users#show' ###Rachel says: we might want to use this as well?
   #user profile page
@@ -54,5 +58,6 @@ Rails.application.routes.draw do
   #get '/users/:user_id/edit' => 'users#edit'
 
 
+#####Invitations
 
 end

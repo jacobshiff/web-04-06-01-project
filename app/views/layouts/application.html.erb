@@ -8,16 +8,7 @@
 </head>
 <body>
 <!-- Navbar -->
-<% if !!session[:user_id] && !!params[:group_slug] %>
-  <%= render partial: 'layouts/nav/user_group_nav', locals: { group: Group.find_by(group_slug: params[:group_slug]), user: User.find(session[:user_id])} %>
-<% elsif !!session[:user_id] && !params[:group_slug] %>
-  <%= render partial: 'layouts/nav/user_home_nav', locals: {user: User.find(session[:user_id])} %>
-<% elsif !session[:user_id] && !!params[:group_slug] %>
-  <%= render partial: 'layouts/nav/public_group_nav', locals: { group: Group.find_by(group_slug: params[:group_slug]) } %>
-<% else %>
-  <%= render partial: 'layouts/nav/public_home_nav' %>
-<% end %>
-
+<%= render 'layouts/shared/basic_nav' %>
 
 <!-- Flashes -->
 <% flash.each do |type, message| %>

@@ -1,5 +1,6 @@
 class GroupsController < ApplicationController
   before_action :current_user
+  before_action :set_group, only: [:show, :destroy]
   #before_action :require_login_and_access
 
   def index
@@ -7,7 +8,8 @@ class GroupsController < ApplicationController
   end
 
   def show
-    @group = Group.find_by(group_slug: params[:group_slug])
+    redirect_to memes_path(@group.group_slug)
+    #@group = Group.find_by(group_slug: params[:group_slug])
   end
 
   def new
@@ -23,9 +25,33 @@ class GroupsController < ApplicationController
     redirect_to group_path(@group.group_slug)
   end
 
+  def edit
+  end
+
+  def update
+  end
+
+  def destroy
+    if current_user.type(@group) == "admin"
+      @group.destroy
+      redirect_to groups_path
+    else
+      flash[:danger] = "You do not have permissions to do that."
+    end
+  end
+
+  def admin
+    render :show
+  end
+
   private
 
   def group_params
     params.require(:group).permit(:title)
   end
+
+  def set_group
+    @group = Group.find_by(group_slug: params[:group_slug])
+  end
+
 end

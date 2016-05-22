@@ -7,6 +7,10 @@ class ApplicationController < ActionController::Base
     @current_user = User.find_by(id: session[:user_id])
   end
 
+  helper_method def current_group
+    @current_group = Group.find_by(group_slug: params[:group_slug]) if params[:group_slug]
+  end
+
   def logged_in?
     session[:user_id] != nil
   end
@@ -35,5 +39,4 @@ class ApplicationController < ActionController::Base
   def set_user
     @user = User.find(session[:user_id])
   end
-
 end
