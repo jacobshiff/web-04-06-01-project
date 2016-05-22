@@ -22,7 +22,7 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="<%= user.avatar %>" class="navbar-avatar"><%= user.username %><span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="/<%= group.group_slug %>/users/<%= user.username %>">View Profile</a></li>
-            <li><a href="#">View Groups</a></li>
+            <li><a href="/">View Groups</a></li>
             <li><%= link_to "Sign Out", logout_path, method: :delete %></li>
           </ul>
         </li>
