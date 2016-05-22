@@ -1,4 +1,5 @@
-/log/*
+public/system/*
+log/*
 *.gem
 *.rbc
 /.config
@@ -38,3 +39,4 @@ build/
 
 # Ignore application configuration
 /config/application.yml
+/config/secrets.yml
