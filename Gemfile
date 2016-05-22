@@ -25,11 +25,14 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'bootstrap-sass', '~> 3.3.6'
 
-gem 'paperclip'
+#Required for uploading files
+gem "paperclip", "~> 4.2"
+gem 'aws-sdk', '< 2.0'
 
 gem 'carrierwave'
 
-gem 'figaro'
+#Required for securely handling secrets
+gem "figaro"
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
