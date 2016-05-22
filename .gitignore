@@ -1,5 +1,5 @@
-/public/system/*
-/log/*
+public/system/*
+log/*
 *.gem
 *.rbc
 /.config
