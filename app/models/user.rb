@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
 
   #CarrierWave
   mount_uploader :avatar, AvatarUploader
-  
+
   has_secure_password
 
   # Validations
@@ -22,5 +22,8 @@ class User < ActiveRecord::Base
   validates :username, :password, presence: true
   validates :password, length: { in: 6..100 }
 
-  
+  def type(group)
+    Membership.find_by(user: self, group: group).user_type
+  end
+
 end
