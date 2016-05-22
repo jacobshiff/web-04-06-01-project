@@ -12,17 +12,16 @@ class RegistrationsController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    @user.avatar = user_avatar
-    #This might be a vulnerability...
     if @user.save
+      binding.pry
       session[:user_id] = @user.id
       redirect_to groups_path
       #redirect_to memes_path(@user.groups.first.group_slug)
       #if there is an error in registration, the error message carries through to the group/memes index??
     else
+      binding.pry
       error_type
       render :new
-      #add in flash
     end
   end
 
