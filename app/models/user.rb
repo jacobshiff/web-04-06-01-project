@@ -11,12 +11,12 @@ class User < ActiveRecord::Base
   belongs_to :invite
   has_many :sent_invites, class_name: 'Invite', foreign_key: 'sender_id'
 
-  #paperclip validations; must include for upload
-  # has_attached_file :avatar, default_url: "/system/users/avatars/default-avatars/avatar-bono.jpg"
-  # validates_attachment :avatar, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
+  # paperclip validations; must include for upload
+  has_attached_file :avatar, default_url: "/system/users/avatars/default-avatars/avatar-bono.jpg"
+  validates_attachment :avatar, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
 
-  #CarrierWave
-  mount_uploader :avatar, AvatarUploader
+  # #CarrierWave
+  # mount_uploader :avatar, AvatarUploader
 
   has_secure_password
 
@@ -24,7 +24,8 @@ class User < ActiveRecord::Base
   validates :username, uniqueness: true
   validates :username, :password, presence: true
   validates :password, length: { in: 6..100 }
-  validates :invite_id, presence: true, uniqueness: true
+  # TEMPORARILY COMMENTING THIS OUT
+  # validates :invite_id, presence: true, uniqueness: true
 
   #Find user_type for user of a given group
   def type(group)
