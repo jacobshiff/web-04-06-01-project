@@ -29,7 +29,7 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'paperclip'
 
 gem 'carrierwave'
-gem 'fog-aws'
+gem "fog-aws"
 gem "figaro"
 
 # Use ActiveModel has_secure_password

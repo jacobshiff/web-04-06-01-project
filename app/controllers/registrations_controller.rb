@@ -12,7 +12,6 @@ class RegistrationsController < ApplicationController
   def create
     @user = User.new(user_params)
     @user.avatar = user_avatar
-    #This might be a vulnerability...
     if @user.save
       session[:user_id] = @user.id
       redirect_to memes_path(@user.groups.first.group_slug)
