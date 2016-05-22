@@ -11,6 +11,6 @@
   <tr>
     <td><%= @user.id %></td>
     <td><%= @user.username %></td>
-    <td><%= image_tag(@user.avatar_url) if @user.avatar_url %></td>
+    <td><%= image_tag(@user.avatar) if @user.avatar %></td>
   </tr>
 </table>

@@ -10,7 +10,6 @@ class Meme < ActiveRecord::Base
   has_attached_file :image
   validates_attachment :image, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
 
-
   def update_reactions(user)
     user_reacted?(user) ? unreact(user) : react(user)
   end
