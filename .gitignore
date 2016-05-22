@@ -1,4 +1,5 @@
-/log/*
+public/system/*
+log/*
 *.gem
 *.rbc
 /.config
@@ -35,3 +36,7 @@ build/
 
 # unless supporting rvm < 1.11.0 or doing something fancy, ignore this:
 .rvmrc
+
+# Ignore application configuration
+/config/application.yml
+/config/secrets.yml
